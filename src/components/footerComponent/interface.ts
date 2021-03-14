@@ -9,6 +9,6 @@ export interface IFooterComponent {
 export interface INavButton {
   isActive: boolean,
   onPress: () => void,
-  icon: JSX.Element,
+  Icon: SvgrComponent,
   badgeCount?: number
 }

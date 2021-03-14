@@ -4,6 +4,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {useFonts} from 'expo-font';
+import './@types';
 /* globals */
 import rootReducers from './src/globals/reducers';
 /* containers */
