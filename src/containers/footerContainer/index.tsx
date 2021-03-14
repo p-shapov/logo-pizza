@@ -1,34 +1,30 @@
 import React from 'react';
-import {connect, RootStateOrAny} from 'react-redux';
+import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import {COLORS} from '../../constants';
-import Color from 'color';
-import {IFooterContainer} from './interface';
+/* globals */
+import {IRootState} from '../../globals/types';
+import {TMode} from '../../modules/UI/types';
+import {setMode} from '../../modules/UI/actions';
+/* components */
 import FooterComponent from '../../components/footerComponent';
-import {TMode} from '../../types';
-import {setMode} from '../../actions';
+import {IFooterComponent} from '../../components/footerComponent/interface';
 
-const mapStateToProps = (state: RootStateOrAny) => ({
-  mode: state.mode,
-  productsInCartCount : state.productsInCartCount,
-  setMode: state.setMode
+const mapStateToProps = (state: IRootState): IFooterComponent => ({
+  mode: state.ui.mode,
+  setMode: state.ui.setMode,
+  productsInCartCount: state.basket.productsInCartCount
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch): Partial<IFooterComponent> => ({
   setMode(mode: TMode) {
     dispatch(setMode(mode));
   }
 });
 
-const FooterContainer = (props: IFooterContainer) => (
-  <FooterComponent
-    {...props}
-    navButtonBackgroundColor={Color().hex(COLORS.NAV_BUTTON_BACKGROUND)}
-    navButtonBackgroundColorActive={Color().hex(COLORS.NAV_BUTTON_BACKGROUND_ACTIVE)}
-    navButtonForegroundColor={Color().hex(COLORS.NAV_BUTTON_FOREGROUND)}
-    navButtonForegroundColorActive={Color().hex(COLORS.NAV_BUTTON_FOREGROUND_ACTIVE)}
-  />
+const FooterContainer = (props: IFooterComponent): JSX.Element => (
+  <FooterComponent {...props}/>
 );
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

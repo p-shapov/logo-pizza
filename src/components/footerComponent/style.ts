@@ -1,4 +1,4 @@
-import {padding} from '../../helpers';
+import {padding} from '../../globals/helpers';
 import {StyleSheet} from 'react-native';
 
 const style = StyleSheet.create({
@@ -10,7 +10,7 @@ const style = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     maxWidth: 360,
-    ...padding(16, 6)
+    ...padding(6, 16)
   },
   footerTab: {
     ...padding(16, 22),

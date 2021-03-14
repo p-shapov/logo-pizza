@@ -4,16 +4,12 @@ import {StyleSheet, Text, View} from 'react-native';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {useFonts} from 'expo-font';
-import {MODES} from './src/constants';
-import reducers from './src/reducers';
+/* globals */
+import rootReducers from './src/globals/reducers';
+/* containers */
 import FooterContainer from './src/containers/footerContainer';
 
-const initialState = {
-  mode: MODES.CATALOG,
-  productsInCartCount: 0,
-  setMode: () => {}
-};
-const store = createStore(reducers, initialState);
+const store = createStore(rootReducers);
 
 export default function App() {
   const [loaded] = useFonts({
@@ -30,7 +26,7 @@ export default function App() {
       <View style={styles.container}>
         <Text>Hello there!</Text>
         <StatusBar style="auto"/>
-        <FooterContainer />
+        <FooterContainer/>
       </View>
     </Provider>
   );
