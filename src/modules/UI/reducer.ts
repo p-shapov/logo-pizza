@@ -1,14 +1,18 @@
-import {TUIActionTypes, IUIState} from './types';
+import {UIModule} from './namespace';
+import {Root} from '../../globals/interface';
 
-const UIInitialState: IUIState = {
+const initialState: UIModule.IState = {
   mode: 'CATALOG',
-  setMode: (mode) => {console.log(mode)}
-}
+  setMode: (mode: Root.TMode) => {
+    console.log(mode);
+  }
+};
 
-export default (state: IUIState = UIInitialState, action: TUIActionTypes): IUIState => {
+export default (state: UIModule.IState = initialState, action: UIModule.TActions): UIModule.IState => {
   switch (action.type) {
     case 'SET_MODE':
       return ({...state, mode: action.mode});
-    default: return state;
+    default:
+      return state;
   }
 };

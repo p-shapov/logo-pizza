@@ -1,10 +1,10 @@
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
 /* globals */
-import {TMode} from '../../modules/ui/types';
 import {COLORS} from '../../globals/constants';
+import {Root} from '../../globals/interface';
 /* locals */
-import {IFooterComponent, INavButton} from './interface';
+import {FooterComponent} from './namespace';
 import style from './style';
 /* icons */
 import IcoFooterCatalog from '../../assets/images/ico_footer_catalog.svg';
@@ -12,7 +12,7 @@ import IcoFooterContacts from '../../assets/images/ico_footer_contacts.svg';
 import IcoFooterPersonalOffice from '../../assets/images/ico_footer_personal_office.svg';
 import IcoFooterBasket from '../../assets/images/ico_footer_basket.svg';
 
-const NavButton = (props: INavButton) => {
+const NavButton = (props: FooterComponent.INavButton) => {
   const {
     isActive,
     onPress,
@@ -50,14 +50,14 @@ const NavButton = (props: INavButton) => {
     </Pressable>);
 };
 
-const FooterComponent = (props: IFooterComponent) => {
+export default (props: FooterComponent.IFooter) => {
   const {
     mode,
     setMode,
     productsInCartCount
   } = props;
   
-  type TNavButtonsArray = Array<{ mode: TMode, isActive: boolean, Icon: SvgrComponent, badgeCount?: number }>;
+  type TNavButtonsArray = Array<{mode: Root.TMode, isActive: boolean, Icon: SvgrComponent, badgeCount?: number}>
   
   const navButtonsArray: TNavButtonsArray = [
     {
@@ -76,8 +76,8 @@ const FooterComponent = (props: IFooterComponent) => {
       Icon: IcoFooterPersonalOffice
     },
     {
-      mode: 'PRODUCT_CART',
-      isActive: mode === 'PRODUCT_CART',
+      mode: 'BASKET',
+      isActive: mode === 'BASKET',
       Icon: IcoFooterBasket,
       badgeCount: productsInCartCount
     },
@@ -93,7 +93,4 @@ const FooterComponent = (props: IFooterComponent) => {
       ))}
     </View>
   );
-  
 };
-
-export default FooterComponent;

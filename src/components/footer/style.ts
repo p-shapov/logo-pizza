@@ -1,16 +1,14 @@
-import {padding} from '../../globals/helpers';
 import {StyleSheet} from 'react-native';
+import {padding} from '../../globals/helpers';
+import {CONTAINER_PADDING} from '../../globals/constants';
 
-const style = StyleSheet.create({
+export default StyleSheet.create({
   footer: {
-    position: 'absolute',
     bottom: 0,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
-    maxWidth: 360,
-    ...padding(6, 16)
+    ...padding(6, CONTAINER_PADDING)
   },
   footerTab: {
     ...padding(16, 22),
@@ -34,5 +32,3 @@ const style = StyleSheet.create({
     lineHeight: 10
   }
 });
-
-export default style;

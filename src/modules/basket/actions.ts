@@ -1,6 +1,6 @@
-import {IBasketActionSetProductsInCartCount} from './types';
+import {BasketModule} from './namespace';
 
-export const setProductsInCartCount = (productsInCartCount: number): IBasketActionSetProductsInCartCount => ({
+export const setProductsInCartCount = (productsInCartCount: number): BasketModule.ISetProductsInCartCount => ({
   type: 'SET_PRODUCTS_IN_CART_COUNT',
   productsInCartCount
 });
