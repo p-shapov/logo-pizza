@@ -5,7 +5,7 @@ export namespace CatalogModule {
     id: number,
     title: string,
     description: string,
-    price: number | Map<{title: string, value: string}, number>,
+    price: number | Array<{ size: { title: string, value: string }, value: number }>,
     image: ImageSourcePropType
   }
   
@@ -16,7 +16,6 @@ export namespace CatalogModule {
   }
   
   export interface ICategory {
-    isActive: boolean,
     title: string,
     Icon: SvgrComponent,
     products: Array<IProduct>
@@ -29,7 +28,8 @@ export namespace CatalogModule {
     categories: Array<ICategory>,
     promotions: Array<IPromotion>,
     setCategory: (id: number) => void,
-    setPromotion: (id: number) => void
+    setPromotion: (id: number) => void,
+    setProduct: (id: number) => void
   }
   
   export interface ISetProduct {

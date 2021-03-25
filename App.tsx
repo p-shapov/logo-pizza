@@ -1,17 +1,17 @@
 import {StatusBar} from 'expo-status-bar';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {useFonts} from 'expo-font';
 import './@types';
 /* globals */
 import rootReducers from './src/globals/reducers';
-import {COLORS} from './src/globals/constants';
 /* containers */
-import FooterContainer from './src/containers/footer';
-import CategoryListContainer from './src/containers/category-list';
-import PromotionListingContainer from './src/containers/promotion-listing';
+import {StatusBarBackground} from './src/components/status-bar-background';
+import {FooterContainer} from './src/containers/footer';
+import {CatalogListingContainer} from './src/containers/catalog-listing';
+import {PromotionListingContainer} from './src/containers/promotion-listing';
 
 const store = createStore(rootReducers);
 
@@ -27,19 +27,16 @@ export default function App() {
   
   return (
     <Provider store={store}>
+      <StatusBar style={'inverted'}/>
+      <StatusBarBackground/>
       <View style={styles.container}>
-        <View style={styles.content}>
-          <StatusBar
-            style={'inverted'}
-            backgroundColor={COLORS.STATUS_BAR_BACKGROUND_COLOR}
-          />
-          <PromotionListingContainer />
-          <CategoryListContainer />
-          <View style={styles.main}>
-            <Text>Hello there!</Text>
-          </View>
-          <FooterContainer/>
+        <View>
+          <PromotionListingContainer/>
         </View>
+        <View style={styles.content}>
+          <CatalogListingContainer/>
+        </View>
+        <FooterContainer/>
       </View>
     </Provider>
   );
@@ -48,15 +45,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    maxHeight: Dimensions.get('window').height
   },
   content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch'
-  },
-  main: {
-    flexGrow: 1
+    flexShrink: 1
   }
 });

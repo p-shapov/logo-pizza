@@ -8,27 +8,27 @@ export default [
         title: 'Крэйзи пепперони',
         description: 'Пикантная пепперони, цыпленок, моцарелла, томатный соус, кисло-сладкий соус',
         image: require('../assets/images/img_product_1001.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Нормальная', value: '40см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 495
+            value: 495
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 545
+            value: 545
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 595
+            value: 595
           }
         ]
       },
@@ -37,28 +37,28 @@ export default [
         title: 'Пицца синица',
         description: 'Цыпленок, томатный соус, моцарелла, ананасы',
         image: require('../assets/images/img_product_1002.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 295
+            value: 295
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 345
+            value: 345
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 495
+            value: 495
           }
         ]
       },
@@ -67,28 +67,28 @@ export default [
         title: 'Пепперони',
         description: 'Пикантная пепперони, томатный соус, моцарелла',
         image: require('../assets/images/img_product_1003.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 495
+            value: 495
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 545
+            value: 545
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 595
+            value: 595
           }
         ]
       },
@@ -96,28 +96,29 @@ export default [
         id: 1004,
         title: 'Четыре сыра',
         description: 'Сливочный соус, сыр блю чиз, моцарелла, смесь сыров чеддер и пармезан',
-        variants: [
+        image: require('../assets/images/img_product_placeholder.png'),
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 545
+            value: 545
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 595
+            value: 595
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 645
+            value: 645
           }
         ]
       },
@@ -125,28 +126,29 @@ export default [
         id: 1005,
         title: 'Пицца-пирог',
         description: 'Молоко сгущенное, брусника, ананасы',
-        variants: [
+        image: require('../assets/images/img_product_placeholder.png'),
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 345
+            value: 345
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 545
+            value: 545
           }
         ]
       },
@@ -154,28 +156,29 @@ export default [
         id: 1006,
         title: 'Гавайская',
         description: 'Цыпленок, томатный соус, моцарелла, ананасы',
-        variants: [
+        image: require('../assets/images/img_product_placeholder.png'),
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 495
+            value: 495
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 545
+            value: 545
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 595
+            value: 595
           }
         ]
       },
@@ -185,28 +188,28 @@ export default [
         title: 'Мексикансая',
         description: 'Цыпленок, томатный соус, сладкий перец, красный лук, моцарелла, острый халапеньо, томаты, соус сальса',
         image: require('../assets/images/img_product_1007.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 345
+            value: 345
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 545
+            value: 545
           }
         ]
       },
@@ -216,28 +219,28 @@ export default [
         title: 'Четыре сезона',
         description: 'Итальянские травы, ветчина, пикантная пепперони, томатный соус, кубики брынзы, шампиньоны, моцарелла, томаты',
         image: require('../assets/images/img_product_1008.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 495
+            value: 495
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 545
+            value: 545
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 595
+            value: 595
           }
         ]
       },
@@ -247,28 +250,28 @@ export default [
         title: 'Ветчина и грибы',
         description: 'Ветчина, томатный соус, шампиньоны, моцарелла',
         image: require('../assets/images/img_product_1009.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 345
+            value: 345
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 545
+            value: 545
           }
         ]
       },
@@ -278,28 +281,28 @@ export default [
         title: 'Цыпленок барбекю',
         description: 'Цыпленок, соус барбекю, томатный соус, красный лук, моцарелла, бекон',
         image: require('../assets/images/img_product_1010.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 545
+            value: 545
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 595
+            value: 595
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 645
+            value: 645
           }
         ]
       },
@@ -309,28 +312,28 @@ export default [
         title: 'Итальянская',
         description: 'Итальянские травы, пикантная пепперони, томатный соус, шампиньоны, моцарелла, маслины',
         image: require('../assets/images/img_product_1011.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 495
+            value: 495
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 545
+            value: 545
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 595
+            value: 595
           }
         ]
       },
@@ -340,28 +343,28 @@ export default [
         title: 'Санчо',
         description: 'Ветчина, фарш из говядины, пикантная пепперони, томатный соус, шампиньоны, сладкий перец, красный лук, моцарелла, маслины',
         image: require('../assets/images/img_product_1012.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 545
+            value: 545
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 595
+            value: 595
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 645
+            value: 645
           }
         ]
       },
@@ -371,28 +374,28 @@ export default [
         title: 'Чизбургер-пицца',
         description: 'Соус бургер, мясной соус болоньезе, красный лук, моцарелла, томаты, соленые огурчики',
         image: require('../assets/images/img_product_1013.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 495
+            value: 495
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 545
+            value: 545
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 595
+            value: 595
           }
         ]
       },
@@ -402,28 +405,28 @@ export default [
         title: 'Кисло-сладкий цыпленок',
         description: 'Кисло-сладкий соус, моцарелла, цыпленок, томатный соус',
         image: require('../assets/images/img_product_1014.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 295
+            value: 295
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 345
+            value: 345
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 495
+            value: 495
           }
         ]
       },
@@ -433,28 +436,28 @@ export default [
         title: 'Пепперони Фреш с перцем',
         description: 'Сладкий перец, пикантная пепперони, моцарелла, томатный соус',
         image: require('../assets/images/img_product_1015.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 245
+            value: 245
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 295
+            value: 295
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 345
+            value: 345
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 445
+            value: 445
           }
         ]
       },
@@ -464,28 +467,28 @@ export default [
         title: 'Испанские колбаски чоризо',
         description: 'Томаты свежие, острая чоризо, моцарелла, соус чипотле',
         image: require('../assets/images/img_product_1016.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 345
+            value: 345
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 545
+            value: 545
           }
         ]
       },
@@ -495,28 +498,28 @@ export default [
         title: 'Маргарита',
         description: 'Итальянские травы, томатный соус, моцарелла, томаты',
         image: require('../assets/images/img_product_1017.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 345
+            value: 345
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 545
+            value: 545
           }
         ]
       },
@@ -526,28 +529,28 @@ export default [
         title: 'Овощи и грибы',
         description: 'Итальянские травы, томатный соус, кубики брынзы, шампиньоны, сладкий перец, красный лук, моцарелла, маслины, томаты',
         image: require('../assets/images/img_product_1018.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 495
+            value: 495
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 545
+            value: 545
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 595
+            value: 595
           }
         ]
       },
@@ -557,28 +560,28 @@ export default [
         title: 'Мясная',
         description: 'Цыпленок, ветчина, пикантная пепперони, томатный соус, острая чоризо, моцарелла',
         image: require('../assets/images/img_product_1019.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 545
+            value: 545
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 595
+            value: 595
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 645
+            value: 645
           }
         ]
       },
@@ -588,28 +591,28 @@ export default [
         title: 'Дон Бекон',
         description: 'Цыпленок, пикантная пепперони, томатный соус, красный лук, моцарелла, бекон',
         image: require('../assets/images/img_product_1020.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 445
+            value: 445
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 495
+            value: 495
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 545
+            value: 545
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 595
+            value: 595
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 645
+            value: 645
           }
         ]
       },
@@ -619,28 +622,28 @@ export default [
         title: 'Ветчина и сыр',
         description: 'Моцарелла, ветчина, сливочный соус',
         image: require('../assets/images/img_product_1021.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 295
+            value: 295
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 345
+            value: 345
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 495
+            value: 495
           }
         ]
       },
@@ -650,28 +653,28 @@ export default [
         title: 'Пепперони Фреш с томатами',
         description: 'Томаты, пикантная пепперони, моцарелла, томатный соус',
         image: require('../assets/images/img_product_1022.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 245
+            value: 245
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 295
+            value: 295
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 345
+            value: 345
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 445
+            value: 445
           }
         ]
       },
@@ -681,28 +684,28 @@ export default [
         title: 'Сырная',
         description: 'Томатный соус, моцарелла',
         image: require('../assets/images/img_product_1023.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 245
+            value: 245
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 295
+            value: 295
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 345
+            value: 345
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 395
+            value: 395
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 445
+            value: 445
           }
         ]
       },
@@ -712,28 +715,28 @@ export default [
         title: 'Креветки по-азиатски',
         description: 'Креветки, шампиньоны, моцарелла, кисло-сладкий соус, черный кунжут',
         image: require('../assets/images/img_product_1024.jpg'),
-        variants: [
+        price: [
           {
             size: {title: 'Маленькая', value: '25см'},
-            price: 395
+            value: 395
           },
           {
             
             size: {title: 'Нормальная', value: '40см'},
-            price: 445
+            value: 445
           },
           {
             size: {title: 'Большая', value: '50'},
-            price: 495
+            value: 495
           },
           {
             
             size: {title: 'Очень большая', value: '70см'},
-            price: 545
+            value: 545
           },
           {
             size: {title: 'Огромная', value: '100см'},
-            price: 595
+            value: 595
           }
         ]
       }

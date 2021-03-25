@@ -1,6 +1,6 @@
 import {CatalogModule} from './namespace';
 import categoriesVariable from '../../variables/categories.variable';
-import promotionsVariable from '../../variables/promotions.variable'
+import promotionsVariable from '../../variables/promotions.variable';
 
 const getCategories = (): Array<CatalogModule.ICategory> => {
   return (
@@ -15,7 +15,7 @@ const getPromotions = () => {
   return (
     promotionsVariable.map((promotion: any): CatalogModule.IPromotion => (promotion))
   );
-}
+};
 
 
 const initialState: CatalogModule.IState = {
@@ -25,7 +25,8 @@ const initialState: CatalogModule.IState = {
   categories: getCategories(),
   promotions: getPromotions(),
   setCategory: (id: number) => console.log(id),
-  setPromotion: (id:number) => console.log(id)
+  setPromotion: (id: number) => console.log(id),
+  setProduct: (id: number) => console.log(id)
 };
 
 export default (state: CatalogModule.IState = initialState, action: CatalogModule.TActions): CatalogModule.IState => {

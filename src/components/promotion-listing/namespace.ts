@@ -1,18 +1,21 @@
 import {ImageSourcePropType} from 'react-native';
 
-export namespace PromotionListingComponent {
-  export type TPromotionCard = {
+namespace NPromotionListing {
+  export type TCard = {
     title: string,
     image: ImageSourcePropType
   }
   
-  export interface IPromotionCard extends TPromotionCard {
+  export interface ICard extends TCard {
+    isLast: boolean,
     onPress: () => void
   }
   
-  export interface IPromotionListing {
-    items: Array<TPromotionCard>,
+  export interface IListing {
+    items: Array<TCard>,
     openPromotion: (id: number) => void,
     activePromotionId: number
   }
 }
+
+export default NPromotionListing;

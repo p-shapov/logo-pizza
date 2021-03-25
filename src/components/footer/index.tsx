@@ -4,15 +4,15 @@ import {Pressable, Text, View} from 'react-native';
 import {COLORS} from '../../globals/constants';
 import {Root} from '../../globals/interface';
 /* locals */
-import {FooterComponent} from './namespace';
-import style from './style';
+import NFooter from './namespace';
+import styles from './styles';
 /* icons */
 import IcoFooterCatalog from '../../assets/images/ico_footer_catalog.svg';
 import IcoFooterContacts from '../../assets/images/ico_footer_contacts.svg';
 import IcoFooterPersonalOffice from '../../assets/images/ico_footer_personal_office.svg';
 import IcoFooterBasket from '../../assets/images/ico_footer_basket.svg';
 
-const NavButton = (props: FooterComponent.INavButton) => {
+const NavButton = (props: NFooter.INavButton) => {
   const {
     isActive,
     onPress,
@@ -22,42 +22,27 @@ const NavButton = (props: FooterComponent.INavButton) => {
   
   return (
     <Pressable onPress={onPress}>
-      <View style={[style.footerTab, {
-        backgroundColor: isActive
-          ? COLORS.NAV_BUTTON_BACKGROUND_ACTIVE
-          : COLORS.NAV_BUTTON_BACKGROUND
-      }]}>
-        <View style={[style.footerTabBadgeWrapper, {
-          paddingRight: badgeCount !== undefined ? 8 : 0
-        }]}>
+      <View style={isActive ? styles.footerTabActive : styles.footerTab}>
+        <View style={badgeCount !== undefined ? styles.footerTabBadgeWrapper : {}}>
           <Icon color={isActive
-            ? COLORS.NAV_BUTTON_FOREGROUND_ACTIVE
-            : COLORS.NAV_BUTTON_FOREGROUND}/>
-          {badgeCount !== undefined && <View style={[style.footerTabBadge, {
-            borderColor: isActive
-              ? COLORS.NAV_BUTTON_BACKGROUND_ACTIVE
-              : COLORS.NAV_BUTTON_BACKGROUND,
-            backgroundColor: badgeCount > 0
-              ? COLORS.NAV_BUTTON_FOREGROUND_ACTIVE
-              : COLORS.NAV_BUTTON_FOREGROUND
-          }]}>
-            <Text style={[style.footerTabBadgeText, {
-              color: COLORS.NAV_BUTTON_BACKGROUND
-            }]}>{badgeCount.toString()}</Text>
+            ? COLORS.FOOTER_BUTTON_FOREGROUND_ACTIVE
+            : COLORS.FOOTER_BUTTON_FOREGROUND}/>
+          {badgeCount !== undefined && <View style={isActive ? styles.footerTabBadgeActive : styles.footerTabBadge}>
+            <Text style={styles.footerTabBadgeText}>{badgeCount.toString()}</Text>
           </View>}
         </View>
       </View>
     </Pressable>);
 };
 
-export default (props: FooterComponent.IFooter) => {
+const Footer = (props: NFooter.IFooter) => {
   const {
     mode,
     setMode,
     productsInCartCount
   } = props;
   
-  type TNavButtonsArray = Array<{mode: Root.TMode, isActive: boolean, Icon: SvgrComponent, badgeCount?: number}>
+  type TNavButtonsArray = Array<{ mode: Root.TMode, isActive: boolean, Icon: SvgrComponent, badgeCount?: number }>
   
   const navButtonsArray: TNavButtonsArray = [
     {
@@ -84,8 +69,9 @@ export default (props: FooterComponent.IFooter) => {
   ];
   
   return (
-    <View style={style.footer}>
-      {navButtonsArray.map((data, index) => (<NavButton
+    <View style={styles.footer}>
+      {navButtonsArray.map((data, index) => (
+        <NavButton
           {...data}
           key={index}
           onPress={() => setMode(data.mode)}
@@ -94,3 +80,5 @@ export default (props: FooterComponent.IFooter) => {
     </View>
   );
 };
+
+export {Footer};

@@ -6,3 +6,5 @@ export const setPromotion = (id: number): CatalogModule.ISetPromotion => ({
   type: 'SET_PROMOTION',
   id
 });
+
+export const setProduct = (id: number): CatalogModule.ISetProduct => ({type: 'SET_PRODUCT', id});

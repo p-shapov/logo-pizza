@@ -1,15 +1,18 @@
 import {StyleSheet} from 'react-native';
+/* globals */
 import {padding} from '../../globals/helpers';
-import {COLORS, CONTAINER_PADDING} from '../../globals/constants';
+import {COLORS} from '../../globals/constants';
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   promotionListing: {
-    flexGrow: 0,
-    ...padding(20, CONTAINER_PADDING - 10),
+    ...padding(20, 16),
     backgroundColor: COLORS.PROMOTION_LISTING_BACKGROUND
   },
   promotionCard: {
-    ...padding(0, 10)
+    ...padding(0, 15, 0, 0)
+  },
+  promotionCardLast: {
+    padding: 0
   },
   promotionCardImage: {
     width: 272,
@@ -23,4 +26,6 @@ export default StyleSheet.create({
     lineHeight: 19,
     color: COLORS.PROMOTION_LISTING_FOREGROUND
   }
-})
+});
+
+export default styles;

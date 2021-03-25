@@ -1,6 +1,6 @@
 import {Root} from '../../globals/interface';
 
-export namespace FooterComponent {
+namespace NFooter {
   export interface IFooter {
     mode: Root.TMode,
     setMode: (mode: Root.TMode) => void,
@@ -14,3 +14,5 @@ export namespace FooterComponent {
     badgeCount?: number
   }
 }
+
+export default NFooter;

@@ -1,54 +1,59 @@
 import React, {useRef} from 'react';
 import {FlatList, Image, ListRenderItemInfo, Pressable, Text, View} from 'react-native';
 /* locals */
-import {PromotionListingComponent} from './namespace';
-import style from './style';
+import NPromotionListing from './namespace';
+import styles from './styles';
 
-const PromotionCard = (props: PromotionListingComponent.IPromotionCard) => {
+const PromotionCard = (props: NPromotionListing.ICard) => {
   const {
     title,
     image,
+    isLast,
     onPress
   } = props;
   
   return (
-    <Pressable onPress={onPress}>
-      <View style={style.promotionCard}>
-        <Image style={style.promotionCardImage} source={image}/>
-        <Text style={style.promotionCardTitle}>{title}</Text>
+    <Pressable style={isLast ? styles.promotionCardLast : styles.promotionCard} onPress={onPress}>
+      <View>
+        <Image style={styles.promotionCardImage} source={image}/>
+        <Text style={styles.promotionCardTitle}>{title}</Text>
       </View>
     </Pressable>
   );
 };
 
-export default (props: PromotionListingComponent.IPromotionListing) => {
+const PromotionListing = (props: NPromotionListing.IListing) => {
   const {
     items,
-    openPromotion,
-    activePromotionId
+    openPromotion
   } = props;
   
-  const flatListRef = useRef<FlatList<PromotionListingComponent.TPromotionCard>>(null);
+  const flatListRef = useRef<FlatList<NPromotionListing.TCard>>(null);
   
-  const renderItem = (data: ListRenderItemInfo<PromotionListingComponent.TPromotionCard>) => {
-    const isActive = activePromotionId === data.index;
-    
-    if (isActive && flatListRef && flatListRef.current) {
-      flatListRef.current.scrollToIndex({animated: true, index: data.index, viewPosition: 0.5});
+  const handlePress = (id: number) => {
+    if (flatListRef && flatListRef.current) {
+      flatListRef.current.scrollToIndex({animated: true, index: id, viewPosition: 0.5});
     }
+    
+    openPromotion(id);
+  };
+  
+  const renderItem = (data: ListRenderItemInfo<NPromotionListing.TCard>) => {
+    const isLast = items.length - 1 === data.index;
     
     return (
       <PromotionCard
         {...data.item}
-        onPress={() => openPromotion(data.index)}
+        isLast={isLast}
+        onPress={() => handlePress(data.index)}
       />
     );
   };
   
   return (
-    <FlatList<PromotionListingComponent.TPromotionCard>
+    <FlatList<NPromotionListing.TCard>
       ref={flatListRef}
-      style={style.promotionListing}
+      contentContainerStyle={styles.promotionListing}
       data={items}
       renderItem={renderItem}
       keyExtractor={((_, index) => index.toString())}
@@ -56,4 +61,6 @@ export default (props: PromotionListingComponent.IPromotionListing) => {
       horizontal={true}
     />
   );
-}
+};
+
+export {PromotionListing};
