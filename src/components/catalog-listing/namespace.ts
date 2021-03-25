@@ -16,11 +16,19 @@ namespace NCatalogListing {
     items: Array<TProduct>
   }
   
+  export type TPromotion = {
+    title: string,
+    image: ImageSourcePropType
+  }
+  
   export interface IListing {
-    items: Array<TCategory>,
+    promotions: Array<TPromotion>,
+    categories: Array<TCategory>,
     openProduct: (id: number) => void,
+    openPromotion: (id: number) => void,
     setCategory: (id: number) => void,
-    activeCategoryId: number
+    activeCategoryId: number,
+    activePromotionId: number
   }
 }
 

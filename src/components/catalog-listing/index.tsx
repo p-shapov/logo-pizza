@@ -1,18 +1,22 @@
 import React from 'react';
-import {FlatList, ListRenderItemInfo} from 'react-native';
+import {FlatList, ListRenderItemInfo, View} from 'react-native';
 /* locals */
 import NCatalogListing from './namespace';
 /* components */
 import {ProductListing} from '../product-listing';
 import {CategoryMenu} from '../category-menu';
+import {PromotionListing} from '../promotion-listing';
 
 
 const CatalogListing = (props: NCatalogListing.IListing) => {
   const {
-    items,
+    categories,
+    promotions,
     openProduct,
+    openPromotion,
     setCategory,
-    activeCategoryId
+    activeCategoryId,
+    activePromotionId
   } = props;
   
   const renderItem = (data: ListRenderItemInfo<NCatalogListing.TCategory>) => {
@@ -32,13 +36,20 @@ const CatalogListing = (props: NCatalogListing.IListing) => {
   
   return (
     <>
-      <CategoryMenu
-        items={items}
-        setCategory={setCategory}
-        activeCategoryId={activeCategoryId}
-      />
+      <View>
+        <PromotionListing
+          items={promotions}
+          openPromotion={openPromotion}
+          activePromotionId={activeCategoryId}
+        />
+        <CategoryMenu
+          items={categories}
+          setCategory={setCategory}
+          activeCategoryId={activePromotionId}
+        />
+      </View>
       <FlatList<NCatalogListing.TCategory>
-        data={items}
+        data={categories}
         renderItem={renderItem}
         initialNumToRender={1}
         showsHorizontalScrollIndicator={false}

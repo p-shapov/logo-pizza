@@ -7,10 +7,10 @@ import {Root} from '../../globals/interface';
 import NCatalogListing from '../../components/catalog-listing/namespace';
 import {CatalogListing} from '../../components/catalog-listing';
 /* modules */
-import {setCategory, setProduct} from '../../modules/catalog/actions';
+import {setCategory, setProduct, setPromotion} from '../../modules/catalog/actions';
 
 const mapStateToProps = (state: Root.IState): NCatalogListing.IListing => ({
-  items: state.catalog.categories.map(category => ({
+  categories: state.catalog.categories.map(category => ({
     title: category.title,
     Icon: category.Icon,
     items: category.products.map(product => ({
@@ -22,16 +22,26 @@ const mapStateToProps = (state: Root.IState): NCatalogListing.IListing => ({
       image: product.image
     }))
   })),
+  promotions: state.catalog.promotions.map(promotion => ({title: promotion.title, image: promotion.image})),
   openProduct: state.catalog.setProduct,
+  openPromotion: state.catalog.setPromotion,
   setCategory: state.catalog.setCategory,
-  activeCategoryId: state.catalog.activeCategoryId
+  activeCategoryId: state.catalog.activeCategoryId,
+  activePromotionId: state.catalog.activePromotionId
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): { openProduct: NCatalogListing.IListing['openProduct'], setCategory: NCatalogListing.IListing['setCategory'] } => ({
-  openProduct(id: number) {
+const mapDispatchToProps = (dispatch: Dispatch): {
+  openProduct: NCatalogListing.IListing['openProduct'],
+  openPromotion: NCatalogListing.IListing['openPromotion'],
+  setCategory: NCatalogListing.IListing['setCategory']
+} => ({
+  openProduct(id) {
     dispatch(setProduct(id));
   },
-  setCategory(id: number) {
+  openPromotion(id) {
+    dispatch(setPromotion(id))
+  },
+  setCategory(id) {
     dispatch(setCategory(id));
   }
 });
