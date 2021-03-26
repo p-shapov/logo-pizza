@@ -1,5 +1,6 @@
 # logo-pizza
 ## Commands:
+* `npm install` - install deps.
 * `npm start` - run dev server.
 * `expo build:android` - build android bundle.
 * `expo build:ios` - build ios bundle.
