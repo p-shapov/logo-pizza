@@ -1,7 +1,9 @@
 import {FunctionComponent} from 'react';
+/* globals */
+import {Root} from '../../globals/namespace';
 
 interface WindowMediatorProps {
-  windows: Array<{name: string, Container: FunctionComponent}>
+  windows: Array<{name: Root.Window, Container: FunctionComponent}>
 }
 
 export default WindowMediatorProps;
