@@ -5,15 +5,18 @@ import {COLORS} from '../../globals/constants';
 
 const styles = StyleSheet.create({
   buttonPrimary: {
+    alignItems: 'center',
     ...padding(15, 0),
-    backgroundColor: COLORS.BUTTON_PRIMARY_BACKGROUND
+    backgroundColor: COLORS.BUTTON_PRIMARY_BACKGROUND,
+    borderRadius: 8
   },
   buttonSecondary: {
     ...padding(14, 0),
     backgroundColor: COLORS.BUTTON_PRIMARY_BACKGROUND,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: COLORS.BUTTON_PRIMARY_FOREGROUND
+    borderColor: COLORS.BUTTON_PRIMARY_FOREGROUND,
+    borderRadius: 8
   },
   buttonPrimaryText: {
     fontFamily: 'Rubik-SemiBold',

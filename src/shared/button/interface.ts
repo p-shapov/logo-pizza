@@ -1,5 +1,7 @@
+import {ReactNode} from 'react';
+
 interface IButton {
-  children: string,
+  children: ReactNode,
   type: 'primary' | 'secondary',
   onPress: () => void
 }

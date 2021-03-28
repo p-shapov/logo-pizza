@@ -1,10 +1,11 @@
 import {BasketModule} from './namespace';
 
-const initialState: BasketModule.IState = {
-  productsInCartCount: 0
+const initialState: BasketModule.State = {
+  productsInCartCount: 0,
+  addToCart: (id) => console.log(id)
 };
 
-export default (state: BasketModule.IState = initialState, action: BasketModule.TActions): BasketModule.IState => {
+export default (state: BasketModule.State = initialState, action: BasketModule.Actions): BasketModule.State => {
   switch (action.type) {
     case 'SET_PRODUCTS_IN_CART_COUNT':
       return ({...state, productsInCartCount: action.productsInCartCount});

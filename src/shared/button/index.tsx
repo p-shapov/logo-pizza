@@ -4,7 +4,7 @@ import {Pressable, Text} from 'react-native';
 import IButton from './interface';
 import styles from './styles';
 
-export default (props: IButton) => {
+const Button = (props: IButton) => {
   const {
     children,
     type,
@@ -35,3 +35,5 @@ export default (props: IButton) => {
     </Pressable>
   );
 }
+
+export {Button};

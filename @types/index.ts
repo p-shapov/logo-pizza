@@ -10,3 +10,6 @@ declare module '*.png' {
   const ImageSource: ImageSourcePropType
   export default ImageSource;
 }
+
+type ArrayElement<ArrayType extends readonly unknown[]> =
+  ArrayType extends readonly (infer ElementType)[] ? ElementType : never;

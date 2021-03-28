@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 24
+    marginBottom: 24,
+    backgroundColor: COLORS.PRODUCT_CARD_BACKGROUND
   },
   productCardImage: {
     width: 160,
@@ -34,7 +35,8 @@ const styles = StyleSheet.create({
   },
   productListing: {
     width: Dimensions.get('window').width,
-    ...padding(16, 16, 0)
+    ...padding(16, 16, 0),
+    backgroundColor: COLORS.PRODUCT_LISTING_BACKGROUND
   },
   productListingTitle: {
     marginBottom: 32,

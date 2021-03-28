@@ -1,12 +1,18 @@
 export namespace BasketModule {
-  export interface IState {
-    productsInCartCount: number
+  export interface State {
+    productsInCartCount: number,
+    addToCart: (id: number) => void
   }
   
-  export interface ISetProductsInCartCount {
+  export interface SetProductsInCartCount {
     type: 'SET_PRODUCTS_IN_CART_COUNT',
     productsInCartCount: number
   }
   
-  export type TActions = ISetProductsInCartCount;
+  export interface AddToCart {
+    type: 'ADD_TO_CART',
+    id: number
+  }
+  
+  export type Actions = SetProductsInCartCount | AddToCart;
 }

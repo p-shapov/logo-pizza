@@ -1,7 +1,7 @@
 import {ImageSourcePropType} from 'react-native';
 
 export namespace CatalogModule {
-  export interface IProduct {
+  export interface Product {
     id: number,
     title: string,
     description: string,
@@ -9,43 +9,39 @@ export namespace CatalogModule {
     image: ImageSourcePropType
   }
   
-  export interface IPromotion {
+  export interface Promotion {
     title: string,
     description: string,
     image: ImageSourcePropType
   }
   
-  export interface ICategory {
+  export interface Category {
+    name: string,
     title: string,
     Icon: SvgrComponent,
-    products: Array<IProduct>
+    products: Array<Product>
   }
   
-  export interface IState {
+  export interface State {
     activeProductId: number,
     activePromotionId: number,
     activeCategoryId: number,
-    categories: Array<ICategory>,
-    promotions: Array<IPromotion>,
-    setCategory: (id: number) => void,
-    setPromotion: (id: number) => void,
-    setProduct: (id: number) => void
+    categories: Array<Category>,
+    promotions: Array<Promotion>,
+    addToCart: (id: number, size?: string) => void,
+    openPromotion: (id: number) => void,
+    openProduct: (id: number) => void
   }
   
-  export interface ISetProduct {
-    type: 'SET_PRODUCT',
+  export interface SetProduct {
+    type: 'OPEN_PRODUCT',
     id: number
   }
   
-  export interface ISetCategory {
-    type: 'SET_CATEGORY',
+  export interface SetPromotion {
+    type: 'OPEN_PROMOTION',
     id: number
   }
   
-  export interface ISetPromotion {
-    type: 'SET_PROMOTION',
-    id: number
-  }
-  
-  export type TActions = ISetProduct | ISetCategory | ISetPromotion
+  export type Actions = SetProduct | SetPromotion;
 }

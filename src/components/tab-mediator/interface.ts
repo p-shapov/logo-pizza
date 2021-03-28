@@ -1,12 +1,13 @@
-import {Root} from '../../globals/interface';
-import {ReactNode} from 'react';
+import {FunctionComponent} from 'react';
+/* globals */
+import {Root} from '../../globals/namespace';
 
-interface ITabMediator {
-  mode: Root.TMode,
-  catalogTabContent: ReactNode,
-  contactsTabContent: ReactNode,
-  personalOfficeTabContent: ReactNode,
-  basketTabContent: ReactNode
+export interface TabMediatorProps {
+  screens: Array<{
+    name: Root.Screen,
+    Icon: SvgrComponent,
+    Container: FunctionComponent
+  }>
 }
 
-export default ITabMediator;
+export default TabMediatorProps;
