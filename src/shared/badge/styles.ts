@@ -18,9 +18,17 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   badgeFilledText: {
+    textAlign: 'center',
+    fontSize: 13,
+    lineHeight: 14,
+    letterSpacing: 1,
     color: COLORS.BADGE_FILLED_FOREGROUND
   },
   badgeShapedText: {
+    textAlign: 'center',
+    fontSize: 13,
+    lineHeight: 14,
+    letterSpacing: 1,
     color: COLORS.BADGE_SHAPED_FOREGROUND
   }
 });

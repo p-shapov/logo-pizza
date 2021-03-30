@@ -22,14 +22,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik-SemiBold',
     fontSize: 14,
     lineHeight: 17,
-    letterSpacing: 0.56,
+    letterSpacing: 1,
     color: COLORS.BUTTON_PRIMARY_FOREGROUND
   },
   buttonSecondaryText: {
     fontFamily: 'Rubik-SemiBold',
     fontSize: 14,
     lineHeight: 17,
-    letterSpacing: 0.56,
+    letterSpacing: 1,
     color: COLORS.BUTTON_SECONDARY_FOREGROUND
   }
 });
