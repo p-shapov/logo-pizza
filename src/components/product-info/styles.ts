@@ -1,10 +1,11 @@
 import {Dimensions, StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from '../../globals/constants';
-import {padding} from '../../globals/helpers';
+import {margin, padding} from '../../globals/helpers';
 
 const styles = StyleSheet.create({
   productInfo: {
+    position: 'relative',
     flexShrink: 1,
     justifyContent: 'space-between',
     width: Dimensions.get('window').width,
@@ -18,13 +19,20 @@ const styles = StyleSheet.create({
     zIndex: 1,
     ...padding(22, 16)
   },
+  productInfoImageWrapper: {
+    alignSelf: 'center',
+    marginBottom: 10,
+  },
   productInfoImage: {
     width: 328,
     height: 328,
-    marginBottom: 10
+  },
+  productInfoHeader: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    marginBottom: 8,
   },
   productInfoTitle: {
-    marginBottom: 8,
     fontFamily: 'Rubik',
     fontSize: 24,
     lineHeight: 28,

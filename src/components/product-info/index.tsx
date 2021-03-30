@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, Pressable, ScrollView, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 /* globals */
@@ -24,34 +24,40 @@ const ProductInfo = (props: ProductInfoProps) => {
   
   const navigation = useNavigation();
   
+  const [variant, setVariant] = useState<number>(0);
+  
   return (
     <ScrollView contentContainerStyle={styles.productInfo}>
       <Pressable style={styles.productInfoClose} onPress={() => navigation.goBack()}>
         <IcoArrowBack color={COLORS.PRODUCT_INFO_BACKWARD_BUTTON_FOREGROUND} />
       </Pressable>
       <View>
-        <Image style={styles.productInfoImage} source={image}/>
-        <Text style={styles.productInfoTitle}>
-          {title}
+        <View style={styles.productInfoImageWrapper}>
+          <Image style={styles.productInfoImage} source={image}/>
+        </View>
+        <View style={styles.productInfoHeader}>
+          <Text style={styles.productInfoTitle}>
+            {title}
+          </Text>
           {Array.isArray(price) && (
-            <Text style={styles.productInfoSizeValue}>{price[0].size.value}</Text>
+            <Text style={styles.productInfoSizeValue}>{price[variant].size.value}</Text>
           )}
-        </Text>
+        </View>
         <Text style={styles.productInfoDescription}>{description}</Text>
         {Array.isArray(price) && (
           <Select
             items={price.map((item, index) => ({
               title: item.size.title,
-              isActive: 0 === index
+              isActive: variant === index
             }))}
-            setActive={(id) => console.log(id)}
+            setActive={setVariant}
           />
         )}
       </View>
       <Button type={'primary'} onPress={() => {
         console.log('submit');
       }}>
-        Добавить в корзину {Array.isArray(price) ? price[0].value.toString() : price.toString()} ₽
+        Добавить в корзину за {Array.isArray(price) ? price[variant].value.toString() : price.toString()} ₽
       </Button>
     </ScrollView>
   );
