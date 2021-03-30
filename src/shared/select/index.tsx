@@ -2,8 +2,13 @@ import React, {useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 /* locals */
 import ISelect from './interface';
-import {Badge} from '../badge';
 import styles from './styles';
+/* globals */
+import {COLORS} from '../../globals/constants';
+/* shared */
+import {Badge} from '../badge';
+/* icons */
+import IcoArrowExpand from '../../assets/images/ico_arrow_expand.svg';
 
 const Select = (props: ISelect) => {
   const {
@@ -19,21 +24,26 @@ const Select = (props: ISelect) => {
     : acc, [] as Array<{ title: string, id: number }>);
   
   return (
-    <View style={styles.select}>
-      {expanded && (
-        <View>
-          {otherItems.map((item, index) => (
-            <Pressable key={index.toString()} onPress={() => setActive(item.id)}>
-              <Text>{item.title}</Text>
-            </Pressable>
-          ))}
-        </View>
-      )}
-      <Pressable onPress={() => setExpanded(!expanded)}>
-        <View style={styles.selectItem}>
-          <Badge type={'filled'}>{activeItem}</Badge>
-        </View>
-      </Pressable>
+    <View style={styles.selectWrapper}>
+      <View style={expanded ? styles.selectExpanded : styles.select}>
+        {expanded && (
+          <>
+            {otherItems.map((item, index) => (
+              <Pressable style={styles.selectItem} key={index.toString()}  onPress={() => setActive(item.id)}>
+                <Text style={styles.selectItemText}>{item.title}</Text>
+              </Pressable>
+            ))}
+          </>
+        )}
+        <Pressable style={styles.selectButton} onPress={() => setExpanded(!expanded)}>
+          <View style={styles.selectItem}>
+            <Badge type={'filled'}>{activeItem}</Badge>
+          </View>
+          <View style={expanded ? styles.selectButtonIconExpanded : {}}>
+            <IcoArrowExpand color={COLORS.SELECT_ICON}/>
+          </View>
+        </Pressable>
+      </View>
     </View>
   );
 };
