@@ -40,7 +40,7 @@ const ProductListing = (props: ProductListingProps) => {
           <Text style={styles.productCardTitle}>{title}</Text>
           <Text style={styles.productCardDescription}>{description}</Text>
           <Badge type={'shaped'}>
-            {multiplePrice ? 'от ' + price.toString() + ' ₽' : price.toString() + ' ₽'}
+            {multiplePrice ? 'от ' + price + ' ₽' : price + ' ₽'}
           </Badge>
         </View>
       </Pressable>

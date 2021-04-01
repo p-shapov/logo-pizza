@@ -6,30 +6,30 @@ import {COLORS} from '../../globals/constants';
 const styles = StyleSheet.create({
   badgeFilled: {
     ...padding(9, 16),
-    backgroundColor: COLORS.BADGE_FILLED_BACKGROUND,
+    backgroundColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
   badgeShaped: {
     ...padding(8, 15),
-    backgroundColor: COLORS.BADGE_SHAPED_BACKGROUND,
+    backgroundColor: COLORS.FOREGROUND_SECONDARY,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: COLORS.BADGE_SHAPED_FOREGROUND,
+    borderColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
   badgeFilledText: {
     textAlign: 'center',
     fontSize: 13,
     lineHeight: 14,
-    letterSpacing: 1,
-    color: COLORS.BADGE_FILLED_FOREGROUND
+    letterSpacing: .5,
+    color: COLORS.FOREGROUND_SECONDARY
   },
   badgeShapedText: {
     textAlign: 'center',
     fontSize: 13,
     lineHeight: 14,
-    letterSpacing: 1,
-    color: COLORS.BADGE_SHAPED_FOREGROUND
+    letterSpacing: .5,
+    color: COLORS.FOREGROUND_PRIMARY_ACTIVE
   }
 });
 

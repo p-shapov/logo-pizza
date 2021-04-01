@@ -1,10 +1,8 @@
 import {FunctionComponent} from 'react';
-/* globals */
-import {Root} from '../../globals/namespace';
 
 export interface TabMediatorProps {
   screens: Array<{
-    name: Root.Screen,
+    name: TabNames,
     Icon: SvgrComponent,
     Container: FunctionComponent
   }>

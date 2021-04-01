@@ -29,7 +29,7 @@ const ProductInfo = (props: ProductInfoProps) => {
   return (
     <ScrollView contentContainerStyle={styles.productInfo}>
       <Pressable style={styles.productInfoClose} onPress={() => navigation.goBack()}>
-        <IcoArrowBack color={COLORS.PRODUCT_INFO_BACKWARD_BUTTON_FOREGROUND} />
+        <IcoArrowBack color={COLORS.FOREGROUND_PRIMARY} />
       </Pressable>
       <View>
         <View style={styles.productInfoImageWrapper}>
@@ -57,7 +57,7 @@ const ProductInfo = (props: ProductInfoProps) => {
       <Button type={'primary'} onPress={() => {
         console.log('submit');
       }}>
-        Добавить в корзину за {Array.isArray(price) ? price[variant].value.toString() : price.toString()} ₽
+        Добавить в корзину за {Array.isArray(price) ? price[variant].value : price} ₽
       </Button>
     </ScrollView>
   );

@@ -40,7 +40,7 @@ const Select = (props: ISelect) => {
             <Badge type={'filled'}>{activeItem}</Badge>
           </View>
           <View style={expanded ? styles.selectButtonIconExpanded : {}}>
-            <IcoArrowExpand color={COLORS.SELECT_ICON}/>
+            <IcoArrowExpand color={COLORS.FOREGROUND_PRIMARY_ACTIVE}/>
           </View>
         </Pressable>
       </View>

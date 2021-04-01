@@ -1,6 +1,6 @@
 import {ImageSourcePropType} from 'react-native';
 
-export namespace CatalogModule {
+namespace CatalogModule {
   export interface Product {
     id: number,
     title: string,
@@ -45,3 +45,5 @@ export namespace CatalogModule {
   
   export type Actions = SetProduct | SetPromotion;
 }
+
+export {CatalogModule};

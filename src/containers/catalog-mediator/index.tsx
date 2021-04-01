@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 /* globals */
-import {Root} from '../../globals/namespace';
+import {State} from '../../globals/interface';
 /* components */
 import {CatalogMediator} from '../../components/catalog-mediator';
 import CatalogMediatorProps from '../../components/catalog-mediator/interface';
@@ -10,7 +10,7 @@ import CatalogMediatorProps from '../../components/catalog-mediator/interface';
 import {openProduct, openPromotion} from '../../modules/catalog/actions';
 
 
-const mapStateToProps = (state: Root.State): CatalogMediatorProps => ({
+const mapStateToProps = (state: State): CatalogMediatorProps => ({
   ...state.catalog,
   categories: state.catalog.categories.map(category => ({
     name: category.name,

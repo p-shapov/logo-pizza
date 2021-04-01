@@ -4,12 +4,23 @@ import {COLORS} from '../../globals/constants';
 import {padding} from '../../globals/helpers';
 
 const styles = StyleSheet.create({
+  productListing: {
+    width: Dimensions.get('window').width,
+    ...padding(16, 16, 0),
+    backgroundColor: COLORS.BACKGROUND_PRIMARY
+  },
+  productListingTitle: {
+    marginBottom: 32,
+    fontFamily: 'Rubik-SemiBold, sans-serif',
+    fontSize: 24,
+    lineHeight: 32,
+    color: COLORS.FOREGROUND_PRIMARY
+  },
   productCard: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 24,
-    backgroundColor: COLORS.PRODUCT_CARD_BACKGROUND
+    marginBottom: 24
   },
   productCardImage: {
     width: 160,
@@ -24,27 +35,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik, sans-serif',
     fontSize: 16,
     lineHeight: 19,
-    color: COLORS.PRODUCT_CARD_TITLE_FOREGROUND
+    color: COLORS.FOREGROUND_PRIMARY
   },
   productCardDescription: {
     marginBottom: 16,
     fontFamily: 'Rubik, sans-serif',
     fontSize: 12,
     lineHeight: 18,
-    color: COLORS.PRODUCT_CARD_DESCRIPTION_FOREGROUND
-  },
-  productListing: {
-    width: Dimensions.get('window').width,
-    ...padding(16, 16, 0),
-    backgroundColor: COLORS.PRODUCT_LISTING_BACKGROUND
-  },
-  productListingTitle: {
-    marginBottom: 32,
-    fontFamily: 'Rubik-SemiBold, sans-serif',
-    fontSize: 24,
-    lineHeight: 32,
-    color: COLORS.PRODUCT_LISTING_TITLE_FOREGROUND
-  },
+    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+  }
 });
 
 export default styles;

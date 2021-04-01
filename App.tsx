@@ -6,11 +6,13 @@ import {useFonts} from 'expo-font';
 import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import './@types';
+import AppLoading from 'expo-app-loading';
 /* globals */
 import rootReducers from './src/globals/reducers';
 /* containers */
 import {CatalogMediatorContainer} from './src/containers/catalog-mediator';
 import {ProductInfoContainer} from './src/containers/product-info';
+import {ContactsContainer} from './src/containers/contacts';
 /* components */
 import {StatusBarBackground} from './src/components/status-bar-background';
 import {TabMediator} from './src/components/tab-mediator';
@@ -24,13 +26,15 @@ import IcoFooterBasket from './src/assets/images/ico_footer_basket.svg';
 const store = createStore(rootReducers);
 
 export default function App() {
-  const [loaded] = useFonts({
-    'Rubik': require('./src/assets/fonts/Rubik.ttf'),
-    'Rubik-SemiBold': require('./src/assets/fonts/Rubik-SemiBold.ttf')
+  const [fontsLoaded] = useFonts({
+    'Rubik': require('./src/assets/fonts/Rubik.otf'),
+    'Rubik-SemiBold': require('./src/assets/fonts/Rubik-SemiBold.otf')
   });
   
-  if (!loaded) {
-    return null;
+  if (!fontsLoaded) {
+    return (
+      <AppLoading />
+    );
   }
   
   return (
@@ -59,20 +63,25 @@ export default function App() {
           },
           {
             name: 'CONTACTS',
-            Container: () => (
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}><Text>Contacts</Text></View>),
+            Container: ContactsContainer,
             Icon: IcoFooterContacts
           },
           {
             name: 'PERSONAL_OFFICE',
-            Container: () => (<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}><Text>Personal
-              office</Text></View>),
+            Container: () => (
+              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>Personal office</Text>
+              </View>
+            ),
             Icon: IcoFooterPersonalOffice
           },
           {
             name: 'BASKET',
             Container: () => (
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}><Text>Basket</Text></View>),
+              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>Basket</Text>
+              </View>
+            ),
             Icon: IcoFooterBasket
           }
         ]}/>

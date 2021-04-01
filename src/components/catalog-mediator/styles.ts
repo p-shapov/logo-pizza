@@ -6,7 +6,7 @@ import {COLORS} from '../../globals/constants';
 const styles = StyleSheet.create({
   categoryList: {
     ...padding(0, 16),
-    backgroundColor: '#FFFFFF'
+    backgroundColor: COLORS.BACKGROUND_PRIMARY
   },
   categoryItem: {
     flexDirection: 'row',
@@ -23,14 +23,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik, sans-serif',
     fontSize: 16,
     lineHeight: 19,
-    color: COLORS.CATEGORY_ITEM_TEXT_FOREGROUND
-  },
-  categoryItemTextActive: {
-    marginLeft: 14,
-    fontFamily: 'Rubik, sans-serif',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.CATEGORY_ITEM_TEXT_FOREGROUND_ACTIVE
+    color: COLORS.FOREGROUND_PRIMARY
   }
 });
 

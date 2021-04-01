@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: 203,
     ...padding(3, 12, 3, 3),
-    backgroundColor: COLORS.SELECT_BACKGROUND,
+    backgroundColor: COLORS.BACKGROUND_PRIMARY,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: COLORS.SELECT_BORDER,
+    borderColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
   selectExpanded: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: 203,
     ...padding(4, 13, 4, 4),
-    backgroundColor: COLORS.SELECT_BACKGROUND,
+    backgroundColor: COLORS.BACKGROUND_PRIMARY,
     borderRadius: 8,
     shadowOffset: {
       width: 0,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.16,
     shadowRadius: 6,
-    shadowColor: COLORS.SELECT_BORDER_EXPANDED,
+    shadowColor: COLORS.SHADOW,
     elevation: 3
   },
   selectButton: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 14,
     letterSpacing: 0.56,
-    color: COLORS.SELECT_ITEM_FOREGROUND
+    color: COLORS.FOREGROUND_PRIMARY
   }
 });
 

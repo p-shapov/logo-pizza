@@ -6,7 +6,7 @@ import {COLORS} from '../../globals/constants';
 const styles = StyleSheet.create({
   promotionListing: {
     ...padding(20, 16),
-    backgroundColor: COLORS.PROMOTION_LISTING_BACKGROUND
+    backgroundColor: COLORS.BACKGROUND_SECONDARY
   },
   promotionCard: {
     ...padding(0, 15, 0, 0)
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik, sans-serif',
     fontSize: 16,
     lineHeight: 19,
-    color: COLORS.PROMOTION_LISTING_FOREGROUND
+    color: COLORS.FOREGROUND_SECONDARY
   }
 });
 

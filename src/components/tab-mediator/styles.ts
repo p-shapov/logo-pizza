@@ -6,7 +6,7 @@ import {padding} from '../../globals/helpers';
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: COLORS.SCREEN_BACKGROUND
+    backgroundColor: COLORS.BACKGROUND_PRIMARY
   },
   tabBar: {
     display: 'flex',
@@ -15,17 +15,16 @@ const styles = StyleSheet.create({
     ...padding(6, 16),
     borderTopWidth: 1,
     borderStyle: 'solid',
-    borderColor: COLORS.FOOTER_BORDER
+    borderColor: COLORS.DELIMITER
   },
   tabButton: {
     ...padding(16, 22),
-    borderRadius: 8,
-    backgroundColor: COLORS.FOOTER_BUTTON_BACKGROUND
+    borderRadius: 8
   },
   tabButtonActive: {
     ...padding(16, 22),
     borderRadius: 8,
-    backgroundColor: COLORS.FOOTER_BUTTON_BACKGROUND_ACTIVE
+    backgroundColor: COLORS.BACKGROUND_PRIMARY_ACTIVE
   }
 });
 

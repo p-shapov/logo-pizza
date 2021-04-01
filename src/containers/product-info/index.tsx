@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 /* globals */
-import {Root} from '../../globals/namespace';
+import {State} from '../../globals/interface';
 /* components */
 import ProductInfoProps from '../../components/product-info/interface';
 import {ProductInfo} from '../../components/product-info';
 /* modules */
 import {CatalogModule} from '../../modules/catalog/namespace';
 
-const mapStateToProps = (state: Root.State): ProductInfoProps => {
+const mapStateToProps = (state: State): ProductInfoProps => {
   const {
     categories,
     activeProductId

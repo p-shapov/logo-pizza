@@ -66,7 +66,7 @@ const TabMediator = (props: TabMediatorProps) => {
         <Tab.Screen
           options={{
             tabBarIcon: ({focused}) => (
-              <screen.Icon color={focused ? COLORS.FOOTER_BUTTON_FOREGROUND_ACTIVE : COLORS.FOOTER_BUTTON_FOREGROUND}/>
+              <screen.Icon color={focused ? COLORS.FOREGROUND_PRIMARY_ACTIVE : COLORS.FOREGROUND_PRIMARY}/>
             )
           }}
           key={index}

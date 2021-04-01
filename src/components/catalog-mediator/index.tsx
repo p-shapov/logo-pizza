@@ -53,10 +53,7 @@ const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) 
         testID={options.tabBarTestID}
       >
         {options.tabBarIcon && options.tabBarIcon({focused: isActive, color: ''})}
-        <Text style={isActive
-          ? styles.categoryItemTextActive
-          : styles.categoryItemText
-        }>{options.tabBarLabel}</Text>
+        <Text style={styles.categoryItemText}>{options.tabBarLabel}</Text>
       </Pressable>
     );
   };
@@ -104,8 +101,8 @@ const CatalogMediator = (props: CatalogMediatorProps) => {
             tabBarLabel: category.title,
             tabBarIcon: ({focused}) => (
               <category.Icon color={focused
-                ? COLORS.CATEGORY_ITEM_ICON_FOREGROUND_ACTIVE
-                : COLORS.CATEGORY_ITEM_ICON_FOREGROUND}/>
+                ? COLORS.FOREGROUND_PRIMARY_ACTIVE
+                : COLORS.FOREGROUND_PRIMARY}/>
             )
           }}
         >

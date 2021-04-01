@@ -1,4 +1,5 @@
-interface SvgrComponent extends React.FunctionComponent<React.SVGAttributes<SVGElement>> {}
+interface SvgrComponent extends React.FunctionComponent<React.SVGAttributes<SVGElement>> {
+}
 
 declare module '*.svg' {
   const ReactComponent: SvgrComponent;
@@ -7,9 +8,17 @@ declare module '*.svg' {
 
 declare module '*.png' {
   import {ImageSourcePropType} from 'react-native';
-  const ImageSource: ImageSourcePropType
+  const ImageSource: ImageSourcePropType;
   export default ImageSource;
 }
 
 type ArrayElement<ArrayType extends readonly unknown[]> =
   ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
+
+type GeoCoordinates = { longitude: number, latitude: number };
+
+type TabNames = 'CATALOG' | 'CONTACTS' | 'PERSONAL_OFFICE' | 'BASKET';
+
+type WindowNames = 'MAIN' | 'PRODUCT_INFO';
+
+type SocialMediaType = 'vk' | 'inst' | 'ok' | 'fb' | 'yt';

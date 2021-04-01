@@ -9,12 +9,11 @@ const getCategories = (): Array<CatalogModule.Category> => {
   );
 };
 
-const getPromotions = () => {
+const getPromotions = (): Array<CatalogModule.Promotion> => {
   return (
     promotionsVariable.map((promotion: any): CatalogModule.Promotion => (promotion))
   );
 };
-
 
 const initialState: CatalogModule.State = {
   activeProductId: 0,

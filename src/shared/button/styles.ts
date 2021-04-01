@@ -7,30 +7,31 @@ const styles = StyleSheet.create({
   buttonPrimary: {
     alignItems: 'center',
     ...padding(15, 0),
-    backgroundColor: COLORS.BUTTON_PRIMARY_BACKGROUND,
+    backgroundColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
   buttonSecondary: {
+    alignItems: 'center',
     ...padding(14, 0),
-    backgroundColor: COLORS.BUTTON_PRIMARY_BACKGROUND,
+    backgroundColor: COLORS.FOREGROUND_SECONDARY,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: COLORS.BUTTON_PRIMARY_FOREGROUND,
+    borderColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
   buttonPrimaryText: {
     fontFamily: 'Rubik-SemiBold',
     fontSize: 14,
     lineHeight: 17,
-    letterSpacing: 1,
-    color: COLORS.BUTTON_PRIMARY_FOREGROUND
+    letterSpacing: .5,
+    color: COLORS.FOREGROUND_SECONDARY
   },
   buttonSecondaryText: {
     fontFamily: 'Rubik-SemiBold',
     fontSize: 14,
     lineHeight: 17,
-    letterSpacing: 1,
-    color: COLORS.BUTTON_SECONDARY_FOREGROUND
+    letterSpacing: .5,
+    color: COLORS.FOREGROUND_PRIMARY_ACTIVE
   }
 });
 
