@@ -4,7 +4,7 @@
 * `npm start` - run dev server.
 * `expo build:android` - build android bundle.
 * `expo build:ios` - build ios bundle.
-## Test:
+## Dev server on mobile device:
 Install expo-go on your device, run dev server.
 ### on android device:
 Scan qr code from dev server page with expo-go app.
