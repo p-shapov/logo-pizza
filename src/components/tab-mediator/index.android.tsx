@@ -1,6 +1,6 @@
 /* libraries and plugins */
 import React from 'react';
-import {Pressable, View} from 'react-native';
+import {Pressable, Text, View} from 'react-native';
 import {BottomTabBarProps, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 /* locals */
 import styles from './styles';
@@ -40,18 +40,23 @@ const TabBar = ({state, descriptors, navigation}: BottomTabBarProps) => (
             onPress={onPress}
             onLongPress={onLongPress}
             style={active ? styles.tabButtonActive : styles.tabButton}
-          >{options.tabBarIcon && options.tabBarIcon({focused: active, color: '', size: 0})}</Pressable>
+          >
+            {options.tabBarIcon && options.tabBarIcon({focused: active, color: '', size: 0})}
+            {options.tabBarBadge !== undefined && (
+              <View style={active
+                ? options.tabBarBadge === 0 ? styles.tabBadgeFocused : styles.tabBadgeFocusedActive
+                : options.tabBarBadge === 0 ? styles.tabBadge : styles.tabBadgeActive}>
+                <Text style={styles.tabBadgeText}>{options.tabBarBadge}</Text>
+              </View>
+            )}
+          </Pressable>
         );
       })
     }
   </View>
 );
 
-const TabMediator = (props: TabMediatorProps) => {
-  const {
-    screens
-  } = props;
-  
+const TabMediator = ({screens, productInCartCount}: TabMediatorProps) => {
   const Tab = createBottomTabNavigator();
   
   return (
@@ -68,7 +73,8 @@ const TabMediator = (props: TabMediatorProps) => {
           options={{
             tabBarIcon: ({focused}) => (
               <screen.Icon color={focused ? COLORS.FOREGROUND_PRIMARY_ACTIVE : COLORS.FOREGROUND_PRIMARY}/>
-            )
+            ),
+            tabBarBadge: screen.name === 'BASKET' ? productInCartCount : undefined
           }}
           key={index}
           name={screen.name}

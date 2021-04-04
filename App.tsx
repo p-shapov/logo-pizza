@@ -16,13 +16,13 @@ import {ProductInfoContainer} from 'containers/product-info';
 import {ContactsContainer} from 'containers/contacts';
 /* components */
 import {StatusBarBackground} from 'components/status-bar-background/index';
-import {TabMediator} from 'components/tab-mediator/index';
 import {WindowMediator} from 'components/window-mediator/index';
 /* icons */
 import IcoFooterCatalog from 'images/ico_footer_catalog.svg';
 import IcoFooterContacts from 'images/ico_footer_contacts.svg';
 import IcoFooterPersonalOffice from 'images/ico_footer_personal_office.svg';
 import IcoFooterBasket from 'images/ico_footer_basket.svg';
+import {TabMediatorContainer} from 'containers/tab-mediator';
 
 const store = createStore(rootReducers);
 
@@ -43,7 +43,7 @@ export default function App() {
       <StatusBar style={'inverted'}/>
       <StatusBarBackground/>
       <NavigationContainer>
-        <TabMediator screens={[
+        <TabMediatorContainer screens={[
           {
             name: 'CATALOG',
             Container: () => (

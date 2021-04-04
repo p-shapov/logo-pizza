@@ -6,7 +6,8 @@ export interface TabMediatorProps {
     name: TabNames,
     Icon: SvgrComponent,
     Container: FunctionComponent
-  }>
+  }>,
+  productInCartCount: number
 }
 
 export default TabMediatorProps;
