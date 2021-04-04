@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import React from 'react';
 import {Pressable, View} from 'react-native';
 import {BottomTabBarProps, createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -5,7 +6,7 @@ import {BottomTabBarProps, createBottomTabNavigator} from '@react-navigation/bot
 import styles from './styles';
 import TabMediatorProps from './interface';
 /* globals */
-import {COLORS} from '../../globals/constants';
+import {COLORS} from 'globals/constants';
 
 const TabBar = ({state, descriptors, navigation}: BottomTabBarProps) => (
   <View style={styles.tabBar}>

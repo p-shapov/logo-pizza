@@ -1,6 +1,7 @@
+/* libraries and plugins */
 import {Platform, StatusBar, StyleSheet} from 'react-native';
 /* globals */
-import {COLORS} from '../../globals/constants';
+import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
   statusBarBackground: {

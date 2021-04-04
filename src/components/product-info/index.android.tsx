@@ -1,16 +1,17 @@
+/* libraries and plugins */
 import React, {useState} from 'react';
 import {Image, Pressable, ScrollView, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 /* globals */
- import {COLORS} from '../../globals/constants';
+import {COLORS} from 'globals/constants';
 /* locals */
 import ProductInfoProps from './interface';
 import styles from './styles';
 /* shared */
-import {Select} from '../../shared/select';
-import {Button} from '../../shared/button';
+import {Select} from 'shared/select/index';
+import {Button} from 'shared/button/index';
 /* icons */
-import IcoArrowBack from '../../assets/images/ico_arrow_back.svg';
+import IcoArrowBack from 'images/ico_arrow_back.svg';
 
 const ProductInfo = (props: ProductInfoProps) => {
   const {
@@ -29,7 +30,7 @@ const ProductInfo = (props: ProductInfoProps) => {
   return (
     <ScrollView contentContainerStyle={styles.productInfo}>
       <Pressable style={styles.productInfoClose} onPress={() => navigation.goBack()}>
-        <IcoArrowBack color={COLORS.FOREGROUND_PRIMARY} />
+        <IcoArrowBack color={COLORS.FOREGROUND_PRIMARY}/>
       </Pressable>
       <View>
         <View style={styles.productInfoImageWrapper}>

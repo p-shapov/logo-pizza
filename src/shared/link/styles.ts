@@ -1,5 +1,7 @@
+/* libraries and plugins */
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../globals/constants';
+/* globals */
+import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
   linkLabel: {

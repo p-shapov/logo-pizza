@@ -1,7 +1,8 @@
+/* locals */
 import {CatalogModule} from './namespace';
 /* variables */
-import categoriesVariable from '../../variables/categories.variable';
-import promotionsVariable from '../../variables/promotions.variable';
+import categoriesVariable from 'variables/categories.variable';
+import promotionsVariable from 'variables/promotions.variable';
 
 const getCategories = (): Array<CatalogModule.Category> => {
   return (

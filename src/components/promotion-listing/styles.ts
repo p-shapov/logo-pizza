@@ -1,7 +1,8 @@
+/* libraries and plugins */
 import {StyleSheet} from 'react-native';
 /* globals */
-import {padding} from '../../globals/helpers';
-import {COLORS} from '../../globals/constants';
+import {padding} from 'globals/helpers';
+import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
   promotionListing: {

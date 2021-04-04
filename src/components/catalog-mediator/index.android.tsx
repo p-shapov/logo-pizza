@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import React, {useRef} from 'react';
 import {FlatList, ListRenderItemInfo, Pressable, Text, View} from 'react-native';
 import {createMaterialTopTabNavigator, MaterialTopTabBarProps} from '@react-navigation/material-top-tabs';
@@ -5,10 +6,10 @@ import {createMaterialTopTabNavigator, MaterialTopTabBarProps} from '@react-navi
 import CatalogMediatorProps from './interface';
 import styles from './styles';
 /* globals */
-import {COLORS} from '../../globals/constants';
+import {COLORS} from 'globals/constants';
 /* components */
-import {ProductListing} from '../product-listing';
-import {PromotionListing} from '../promotion-listing';
+import {ProductListing} from 'components/product-listing/index';
+import {PromotionListing} from 'components/promotion-listing/index';
 
 const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) => {
   const flatListRef = useRef<FlatList>(null);

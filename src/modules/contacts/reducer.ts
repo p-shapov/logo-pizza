@@ -1,6 +1,7 @@
+/* locals */
 import {ContactsModule} from './namespace';
 /* variables */
-import contactsVariable from '../../variables/contacts.variable';
+import contactsVariable from 'variables/contacts.variable';
 
 const initialState: ContactsModule.State = {
   title: contactsVariable.title,

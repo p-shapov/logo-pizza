@@ -1,10 +1,11 @@
+/* libraries and plugins */
 import React from 'react';
 import {Text, View} from 'react-native';
 /* locals */
 import PointInfoProps from './interface';
 import styles from './styles';
-/* components */
-import {Button} from '../button';
+/* shared */
+import {Button} from 'shared/button/index';
 
 const PointInfo = (props: PointInfoProps) => {
   const {
@@ -20,7 +21,7 @@ const PointInfo = (props: PointInfoProps) => {
       <View>
         {metroStation !== undefined && (
           <View style={styles.pointInfoMetroStation}>
-            <metroStation.Icon />
+            <metroStation.Icon/>
             <Text style={styles.pointInfoMetroStationText}>{metroStation.title}</Text>
           </View>
         )}

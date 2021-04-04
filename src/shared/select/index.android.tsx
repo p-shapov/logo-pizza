@@ -1,14 +1,15 @@
+/* libraries and plugins */
 import React, {useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 /* locals */
 import ISelect from './interface';
 import styles from './styles';
 /* globals */
-import {COLORS} from '../../globals/constants';
+import {COLORS} from 'globals/constants';
 /* shared */
-import {Badge} from '../badge';
+import {Badge} from 'shared/badge/index';
 /* icons */
-import IcoArrowExpand from '../../assets/images/ico_arrow_expand.svg';
+import IcoArrowExpand from 'images/ico_arrow_expand.svg';
 
 const Select = (props: ISelect) => {
   const {
@@ -29,7 +30,7 @@ const Select = (props: ISelect) => {
         {expanded && (
           <>
             {otherItems.map((item, index) => (
-              <Pressable style={styles.selectItem} key={index.toString()}  onPress={() => setActive(item.id)}>
+              <Pressable style={styles.selectItem} key={index.toString()} onPress={() => setActive(item.id)}>
                 <Text style={styles.selectItemText}>{item.title}</Text>
               </Pressable>
             ))}

@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import {FunctionComponent} from 'react';
 
 export interface TabMediatorProps {

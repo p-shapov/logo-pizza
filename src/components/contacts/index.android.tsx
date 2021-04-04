@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import React from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import {Pressable, ScrollView, Text, View} from 'react-native';
@@ -5,16 +6,16 @@ import {Pressable, ScrollView, Text, View} from 'react-native';
 import ContactsProps from './interface';
 import styles from './styles';
 /* globals */
-import {COLORS} from '../../globals/constants';
+import {COLORS} from 'globals/constants';
 /* shared */
-import {SocialLinks} from '../../shared/social-links';
-import {Link} from '../../shared/link';
-import {PointInfo} from '../../shared/point-info';
+import {SocialLinks} from 'shared/social-links/index';
+import {Link} from 'shared/link/index';
+import {PointInfo} from 'shared/point-info/index';
 /* icons */
-import IcoContactsPhone from '../../assets/images/ico_contacts_phone.svg';
-import IcoContactEmail from '../../assets/images/ico_contacts_email.svg';
-import IcoContactsGeoTag from '../../assets/images/ico_contacts_geo_tag.svg';
-import IcoContactsArrowNavigation from '../../assets/images/ico_contacts_arrow_navigation.svg';
+import IcoContactsPhone from 'images/ico_contacts_phone.svg';
+import IcoContactEmail from 'images/ico_contacts_email.svg';
+import IcoContactsGeoTag from 'images/ico_contacts_geo_tag.svg';
+import IcoContactsArrowNavigation from 'images/ico_contacts_arrow_navigation.svg';
 
 const Contacts = (props: ContactsProps) => {
   const {
@@ -53,7 +54,7 @@ const Contacts = (props: ContactsProps) => {
         >
           {points.map((point, index) => (
             <Marker key={index} coordinate={point.geo}>
-              <IcoContactsGeoTag color={COLORS.FOREGROUND_PRIMARY_ACTIVE} />
+              <IcoContactsGeoTag color={COLORS.FOREGROUND_PRIMARY_ACTIVE}/>
             </Marker>
           ))}
         </MapView>

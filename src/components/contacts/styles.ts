@@ -1,7 +1,8 @@
+/* libraries and plugins */
 import {StyleSheet} from 'react-native';
 /* globals */
-import {COLORS} from '../../globals/constants';
-import {margin, padding} from '../../globals/helpers';
+import {COLORS} from 'globals/constants';
+import {padding, margin} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   contacts: {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
   contactsHeader: {
     flexDirection: 'row',
     marginBottom: 22,
-    ...padding(0,  16)
+    ...padding(0, 16)
   },
   contactsDelimiter: {
     height: 1,

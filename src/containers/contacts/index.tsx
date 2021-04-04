@@ -1,13 +1,14 @@
+/* libraries and plugins */
 import React from 'react';
 import {Dispatch} from 'redux';
-/* globals */
-import {State} from '../../globals/interface';
-/* components */
-import ContactsProps from '../../components/contacts/interface';
-/* modules */
-import {setMapGeo} from '../../modules/contacts/actions';
-import {Contacts} from '../../components/contacts';
 import {connect} from 'react-redux';
+/* globals */
+import {State} from 'globals/interface';
+/* components */
+import ContactsProps from 'components/contacts/interface';
+import {Contacts} from 'components/contacts/index';
+/* modules */
+import {setMapGeo} from 'modules/contacts/actions';
 
 const mapStateToProps = (state: State): ContactsProps => ({
   title: state.contacts.title,

@@ -1,16 +1,17 @@
+/* libraries and plugins */
 import React from 'react';
 import {Pressable, View} from 'react-native';
 /* locals */
 import SocialLinksProps from './interface';
 import styles from './styles';
 /* globals */
-import {COLORS} from '../../globals/constants';
+import {COLORS} from 'globals/constants';
 /* icons */
-import IcoSocialFb from '../../assets/images/ico_social_fb.svg';
-import IcoSocialVk from '../../assets/images/ico_social_vk.svg';
-import IcoSocialOk from '../../assets/images/ico_social_ok.svg';
-import IcoSocialInst from '../../assets/images/ico_social_inst.svg';
-import IcoSocialYt from '../../assets/images/ico_social_yt.svg';
+import IcoSocialFb from 'images/ico_social_fb.svg';
+import IcoSocialVk from 'images/ico_social_vk.svg';
+import IcoSocialOk from 'images/ico_social_ok.svg';
+import IcoSocialInst from 'images/ico_social_inst.svg';
+import IcoSocialYt from 'images/ico_social_yt.svg';
 
 const SocialIcon = ({type, color}: { type: ArrayElement<SocialLinksProps['links']> ['type'], color: string }) => {
   switch (type) {

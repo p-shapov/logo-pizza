@@ -1,13 +1,14 @@
+/* libraries and plugins */
 import React from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 /* globals */
-import {State} from '../../globals/interface';
+import {State} from 'globals/interface';
 /* components */
-import {CatalogMediator} from '../../components/catalog-mediator';
-import CatalogMediatorProps from '../../components/catalog-mediator/interface';
+import {CatalogMediator} from 'components/catalog-mediator/index';
+import CatalogMediatorProps from 'components/catalog-mediator/interface';
 /* modules */
-import {openProduct, openPromotion} from '../../modules/catalog/actions';
+import {openProduct, openPromotion} from 'modules/catalog/actions';
 
 
 const mapStateToProps = (state: State): CatalogMediatorProps => ({
@@ -29,12 +30,12 @@ const dispatchStateToProps = (dispatch: Dispatch): {
   openPromotion: CatalogMediatorProps['openPromotion']
 } => ({
   openProduct(id) {
-    dispatch(openProduct(id))
+    dispatch(openProduct(id));
   },
   openPromotion(id) {
-    dispatch(openPromotion(id))
+    dispatch(openPromotion(id));
   }
-})
+});
 
 const CatalogMediatorContainer = connect(
   mapStateToProps,

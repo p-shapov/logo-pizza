@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import React from 'react';
 import {Pressable, Text} from 'react-native';
 /* locals */
@@ -34,6 +35,6 @@ const Button = (props: IButton) => {
       <Text style={getTextStyles()}>{children}</Text>
     </Pressable>
   );
-}
+};
 
 export {Button};

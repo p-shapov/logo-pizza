@@ -1,5 +1,5 @@
 interface ISelect {
-  items: Array<{title: string, isActive: boolean}>,
+  items: Array<{ title: string, isActive: boolean }>,
   setActive: (id: number) => void
 }
 

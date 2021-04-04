@@ -1,12 +1,13 @@
+/* libraries and plugins */
 import React from 'react';
 import {connect} from 'react-redux';
 /* globals */
-import {State} from '../../globals/interface';
+import {State} from 'globals/interface';
 /* components */
-import ProductInfoProps from '../../components/product-info/interface';
-import {ProductInfo} from '../../components/product-info';
+import ProductInfoProps from 'components/product-info/interface';
+import {ProductInfo} from 'components/product-info/index';
 /* modules */
-import {CatalogModule} from '../../modules/catalog/namespace';
+import {CatalogModule} from 'modules/catalog/namespace';
 
 const mapStateToProps = (state: State): ProductInfoProps => {
   const {

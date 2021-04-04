@@ -1,3 +1,4 @@
+/* locals */
 import {BasketModule} from './namespace';
 
 const initialState: BasketModule.State = {

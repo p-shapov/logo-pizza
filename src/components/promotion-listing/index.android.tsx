@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import React, {useRef} from 'react';
 import {FlatList, Image, ListRenderItemInfo, Pressable, Text, View} from 'react-native';
 /* locals */
@@ -24,10 +25,10 @@ const PromotionListing = (props: PromotionListingProps) => {
       if (flatListRef && flatListRef.current) {
         flatListRef.current.scrollToIndex({animated: true, index: data.index, viewPosition: 0.5});
       }
-    
+      
       openPromotion(data.index);
     };
-  
+    
     return (
       <Pressable style={isLast ? styles.promotionCardLast : styles.promotionCard} onPress={onPress}>
         <View>

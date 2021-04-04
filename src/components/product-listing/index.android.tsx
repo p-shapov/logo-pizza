@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import React, {useRef} from 'react';
 import {FlatList, Image, ListRenderItemInfo, Pressable, Text, View} from 'react-native';
 import {useNavigation, useScrollToTop} from '@react-navigation/native';
@@ -5,7 +6,7 @@ import {useNavigation, useScrollToTop} from '@react-navigation/native';
 import styles from './styles';
 import ProductListingProps from './interface';
 /* shared */
-import {Badge} from '../../shared/badge';
+import {Badge} from 'shared/badge/index';
 
 const ProductListing = (props: ProductListingProps) => {
   const {

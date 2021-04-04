@@ -1,7 +1,8 @@
+/* libraries and plugins */
 import {Dimensions, StyleSheet} from 'react-native';
 /* globals */
-import {COLORS} from '../../globals/constants';
-import {padding} from '../../globals/helpers';
+import {COLORS} from 'globals/constants';
+import {padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   productInfo: {

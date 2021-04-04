@@ -1,10 +1,11 @@
+/* libraries and plugins */
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
 /* locals */
 import LinkProps from './interface';
 import styles from './styles';
 /* globals */
-import {COLORS} from '../../globals/constants';
+import {COLORS} from 'globals/constants';
 
 const Link = ({label, children, Icon}: LinkProps) => {
   return (

@@ -1,3 +1,4 @@
+/* locals */
 import {BasketModule} from './namespace';
 
 export const setProductsInCartCount = (productsInCartCount: number): BasketModule.SetProductsInCartCount => ({

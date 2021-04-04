@@ -1,3 +1,4 @@
+/* locals */
 import {CatalogModule} from './namespace';
 
 export const openPromotion = (id: number): CatalogModule.SetPromotion => ({type: 'OPEN_PROMOTION', id});

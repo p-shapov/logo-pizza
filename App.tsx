@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import {StatusBar} from 'expo-status-bar';
 import React from 'react';
 import {createStore} from 'redux';
@@ -8,20 +9,20 @@ import {NavigationContainer} from '@react-navigation/native';
 import './@types';
 import AppLoading from 'expo-app-loading';
 /* globals */
-import rootReducers from './src/globals/reducers';
+import rootReducers from 'globals/reducers';
 /* containers */
-import {CatalogMediatorContainer} from './src/containers/catalog-mediator';
-import {ProductInfoContainer} from './src/containers/product-info';
-import {ContactsContainer} from './src/containers/contacts';
+import {CatalogMediatorContainer} from 'containers/catalog-mediator';
+import {ProductInfoContainer} from 'containers/product-info';
+import {ContactsContainer} from 'containers/contacts';
 /* components */
-import {StatusBarBackground} from './src/components/status-bar-background';
-import {TabMediator} from './src/components/tab-mediator';
-import {WindowMediator} from './src/components/window-mediator';
+import {StatusBarBackground} from 'components/status-bar-background/index';
+import {TabMediator} from 'components/tab-mediator/index';
+import {WindowMediator} from 'components/window-mediator/index';
 /* icons */
-import IcoFooterCatalog from './src/assets/images/ico_footer_catalog.svg';
-import IcoFooterContacts from './src/assets/images/ico_footer_contacts.svg';
-import IcoFooterPersonalOffice from './src/assets/images/ico_footer_personal_office.svg';
-import IcoFooterBasket from './src/assets/images/ico_footer_basket.svg';
+import IcoFooterCatalog from 'images/ico_footer_catalog.svg';
+import IcoFooterContacts from 'images/ico_footer_contacts.svg';
+import IcoFooterPersonalOffice from 'images/ico_footer_personal_office.svg';
+import IcoFooterBasket from 'images/ico_footer_basket.svg';
 
 const store = createStore(rootReducers);
 
@@ -33,7 +34,7 @@ export default function App() {
   
   if (!fontsLoaded) {
     return (
-      <AppLoading />
+      <AppLoading/>
     );
   }
   

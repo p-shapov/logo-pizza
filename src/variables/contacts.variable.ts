@@ -15,7 +15,7 @@ export default {
       },
       metroStation: {
         title: 'Площадь Ленина',
-        Icon: require('../assets/images/ico_moscow_metro.svg').default
+        Icon: require('images/ico_moscow_metro.svg').default
       }
     },
     {
@@ -27,7 +27,7 @@ export default {
       },
       metroStation: {
         title: 'Студенческая',
-        Icon: require('../assets/images/ico_moscow_metro.svg').default
+        Icon: require('images/ico_moscow_metro.svg').default
       }
     }
   ],
@@ -56,4 +56,4 @@ export default {
     }
   ],
   aboutLink: '/'
-}
+};

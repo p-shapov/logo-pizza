@@ -1,3 +1,4 @@
+/* libraries and plugins */
 import {ImageSourcePropType} from 'react-native';
 
 namespace CatalogModule {
