@@ -3,6 +3,8 @@ import {CatalogModule} from './namespace';
 /* variables */
 import categoriesVariable from 'variables/categories.variable';
 import promotionsVariable from 'variables/promotions.variable';
+/* images */
+import imageProductPlaceholder from 'images/img_product_placeholder.png';
 
 const getCategories = (): Array<CatalogModule.Category> => {
   return (
@@ -17,12 +19,21 @@ const getPromotions = (): Array<CatalogModule.Promotion> => {
 };
 
 const initialState: CatalogModule.State = {
-  activeProductId: 0,
-  activePromotionId: 0,
-  activeCategoryId: 0,
+  activeProduct: {
+    id: 0,
+    title: 'Product\'s title.',
+    description: 'Product\'s description.',
+    price: 0,
+    image: imageProductPlaceholder
+  },
+  activePromotion: {
+    id: 0,
+    title: 'Promotion\'s title.',
+    description: 'Promotion\'s description.',
+    image: imageProductPlaceholder
+  },
   categories: getCategories(),
   promotions: getPromotions(),
-  addToCart: (id) => console.log(id),
   openPromotion: (id) => console.log(id),
   openProduct: (id) => console.log(id)
 };
@@ -30,9 +41,9 @@ const initialState: CatalogModule.State = {
 export default (state: CatalogModule.State = initialState, action: CatalogModule.Actions): CatalogModule.State => {
   switch (action.type) {
     case 'OPEN_PRODUCT':
-      return ({...state, activeProductId: action.id});
+      return ({...state, activeProduct: action.product});
     case 'OPEN_PROMOTION':
-      return ({...state, activePromotionId: action.id});
+      return ({...state, activePromotion: action.promotion});
     default:
       return state;
   }

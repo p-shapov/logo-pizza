@@ -55,9 +55,17 @@ const ProductInfo = (props: ProductInfoProps) => {
           />
         )}
       </View>
-      <Button type={'primary'} onPress={() => {
-        console.log('submit');
-      }}>
+      <Button
+        type={'primary'}
+        onPress={() => addToCart({
+          id,
+          title,
+          image,
+          count: 1,
+          price: Array.isArray(price) ? price[variant].value : price,
+          size: Array.isArray(price) ? `${price[variant].size.title} ${price[variant].size.value}` : undefined
+        })}
+      >
         Добавить в корзину за {Array.isArray(price) ? price[variant].value : price} ₽
       </Button>
     </ScrollView>

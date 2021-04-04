@@ -18,6 +18,7 @@ interface Category {
 }
 
 interface Promotion {
+  id: number,
   title: string,
   image: ImageSourcePropType
 }

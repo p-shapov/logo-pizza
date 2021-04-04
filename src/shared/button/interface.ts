@@ -2,8 +2,9 @@
 import {ReactNode} from 'react';
 
 interface IButton {
-  children: ReactNode,
-  type: 'primary' | 'secondary',
+  children?: ReactNode,
+  Icon?: SvgrComponent,
+  type: 'primary' | 'secondary' | 'disabled',
   onPress: () => void
 }
 

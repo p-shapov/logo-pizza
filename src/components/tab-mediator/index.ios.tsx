@@ -43,12 +43,12 @@ const TabBar = ({state, descriptors, navigation}: BottomTabBarProps) => (
           >
             {options.tabBarIcon && options.tabBarIcon({focused: active, color: '', size: 0})}
             {options.tabBarBadge !== undefined && (
-            <View style={active
-              ? options.tabBarBadge === 0 ? styles.tabBadgeFocused : styles.tabBadgeFocusedActive
-              : options.tabBarBadge === 0 ? styles.tabBadge : styles.tabBadgeActive}>
-              <Text style={styles.tabBadgeText}>{options.tabBarBadge}</Text>
-            </View>
-          )}
+              <View style={active
+                ? options.tabBarBadge === 0 ? styles.tabBadgeFocused : styles.tabBadgeFocusedActive
+                : options.tabBarBadge === 0 ? styles.tabBadge : styles.tabBadgeActive}>
+                <Text style={styles.tabBadgeText}>{options.tabBarBadge}</Text>
+              </View>
+            )}
           </Pressable>
         );
       })

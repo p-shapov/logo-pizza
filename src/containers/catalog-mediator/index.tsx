@@ -11,9 +11,9 @@ import CatalogMediatorProps from 'components/catalog-mediator/interface';
 import {openProduct, openPromotion} from 'modules/catalog/actions';
 
 
-const mapStateToProps = (state: State): CatalogMediatorProps => ({
-  ...state.catalog,
-  categories: state.catalog.categories.map(category => ({
+const mapStateToProps = ({catalog}: State): CatalogMediatorProps => ({
+  ...catalog,
+  categories: catalog.categories.map(category => ({
     name: category.name,
     title: category.title,
     Icon: category.Icon,

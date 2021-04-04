@@ -15,6 +15,7 @@ const PromotionListing = (props: PromotionListingProps) => {
   
   const renderItem = (data: ListRenderItemInfo<ArrayElement<PromotionListingProps['promotions']>>) => {
     const {
+      id,
       title,
       image
     } = data.item;
@@ -26,7 +27,7 @@ const PromotionListing = (props: PromotionListingProps) => {
         flatListRef.current.scrollToIndex({animated: true, index: data.index, viewPosition: 0.5});
       }
       
-      openPromotion(data.index);
+      openPromotion(id);
     };
     
     return (

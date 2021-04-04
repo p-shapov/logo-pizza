@@ -1,6 +1,17 @@
 /* locals */
 import {CatalogModule} from './namespace';
+/* variables */
+import productsVariable from 'variables/products.variable';
+import promotionsVariable from 'variables/promotions.variable';
 
-export const openPromotion = (id: number): CatalogModule.SetPromotion => ({type: 'OPEN_PROMOTION', id});
+export const openPromotion = (actionId: number): CatalogModule.SetPromotion => {
+  const promotion = promotionsVariable.find(({id}) => (id === actionId)) as CatalogModule.Promotion;
+  
+  return ({type: 'OPEN_PROMOTION', promotion});
+};
 
-export const openProduct = (id: number): CatalogModule.SetProduct => ({type: 'OPEN_PRODUCT', id});
+export const openProduct = (actionId: number): CatalogModule.SetProduct => {
+  const product = productsVariable.find(({id}) => (id === actionId)) as CatalogModule.Product;
+  
+  return ({type: 'OPEN_PRODUCT', product});
+};

@@ -1,12 +1,20 @@
 /* locals */
 import {BasketModule} from './namespace';
 
-export const setProductsInCartCount = (productsInCartCount: number): BasketModule.SetProductsInCartCount => ({
-  type: 'SET_PRODUCTS_IN_CART_COUNT',
-  productsInCartCount
+export const addToCart = (product: BasketModule.Product): BasketModule.AddToCart => ({
+  type: 'ADD_TO_CART',
+  product
 });
 
-export const addToCart = (id: number): BasketModule.AddToCart => ({
-  type: 'ADD_TO_CART',
-  id
+export const setProductCount = (id: number, count: number, size?: string): BasketModule.SetProductCount => ({
+  type: 'SET_PRODUCT_COUNT',
+  id,
+  count,
+  size
+});
+
+export const deleteProduct = (id: number, size?: string): BasketModule.DeleteProduct => ({
+  type: 'DELETE_PRODUCT',
+  id,
+  size
 });

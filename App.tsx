@@ -14,6 +14,8 @@ import rootReducers from 'globals/reducers';
 import {CatalogMediatorContainer} from 'containers/catalog-mediator';
 import {ProductInfoContainer} from 'containers/product-info';
 import {ContactsContainer} from 'containers/contacts';
+import {BasketContainer} from 'containers/basket';
+import {TabMediatorContainer} from 'containers/tab-mediator';
 /* components */
 import {StatusBarBackground} from 'components/status-bar-background/index';
 import {WindowMediator} from 'components/window-mediator/index';
@@ -22,7 +24,6 @@ import IcoFooterCatalog from 'images/ico_footer_catalog.svg';
 import IcoFooterContacts from 'images/ico_footer_contacts.svg';
 import IcoFooterPersonalOffice from 'images/ico_footer_personal_office.svg';
 import IcoFooterBasket from 'images/ico_footer_basket.svg';
-import {TabMediatorContainer} from 'containers/tab-mediator';
 
 const store = createStore(rootReducers);
 
@@ -78,11 +79,7 @@ export default function App() {
           },
           {
             name: 'BASKET',
-            Container: () => (
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>Basket</Text>
-              </View>
-            ),
+            Container: BasketContainer,
             Icon: IcoFooterBasket
           }
         ]}/>

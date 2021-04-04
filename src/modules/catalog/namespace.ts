@@ -11,6 +11,7 @@ namespace CatalogModule {
   }
   
   export interface Promotion {
+    id: number,
     title: string,
     description: string,
     image: ImageSourcePropType
@@ -24,24 +25,22 @@ namespace CatalogModule {
   }
   
   export interface State {
-    activeProductId: number,
-    activePromotionId: number,
-    activeCategoryId: number,
+    activeProduct: Product,
+    activePromotion: Promotion,
     categories: Array<Category>,
     promotions: Array<Promotion>,
-    addToCart: (id: number, size?: string) => void,
     openPromotion: (id: number) => void,
     openProduct: (id: number) => void
   }
   
   export interface SetProduct {
     type: 'OPEN_PRODUCT',
-    id: number
+    product: Product
   }
   
   export interface SetPromotion {
     type: 'OPEN_PROMOTION',
-    id: number
+    promotion: Promotion
   }
   
   export type Actions = SetProduct | SetPromotion;

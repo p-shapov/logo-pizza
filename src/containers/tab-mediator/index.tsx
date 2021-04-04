@@ -7,8 +7,8 @@ import {State} from 'globals/interface';
 import TabMediatorProps from 'components/tab-mediator/interface';
 import {TabMediator} from 'components/tab-mediator/index';
 
-const mapStateToProps = (state: State): { productInCartCount: TabMediatorProps['productInCartCount'] } => ({
-  productInCartCount: state.basket.productsInCartCount
+const mapStateToProps = ({basket}: State): { productInCartCount: TabMediatorProps['productInCartCount'] } => ({
+  productInCartCount: basket.products.reduce((count, product) => count + product.count, 0)
 });
 
 const TabMediatorContainer = connect(

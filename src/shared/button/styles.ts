@@ -7,17 +7,26 @@ import {COLORS} from 'globals/constants';
 const styles = StyleSheet.create({
   buttonPrimary: {
     alignItems: 'center',
-    ...padding(15, 0),
+    ...padding(15, 16),
     backgroundColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
   buttonSecondary: {
     alignItems: 'center',
-    ...padding(14, 0),
+    ...padding(14, 15),
     backgroundColor: COLORS.FOREGROUND_SECONDARY,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
+    borderRadius: 8
+  },
+  buttonDisabled: {
+    alignItems: 'center',
+    ...padding(14, 15),
+    backgroundColor: COLORS.FOREGROUND_SECONDARY,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: COLORS.FOREGROUND_PRIMARY_DISABLED,
     borderRadius: 8
   },
   buttonPrimaryText: {
@@ -33,6 +42,13 @@ const styles = StyleSheet.create({
     lineHeight: 17,
     letterSpacing: .5,
     color: COLORS.FOREGROUND_PRIMARY_ACTIVE
+  },
+  buttonDisabledText: {
+    fontFamily: 'Rubik-SemiBold',
+    fontSize: 14,
+    lineHeight: 17,
+    letterSpacing: .5,
+    color: COLORS.FOREGROUND_PRIMARY
   }
 });
 

@@ -2,6 +2,7 @@
 import {ImageSourcePropType} from 'react-native';
 
 interface Promotion {
+  id: number,
   title: string,
   image: ImageSourcePropType
 }
