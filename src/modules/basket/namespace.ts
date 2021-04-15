@@ -13,9 +13,16 @@ namespace BasketModule {
   
   export interface State {
     products: Array<Product>,
+    discount?: number,
+    addPromoCode: (code: string) => void,
     addToCart: (product: Product) => void,
     deleteProduct: (id: number, size?: string) => void,
     setProductCount: (id: number, count: number, size?: string) => void
+  }
+  
+  export interface AddPromoCode {
+    type: 'ADD_PROMO_CODE',
+    discount: number | undefined
   }
   
   export interface AddToCart {
@@ -36,7 +43,7 @@ namespace BasketModule {
     size?: string
   }
   
-  export type Actions = DeleteProduct | SetProductCount | AddToCart;
+  export type Actions = DeleteProduct | SetProductCount | AddToCart | AddPromoCode;
 }
 
 export {BasketModule};

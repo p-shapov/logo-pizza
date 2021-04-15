@@ -1,10 +1,12 @@
 /* libraries and plugins */
 import React from 'react';
-import {FlatList, Image, ListRenderItemInfo, Text, View} from 'react-native';
+import {FlatList, Image, Keyboard, ListRenderItemInfo, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 /* locals */
 import BasketProps from './interface';
 import styles from './styles';
+/* components */
+import {PromoCodeField} from 'components/promo-code-field/index';
 /* shared */
 import {Button} from 'shared/button/index';
 import {Counter} from 'shared/counter/index';
@@ -17,6 +19,7 @@ const Basket = (props: BasketProps) => {
   const {
     products,
     discount,
+    addPromoCode,
     setProductCount,
     deleteProduct
   } = props;
@@ -25,6 +28,13 @@ const Basket = (props: BasketProps) => {
   
   const totalPrice = products.reduce((acc, {price, count}) => (acc + (price * count)), 0);
   const isEmpty = products.length === 0;
+  const discountApplied = discount !== undefined;
+  
+  const applyDiscount = (price: number) => discount !== undefined ? price * (1 - 0.01 * discount) : price;
+  const submitPromoCode = (code: string) => {
+    Keyboard.dismiss();
+    addPromoCode(code);
+  }
   
   const renderItem = ({item}: ListRenderItemInfo<ArrayElement<BasketProps['products']>>) => {
     const {
@@ -49,14 +59,14 @@ const Basket = (props: BasketProps) => {
               <Text style={discount
                 ? styles.basketProductCardPriceActive
                 : styles.basketProductCardPrice}
-              >{price} ₽</Text>
-              {discount && (
-                <Text style={styles.basketProductCardOldPrice}>{price * (1 - 0.01 * discount)} ₽</Text>
+              >{applyDiscount(price)} ₽</Text>
+              {discountApplied && (
+                <Text style={styles.basketProductCardOldPrice}>{price} ₽</Text>
               )}
             </View>
           </View>
           <View style={styles.basketProductCardFooter}>
-            <Button type={'disabled'} onPress={() => deleteProduct(id, size)} Icon={IcoBasketTrash}/>
+            <Button type={'secondary'} view={'shaped'} onPress={() => deleteProduct(id, size)} Icon={IcoBasketTrash}/>
             <Counter count={count} maxCount={10} onChange={(count) => setProductCount(id, count, size)}/>
           </View>
         </View>
@@ -64,31 +74,41 @@ const Basket = (props: BasketProps) => {
     );
   };
   
+  const basketContent = () => (<>
+    <View style={styles.basketPromoField}>
+      <PromoCodeField applied={discountApplied} submitPromoCode={submitPromoCode}/>
+    </View>
+    <FlatList
+      data={products}
+      renderItem={renderItem}
+      contentContainerStyle={styles.basketProducts}
+      keyExtractor={(_, index) => index.toString()}
+    />
+  </>);
+  
+  const basketEmpty = () => (<View style={styles.basketEmpty}>
+    <Image style={styles.basketEmptyBackground} source={ImgBasketIsEmpty}/>
+    <Text style={styles.basketEmptyText}>Корзина пуста</Text>
+  </View>)
+  
   return (
     <View style={styles.basket}>
       <View style={styles.basketHeader}>
         <Text style={styles.basketHeaderText}>Корзина</Text>
       </View>
       <View style={styles.basketDelimiter}/>
-      {!isEmpty
-        ? (<FlatList
-          data={products}
-          renderItem={renderItem}
-          contentContainerStyle={styles.basketProducts}
-          keyExtractor={(_, index) => index.toString()}
-        />)
-        : (<View style={styles.basketEmpty}>
-          <Image style={styles.basketEmptyBackground} source={ImgBasketIsEmpty}/>
-          <Text style={styles.basketEmptyText}>Корзина пуста</Text>
-        </View>)}
+      
+      {!isEmpty ? basketContent() : basketEmpty()}
+      
       <View style={styles.basketFooter}>
         <Button
           type={'primary'}
+          view={'filled'}
           onPress={() => isEmpty
             ? navigation.navigate('CATALOG', {screen: 'MAIN'})
             : console.log('submit')}
         >
-          {!isEmpty ? `Оформить заказ на ${totalPrice} ₽` : 'Вернуться в меню'}
+          {!isEmpty ? `Оформить заказ на ${applyDiscount(totalPrice)} ₽` : 'Вернуться в меню'}
         </Button>
       </View>
     </View>

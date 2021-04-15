@@ -5,13 +5,13 @@ import {padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
-  buttonPrimary: {
+  buttonPrimaryFilled: {
     alignItems: 'center',
     ...padding(15, 16),
     backgroundColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
-  buttonSecondary: {
+  buttonPrimaryShaped: {
     alignItems: 'center',
     ...padding(14, 15),
     backgroundColor: COLORS.FOREGROUND_SECONDARY,
@@ -20,7 +20,13 @@ const styles = StyleSheet.create({
     borderColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
-  buttonDisabled: {
+  buttonSecondaryFilled: {
+    alignItems: 'center',
+    ...padding(15, 16),
+    backgroundColor: COLORS.FOREGROUND_PRIMARY,
+    borderRadius: 8
+  },
+  buttonSecondaryShaped: {
     alignItems: 'center',
     ...padding(14, 15),
     backgroundColor: COLORS.FOREGROUND_SECONDARY,
@@ -29,27 +35,34 @@ const styles = StyleSheet.create({
     borderColor: COLORS.FOREGROUND_PRIMARY_DISABLED,
     borderRadius: 8
   },
-  buttonPrimaryText: {
+  buttonPrimaryFilledText: {
     fontFamily: 'Rubik-SemiBold',
     fontSize: 14,
     lineHeight: 17,
     letterSpacing: .5,
     color: COLORS.FOREGROUND_SECONDARY
   },
-  buttonSecondaryText: {
+  buttonPrimaryShapedText: {
     fontFamily: 'Rubik-SemiBold',
     fontSize: 14,
     lineHeight: 17,
     letterSpacing: .5,
     color: COLORS.FOREGROUND_PRIMARY_ACTIVE
   },
-  buttonDisabledText: {
+  buttonSecondaryShapedText: {
     fontFamily: 'Rubik-SemiBold',
     fontSize: 14,
     lineHeight: 17,
     letterSpacing: .5,
     color: COLORS.FOREGROUND_PRIMARY
-  }
+  },
+  buttonSecondaryFilledText: {
+    fontFamily: 'Rubik-SemiBold',
+    fontSize: 14,
+    lineHeight: 17,
+    letterSpacing: .5,
+    color: COLORS.FOREGROUND_SECONDARY
+  },
 });
 
 export default styles;

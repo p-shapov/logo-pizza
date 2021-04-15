@@ -5,6 +5,7 @@ import {arrayIncludes, objectIncludes} from 'globals/helpers';
 
 const initialState: BasketModule.State = {
   products: [],
+  addPromoCode: (code: string) => console.log(code),
   setProductCount: (id, count) => console.log(id, count),
   deleteProduct: (id) => console.log(id),
   addToCart: (product) => console.log(product)
@@ -12,11 +13,12 @@ const initialState: BasketModule.State = {
 
 export default (state: BasketModule.State = initialState, action: BasketModule.Actions): BasketModule.State => {
   switch (action.type) {
+    case 'ADD_PROMO_CODE':
+      return ({...state, discount: action.discount});
     case 'ADD_TO_CART': {
-      const identProps = action.product.size ? {
-        id: action.product.id,
-        size: action.product.size
-      } : {id: action.product.id};
+      const identProps = action.product.size
+        ? {id: action.product.id, size: action.product.size}
+        : {id: action.product.id};
       
       return ({
         ...state,
@@ -31,7 +33,9 @@ export default (state: BasketModule.State = initialState, action: BasketModule.A
       });
     }
     case 'SET_PRODUCT_COUNT': {
-      const identProps = action.size ? {id: action.id, size: action.size} : {id: action.id};
+      const identProps = action.size
+        ? {id: action.id, size: action.size}
+        : {id: action.id};
       
       return ({
         ...state,
@@ -41,7 +45,9 @@ export default (state: BasketModule.State = initialState, action: BasketModule.A
       });
     }
     case 'DELETE_PRODUCT': {
-      const identProps = action.size ? {id: action.id, size: action.size} : {id: action.id};
+      const identProps = action.size
+        ? {id: action.id, size: action.size}
+        : {id: action.id};
       
       return ({...state, products: state.products.filter((product) => !objectIncludes(product, identProps))});
     }

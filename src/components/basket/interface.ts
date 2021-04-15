@@ -13,6 +13,7 @@ interface Product {
 interface BasketProps {
   products: Array<Product>,
   discount?: number,
+  addPromoCode: (code: string) => void,
   setProductCount: (id: number, count: number, size?: string) => void,
   deleteProduct: (id: number, size?: string) => void
 }

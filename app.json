@@ -18,13 +18,22 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "logo-pizza"
+      "bundleIdentifier": "logo-pizza",
+      "config": {
+        "googleMapsApiKey": "AIzaSyBHNghfVdEXQnKCGUFURs-aOcWriB4KZyk"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBHNghfVdEXQnKCGUFURs-aOcWriB4KZyk"
+        }
+      },
+      "package": "com.id581162326.logopizza"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"

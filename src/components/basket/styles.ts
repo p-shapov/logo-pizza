@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: COLORS.DELIMITER
   },
+  basketPromoField: {
+    marginTop: 24,
+    ...padding(0, 16)
+  },
   basketProducts: {
     ...padding(24, 16)
   },

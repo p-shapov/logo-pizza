@@ -4,7 +4,8 @@ import {ReactNode} from 'react';
 interface IButton {
   children?: ReactNode,
   Icon?: SvgrComponent,
-  type: 'primary' | 'secondary' | 'disabled',
+  view: 'shaped' | 'filled',
+  type: 'primary' | 'secondary',
   onPress: () => void
 }
 

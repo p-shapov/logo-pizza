@@ -57,6 +57,7 @@ const ProductInfo = (props: ProductInfoProps) => {
       </View>
       <Button
         type={'primary'}
+        view={'filled'}
         onPress={() => addToCart({
           id,
           title,

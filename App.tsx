@@ -3,11 +3,9 @@ import {StatusBar} from 'expo-status-bar';
 import React from 'react';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {useFonts} from 'expo-font';
 import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import './@types';
-import AppLoading from 'expo-app-loading';
 /* globals */
 import rootReducers from 'globals/reducers';
 /* containers */
@@ -28,17 +26,6 @@ import IcoFooterBasket from 'images/ico_footer_basket.svg';
 const store = createStore(rootReducers);
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    'Rubik': require('./src/assets/fonts/Rubik.otf'),
-    'Rubik-SemiBold': require('./src/assets/fonts/Rubik-SemiBold.otf')
-  });
-  
-  if (!fontsLoaded) {
-    return (
-      <AppLoading/>
-    );
-  }
-  
   return (
     <Provider store={store}>
       <StatusBar style={'inverted'}/>

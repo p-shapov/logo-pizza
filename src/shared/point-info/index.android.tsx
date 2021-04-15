@@ -29,7 +29,7 @@ const PointInfo = (props: PointInfoProps) => {
         <Text style={styles.pointInfoWorkTime}>{workTime}</Text>
       </View>
       <View style={styles.pointInfoButtonWrapper}>
-        <Button type={'secondary'} onPress={() => openPoint(geo)}>Выбрать</Button>
+        <Button type={'primary'} view={'shaped'} onPress={() => openPoint(geo)}>Выбрать</Button>
       </View>
     </View>
   );

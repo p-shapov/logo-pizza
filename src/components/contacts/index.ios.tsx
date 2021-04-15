@@ -40,6 +40,7 @@ const Contacts = (props: ContactsProps) => {
       </View>
       <View style={styles.contactsMapWrapper}>
         <MapView
+          provider={'google'}
           style={styles.contactsMap}
           region={{
             ...mapGeo,

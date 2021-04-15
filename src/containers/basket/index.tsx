@@ -8,18 +8,24 @@ import {State} from 'globals/interface';
 import BasketProps from 'components/basket/interface';
 import {Basket} from 'components/basket/index';
 /* modules */
-import {setProductCount, deleteProduct} from 'modules/basket/actions';
+import {setProductCount, deleteProduct, addPromoCode} from 'modules/basket/actions';
 
 const mapStateToProps = ({basket}: State): BasketProps => ({
   products: basket.products,
+  discount: basket.discount,
+  addPromoCode: basket.addPromoCode,
   deleteProduct: basket.deleteProduct,
   setProductCount: basket.setProductCount
 });
 
 const dispatchStateToProps = (dispatch: Dispatch): {
+  addPromoCode: BasketProps['addPromoCode'],
   deleteProduct: BasketProps['deleteProduct'],
   setProductCount: BasketProps['setProductCount']
 } => ({
+  addPromoCode(code) {
+    dispatch(addPromoCode(code))
+  },
   deleteProduct(id, size) {
     dispatch(deleteProduct(id, size));
   },
