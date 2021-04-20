@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik',
     fontSize: 14,
     lineHeight: 17,
+    textDecorationLine: 'none',
     color: COLORS.FOREGROUND_PRIMARY
   },
   textFieldInputActive: {
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Rubik',
     fontSize: 14,
     lineHeight: 17,
+    textDecorationLine: 'none',
     color: COLORS.FOREGROUND_PRIMARY_ACTIVE
   },
   textFieldButton: {

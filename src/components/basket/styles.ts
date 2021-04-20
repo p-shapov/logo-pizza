@@ -59,19 +59,20 @@ const styles = StyleSheet.create({
     color: COLORS.FOREGROUND_PRIMARY_SUBTLE
   },
   basketProductCardPrice: {
-    marginBottom: 4,
     fontFamily: 'Rubik-SemiBold',
     fontSize: 16,
     lineHeight: 19,
     color: COLORS.FOREGROUND_PRIMARY
   },
   basketProductCardPriceActive: {
+    marginBottom: 4,
     fontFamily: 'Rubik-SemiBold',
     fontSize: 16,
     lineHeight: 19,
     color: COLORS.FOREGROUND_PRIMARY_ACTIVE
   },
   basketProductCardOldPrice: {
+    alignSelf: 'flex-end',
     fontFamily: 'Rubik',
     fontSize: 14,
     lineHeight: 17,

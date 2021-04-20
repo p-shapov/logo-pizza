@@ -31,28 +31,34 @@ export default {
       }
     }
   ],
-  phone: '8 800 405-56-80',
-  email: 'logopizza@mail.com',
+  phone: {
+    title: '8 800 405-56-80',
+    href: '+78004055680'
+  },
+  email: {
+    title: 'logopizza@mail.com',
+    href: 'logopizza@mail.com'
+  },
   socialLinks: [
     {
       type: 'ok',
-      href: '/'
+      href: 'ok.ru/dodopizza'
     },
     {
       type: 'inst',
-      href: '/'
+      href: 'instagram.com/dodopizza'
     },
     {
       type: 'vk',
-      href: '/'
+      href: 'vk.com/dodo'
     },
     {
       type: 'fb',
-      href: '/'
+      href: 'facebook.com/dodopizza/'
     },
     {
       type: 'yt',
-      href: '/'
+      href: 'youtube.com/channel/UCkPTVsNw2R5lwQ_VxF6Wuow'
     }
   ],
   aboutLink: '/'

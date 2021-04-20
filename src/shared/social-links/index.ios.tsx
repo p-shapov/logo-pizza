@@ -1,6 +1,6 @@
 /* libraries and plugins */
 import React from 'react';
-import {Pressable, View} from 'react-native';
+import {Linking, Pressable, View} from 'react-native';
 /* locals */
 import SocialLinksProps from './interface';
 import styles from './styles';
@@ -29,10 +29,18 @@ const SocialIcon = ({type, color}: { type: ArrayElement<SocialLinksProps['links'
 };
 
 const SocialLinks = ({links}: SocialLinksProps) => {
+  const onPress = (href: string) => {
+    Linking.openURL(href);
+  }
+  
   return (
     <View style={styles.socialLinks}>
       {links.map((item, index) => (
-        <Pressable key={index} style={index === links.length - 1 ? styles.socialLinksItemLast : styles.socialLinksItem}>
+        <Pressable
+          key={index}
+          style={index === links.length - 1 ? styles.socialLinksItemLast : styles.socialLinksItem}
+          onPress={() => onPress(`https://${item.href}`)}
+        >
           <SocialIcon type={item.type} color={COLORS.FOREGROUND_PRIMARY_SUBTLE}/>
         </Pressable>
       ))}

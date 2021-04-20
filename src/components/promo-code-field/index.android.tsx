@@ -7,34 +7,40 @@ import styles from './styles';
 /* globals */
 import {COLORS} from 'globals/constants';
 /* shared */
-import {Input} from 'shared/text-field/index.ios';
+import {TextField} from 'shared/text-field/index.ios';
 import {Button} from 'shared/button/index.ios';
 /* icons */
 import IcoCross from 'images/ico_cross.svg';
 import IcoArrowForward from 'images/ico_arrow_forward.svg';
 
-const PromoCodeField = (props: PromoCodeFieldProps) => {
-  const {applied, submitPromoCode} = props;
-  
+const PromoCodeField = ({applied, submitPromoCode}: PromoCodeFieldProps) => {
   const [code, setCode] = useState<string>('');
   const [error, setError] = useState<boolean>(false);
   
-  const showError = (fn: Function) => {
-    setError(!applied);
-    
-    return fn();
-  };
+  const onChange = (val: string) => {
+    setError(false);
+    setCode(val);
+  }
   
-  const hideKeyBoard = (fn: Function) => {
-    applied && Keyboard.dismiss();
-    
-    return fn();
-  };
+  const onFocus = () => {
+    setError(false);
+  }
+  
+  const submitOrClear = () => {
+    if (applied) {
+      submitPromoCode('');
+      setError(false);
+      Keyboard.dismiss();
+    } else {
+      submitPromoCode(code);
+      setError(!applied);
+    }
+  }
   
   const errorMessage = () => (<View style={styles.promoCodeFieldErrorWrapper}>
     <View style={styles.promoCodeFieldError}>
-      <Text>Не верный промокод</Text>
-      <Pressable onPress={() => setError(false)}>
+      <Text style={styles.promoCodeFieldErrorText}>Не верный промокод</Text>
+      <Pressable style={styles.promoCodeFieldErrorClose} onPress={() => setError(false)}>
         <IcoCross color={COLORS.FOREGROUND_SECONDARY}/>
       </Pressable>
     </View>
@@ -42,7 +48,7 @@ const PromoCodeField = (props: PromoCodeFieldProps) => {
   
   return (
     <>
-      <Input
+      <TextField
         type={'TEXT'}
         value={applied ? 'Промокод применен' : code}
         placeholder={'Введите промокод'}
@@ -52,18 +58,15 @@ const PromoCodeField = (props: PromoCodeFieldProps) => {
           type={applied ? 'secondary' : 'primary'}
           view={'filled'}
           Icon={applied ? IcoCross : IcoArrowForward}
-          onPress={() => applied
-            ? submitPromoCode('')
-            : hideKeyBoard(() => showError(() => submitPromoCode(code)))}
+          onPress={submitOrClear}
         />}
-        onFocus={() => setError(false)}
-        setValue={setCode}
+        onFocus={onFocus}
+        onChange={onChange}
       />
-      {error && errorMessage()}
+      {!applied && error && errorMessage()}
     </>
   
   );
 };
-
 
 export {PromoCodeField};

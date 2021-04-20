@@ -1,6 +1,12 @@
 /* libraries and plugins */
 import React, {useRef} from 'react';
-import {FlatList, ListRenderItemInfo, Pressable, Text, View} from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  Pressable,
+  Text,
+  View
+} from 'react-native';
 import {createMaterialTopTabNavigator, MaterialTopTabBarProps} from '@react-navigation/material-top-tabs';
 /* locals */
 import CatalogMediatorProps from './interface';
@@ -14,11 +20,9 @@ import {PromotionListing} from 'components/promotion-listing/index';
 const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) => {
   const flatListRef = useRef<FlatList>(null);
   
-  setTimeout(() => {
-    if (flatListRef && flatListRef.current) {
-      flatListRef.current.scrollToIndex({index: state.index, animated: true, viewPosition: .5});
-    }
-  }, 250);
+  if (flatListRef && flatListRef.current) {
+    flatListRef.current.scrollToIndex({index: state.index, animated: true, viewPosition: .5});
+  }
   
   const renderItem = ({item, index}: ListRenderItemInfo<any>) => {
     const {options} = descriptors[item.key];
@@ -107,7 +111,11 @@ const CatalogMediator = (props: CatalogMediatorProps) => {
             )
           }}
         >
-          {() => (<ProductListing openProduct={openProduct} title={category.title} products={category.products}/>)}
+          {() => (<ProductListing
+            openProduct={openProduct}
+            title={category.title}
+            products={category.products}
+          />)}
         </Tab.Screen>
       ))}
     </Tab.Navigator>

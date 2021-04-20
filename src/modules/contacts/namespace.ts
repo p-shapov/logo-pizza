@@ -29,8 +29,14 @@ namespace ContactsModule {
       latitude: number
     },
     points: Array<Point>,
-    phone: string,
-    email: string,
+    phone: {
+      title: string,
+      href: string
+    },
+    email: {
+      title: string,
+      href: string
+    },
     socialLinks: Array<Social>,
     aboutLink: string,
     setMapGeo: (geo: GeoCoordinates) => void

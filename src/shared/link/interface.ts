@@ -1,5 +1,6 @@
 interface LinkProps {
   label?: string,
+  href: string,
   children: string,
   Icon: SvgrComponent
 }

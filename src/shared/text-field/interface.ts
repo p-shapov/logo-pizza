@@ -6,11 +6,12 @@ interface InputProps {
   label?: string,
   type: 'TEXT' | 'PHONE',
   value: string,
-  setValue: (value: string) => void,
+  onChange: (value: string) => void,
   onFocus?: () => void,
   button?: ReactNode
   editable?: boolean,
-  isActive?: boolean
+  isActive?: boolean,
+  focused?: boolean
 }
 
 export default InputProps;

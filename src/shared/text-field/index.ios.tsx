@@ -5,8 +5,8 @@ import {Text, TextInput, View} from 'react-native';
 import styles from './styles';
 import InputProps from './interface';
 
-const Input = (props: InputProps) => {
-  const {placeholder, label, type, button, editable, isActive, value, onFocus, setValue} = props;
+const TextField = (props: InputProps) => {
+  const {placeholder, label, type, button, editable, isActive, value, onFocus, onChange} = props;
   
   const input = (type: InputProps['type']) => {
     switch (type) {
@@ -17,8 +17,10 @@ const Input = (props: InputProps) => {
             editable={editable !== undefined ? editable : true}
             value={value}
             placeholder={placeholder}
+            spellCheck={false}
+            autoCorrect={false}
             onFocus={onFocus !== undefined ? onFocus : () => {}}
-            onChangeText={setValue}
+            onChangeText={onChange}
           />
         );
     }
@@ -33,4 +35,4 @@ const Input = (props: InputProps) => {
   );
 };
 
-export {Input};
+export {TextField};

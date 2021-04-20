@@ -30,7 +30,7 @@ const Basket = (props: BasketProps) => {
   const isEmpty = products.length === 0;
   const discountApplied = discount !== undefined;
   
-  const applyDiscount = (price: number) => discount !== undefined ? price * (1 - 0.01 * discount) : price;
+  const applyDiscount = (price: number) => discount !== undefined ? Math.floor(price * (1 - 0.01 * discount)) : price;
   
   const renderItem = ({item}: ListRenderItemInfo<ArrayElement<BasketProps['products']>>) => {
     const {

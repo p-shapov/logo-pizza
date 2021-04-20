@@ -30,7 +30,7 @@ const Basket = (props: BasketProps) => {
   const isEmpty = products.length === 0;
   const discountApplied = discount !== undefined;
   
-  const applyDiscount = (price: number) => discount !== undefined ? price * (1 - 0.01 * discount) : price;
+  const applyDiscount = (price: number) => discount !== undefined ? Math.ceil(price * (1 - 0.01 * discount)) : price;
   const submitPromoCode = (code: string) => {
     Keyboard.dismiss();
     addPromoCode(code);

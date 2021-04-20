@@ -13,8 +13,14 @@ interface ContactsProps {
   city: string,
   mapGeo: GeoCoordinates,
   points: Array<Point>,
-  phone: string,
-  email: string,
+  phone: {
+    title: string,
+    href: string
+  },
+  email: {
+    title: string,
+    href: string
+  },
   socialLinks: Array<{
     type: SocialMediaType,
     href: string

@@ -67,10 +67,10 @@ const Contacts = (props: ContactsProps) => {
         </React.Fragment>))}
       </View>
       <View style={styles.contactsPhone}>
-        <Link label={'Телефон:'} Icon={IcoContactsPhone}>{phone}</Link>
+        <Link label={'Телефон:'} href={`tel:${phone.href}`} Icon={IcoContactsPhone}>{phone.title}</Link>
       </View>
       <View style={styles.contactsEmail}>
-        <Link label={'Вопросы, отзывы и предложения:'} Icon={IcoContactEmail}>{email}</Link>
+        <Link label={'Вопросы, отзывы и предложения:'} href={`mailto:${email.href}`} Icon={IcoContactEmail}>{email.title}</Link>
       </View>
       <View style={styles.contactsSocials}>
         <Text style={styles.contactsSocialsLabel}>Мы в соцсетях</Text>
