@@ -24,7 +24,7 @@ const dispatchStateToProps = (dispatch: Dispatch): {
   setProductCount: BasketProps['setProductCount']
 } => ({
   addPromoCode(code) {
-    dispatch(addPromoCode(code))
+    dispatch(addPromoCode(code));
   },
   deleteProduct(id, size) {
     dispatch(deleteProduct(id, size));

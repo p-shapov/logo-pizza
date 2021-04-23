@@ -1,6 +1,6 @@
 interface IBadge {
   children: string,
-  type: 'filled' | 'shaped'
+  type: 'FILLED' | 'SHAPED'
 }
 
 export default IBadge;

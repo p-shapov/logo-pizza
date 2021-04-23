@@ -11,8 +11,8 @@ export const addPromoCode = (code: string): BasketModule.AddPromoCode => {
   return ({
     type: 'ADD_PROMO_CODE',
     discount
-  })
-}
+  });
+};
 
 export const addToCart = (product: BasketModule.Product): BasketModule.AddToCart => ({
   type: 'ADD_TO_CART',
@@ -30,4 +30,19 @@ export const deleteProduct = (id: number, size?: string): BasketModule.DeletePro
   type: 'DELETE_PRODUCT',
   id,
   size
+});
+
+export const setDeliveryMethod = (method: BasketModule.State['deliveryMethod']): BasketModule.SetDeliveryMethod => ({
+  type: 'SET_DELIVERY_METHOD',
+  method
+});
+
+export const setDeliveryAddress = (address: BasketModule.State['deliveryAddress']): BasketModule.SetDeliveryAddress => ({
+  type: 'SET_DELIVERY_ADDRESS',
+  address
+});
+
+export const setPickupPoint = (id: number): BasketModule.SetPickupPoint => ({
+  type: 'SET_PICKUP_POINT',
+  id
 });

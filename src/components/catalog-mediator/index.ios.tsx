@@ -59,59 +59,50 @@ const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) 
     );
   };
   
-  return (
-    <View>
-      <FlatList
-        ref={flatListRef}
-        contentContainerStyle={styles.categoryList}
-        data={state.routes}
-        renderItem={renderItem}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(_, index) => index.toString()}
-      />
-    </View>
-  );
+  return (<View>
+    <FlatList
+      ref={flatListRef}
+      contentContainerStyle={styles.categoryList}
+      data={state.routes}
+      renderItem={renderItem}
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+      keyExtractor={(_, index) => index.toString()}
+    />
+  </View>);
 };
 
 const CatalogMediator = (props: CatalogMediatorProps) => {
-  const {
-    categories,
-    promotions,
-    openProduct,
-    openPromotion
-  } = props;
+  const {categories, promotions, openProduct, openPromotion} = props;
   
   const Tab = createMaterialTopTabNavigator();
   
-  return (
-    <Tab.Navigator
-      tabBar={props => (
-        <View>
-          <PromotionListing promotions={promotions} openPromotion={openPromotion}/>
-          <CategoryMenu {...props}/>
-        </View>
-      )}
-      lazy={true}
-    >
-      {categories.map((category, index) => (
-        <Tab.Screen
-          key={index}
-          name={category.name}
-          options={{
-            tabBarLabel: category.title,
-            tabBarIcon: ({focused}) => (
-              <category.Icon color={focused
-                ? COLORS.FOREGROUND_PRIMARY_ACTIVE
-                : COLORS.FOREGROUND_PRIMARY}/>
-            )
-          }}
-        >
-          {() => (<ProductListing openProduct={openProduct} title={category.title} products={category.products}/>)}
-        </Tab.Screen>
-      ))}
-    </Tab.Navigator>
-  );
+  return (<Tab.Navigator
+    tabBar={props => (
+      <View>
+        <PromotionListing promotions={promotions} openPromotion={openPromotion}/>
+        <CategoryMenu {...props}/>
+      </View>
+    )}
+    lazy={true}
+  >
+    {categories.map((category, index) => (
+      <Tab.Screen
+        key={index}
+        name={category.name}
+        options={{
+          tabBarLabel: category.title,
+          tabBarIcon: ({focused}) => (
+            <category.Icon color={focused
+              ? COLORS.FOREGROUND_PRIMARY_ACTIVE
+              : COLORS.FOREGROUND_PRIMARY}/>
+          )
+        }}
+      >
+        {() => (<ProductListing openProduct={openProduct} title={category.title} products={category.products}/>)}
+      </Tab.Screen>
+    ))}
+  </Tab.Navigator>);
 };
 
 export {CatalogMediator};

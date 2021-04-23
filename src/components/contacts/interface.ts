@@ -1,10 +1,12 @@
 interface Point {
   geo: GeoCoordinates,
-  street: string,
-  workTime: string,
-  metroStation?: {
-    title: string,
-    Icon: SvgrComponent
+  data: {
+    street: string,
+    workTime: string,
+    metroStation?: {
+      title: string,
+      Icon: SvgrComponent
+    }
   }
 }
 

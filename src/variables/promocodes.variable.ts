@@ -11,4 +11,4 @@ export default [
     code: 'HOCHUPITSU',
     discount: 50
   }
-]
+];

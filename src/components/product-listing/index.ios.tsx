@@ -9,11 +9,7 @@ import ProductListingProps from './interface';
 import {Badge} from 'shared/badge/index';
 
 const ProductListing = (props: ProductListingProps) => {
-  const {
-    title,
-    products,
-    openProduct
-  } = props;
+  const {title, products, openProduct} = props;
   
   const flatListRef = useRef<FlatList>(null);
   
@@ -22,43 +18,32 @@ const ProductListing = (props: ProductListingProps) => {
   useScrollToTop(flatListRef);
   
   const renderItem = (data: ListRenderItemInfo<ArrayElement<ProductListingProps['products']>>) => {
-    const {
-      id,
-      title,
-      description,
-      price,
-      multiplePrice,
-      image
-    } = data.item;
+    const {id, title, description, price, multiplePrice, image} = data.item;
     
-    return (
-      <Pressable style={styles.productCard} onPress={() => {
-        openProduct(id);
-        navigation.navigate('CATALOG', {screen: 'PRODUCT_INFO'});
-      }}>
-        <Image style={styles.productCardImage} source={image}/>
-        <View style={styles.productCardInfo}>
-          <Text style={styles.productCardTitle}>{title}</Text>
-          <Text style={styles.productCardDescription}>{description}</Text>
-          <Badge type={'shaped'}>
-            {multiplePrice ? 'от ' + price + ' ₽' : price + ' ₽'}
-          </Badge>
-        </View>
-      </Pressable>
-    );
+    return (<Pressable style={styles.productCard} onPress={() => {
+      openProduct(id);
+      navigation.navigate('CATALOG', {screen: 'PRODUCT_INFO'});
+    }}>
+      <Image style={styles.productCardImage} source={image}/>
+      <View style={styles.productCardInfo}>
+        <Text style={styles.productCardTitle}>{title}</Text>
+        <Text style={styles.productCardDescription}>{description}</Text>
+        <Badge type={'SHAPED'}>
+          {multiplePrice ? 'от ' + price + ' ₽' : price + ' ₽'}
+        </Badge>
+      </View>
+    </Pressable>);
   };
   
-  return (
-    <FlatList
-      ref={flatListRef}
-      contentContainerStyle={styles.productListing}
-      data={products}
-      renderItem={renderItem}
-      ListHeaderComponent={() => (<Text style={styles.productListingTitle}>{title}</Text>)}
-      decelerationRate={'fast'}
-      keyExtractor={(_, index) => index.toString()}
-    />
-  );
+  return (<FlatList
+    ref={flatListRef}
+    contentContainerStyle={styles.productListing}
+    data={products}
+    renderItem={renderItem}
+    ListHeaderComponent={() => (<Text style={styles.productListingTitle}>{title}</Text>)}
+    decelerationRate={'fast'}
+    keyExtractor={(_, index) => index.toString()}
+  />);
 };
 
 export {ProductListing};

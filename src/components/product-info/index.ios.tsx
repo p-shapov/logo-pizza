@@ -14,50 +14,45 @@ import {Button} from 'shared/button/index';
 import IcoArrowBack from 'images/ico_arrow_back.svg';
 
 const ProductInfo = (props: ProductInfoProps) => {
-  const {
-    id,
-    title,
-    description,
-    price,
-    image,
-    addToCart
-  } = props;
+  const {id, title, description, price, image, addToCart} = props;
   
   const navigation = useNavigation();
   
   const [variant, setVariant] = useState<number>(0);
   
-  return (
-    <ScrollView contentContainerStyle={styles.productInfo}>
-      <Pressable style={styles.productInfoClose} onPress={() => navigation.goBack()}>
-        <IcoArrowBack color={COLORS.FOREGROUND_PRIMARY}/>
-      </Pressable>
-      <View>
-        <View style={styles.productInfoImageWrapper}>
-          <Image style={styles.productInfoImage} source={image}/>
-        </View>
-        <View style={styles.productInfoHeader}>
-          <Text style={styles.productInfoTitle}>
-            {title}
-          </Text>
-          {Array.isArray(price) && (
-            <Text style={styles.productInfoSizeValue}>{price[variant].size.value}</Text>
-          )}
-        </View>
-        <Text style={styles.productInfoDescription}>{description}</Text>
+  const goBack = () => navigation.goBack();
+  
+  return (<ScrollView contentContainerStyle={styles.productInfo}>
+    <Pressable style={styles.productInfoClose} onPress={goBack}>
+      <IcoArrowBack color={COLORS.FOREGROUND_PRIMARY}/>
+    </Pressable>
+    <View>
+      <View style={styles.productInfoImageWrapper}>
+        <Image style={styles.productInfoImage} source={image}/>
+      </View>
+      <View style={styles.productInfoHeader}>
+        <Text style={styles.productInfoTitle}>
+          {title}
+        </Text>
         {Array.isArray(price) && (
-          <Select
-            items={price.map((item, index) => ({
-              title: item.size.title,
-              isActive: variant === index
-            }))}
-            setActive={setVariant}
-          />
+          <Text style={styles.productInfoSizeValue}>{price[variant].size.value}</Text>
         )}
       </View>
+      <Text style={styles.productInfoDescription}>{description}</Text>
+      {Array.isArray(price) && (
+        <Select
+          items={price.map((item, index) => ({
+            title: item.size.title,
+            isActive: variant === index
+          }))}
+          setActive={setVariant}
+        />
+      )}
+    </View>
+    <View style={styles.productInfoBuy}>
       <Button
-        type={'primary'}
-        view={'filled'}
+        type={'PRIMARY'}
+        view={'FILLED'}
         onPress={() => addToCart({
           id,
           title,
@@ -69,8 +64,8 @@ const ProductInfo = (props: ProductInfoProps) => {
       >
         Добавить в корзину за {Array.isArray(price) ? price[variant].value : price} ₽
       </Button>
-    </ScrollView>
-  );
+    </View>
+  </ScrollView>);
 };
 
 export {ProductInfo};

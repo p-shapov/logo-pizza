@@ -7,8 +7,8 @@ import styles from './styles';
 /* globals */
 import {COLORS} from 'globals/constants';
 /* shared */
-import {TextField} from 'shared/text-field/index.ios';
-import {Button} from 'shared/button/index.ios';
+import {TextField} from 'shared/text-field/index';
+import {Button} from 'shared/button/index';
 /* icons */
 import IcoCross from 'images/ico_cross.svg';
 import IcoArrowForward from 'images/ico_arrow_forward.svg';
@@ -20,11 +20,11 @@ const PromoCodeField = ({applied, submitPromoCode}: PromoCodeFieldProps) => {
   const onChange = (val: string) => {
     setError(false);
     setCode(val);
-  }
+  };
   
   const onFocus = () => {
     setError(false);
-  }
+  };
   
   const submitOrClear = () => {
     if (applied) {
@@ -35,7 +35,7 @@ const PromoCodeField = ({applied, submitPromoCode}: PromoCodeFieldProps) => {
       submitPromoCode(code);
       setError(!applied);
     }
-  }
+  };
   
   const errorMessage = () => (<View style={styles.promoCodeFieldErrorWrapper}>
     <View style={styles.promoCodeFieldError}>
@@ -46,27 +46,24 @@ const PromoCodeField = ({applied, submitPromoCode}: PromoCodeFieldProps) => {
     </View>
   </View>);
   
-  return (
-    <>
-      <TextField
-        type={'TEXT'}
-        value={applied ? 'Промокод применен' : code}
-        placeholder={'Введите промокод'}
-        editable={!applied}
-        isActive={applied}
-        button={<Button
-          type={applied ? 'secondary' : 'primary'}
-          view={'filled'}
-          Icon={applied ? IcoCross : IcoArrowForward}
-          onPress={submitOrClear}
-        />}
-        onFocus={onFocus}
-        onChange={onChange}
-      />
-      {!applied && error && errorMessage()}
-    </>
-  
-  );
+  return (<>
+    <TextField
+      type={'TEXT'}
+      value={applied ? 'Промокод применен' : code}
+      placeholder={'Введите промокод'}
+      editable={!applied}
+      isActive={applied}
+      button={<Button
+        type={applied ? 'SECONDARY' : 'PRIMARY'}
+        view={'FILLED'}
+        Icon={applied ? IcoCross : IcoArrowForward}
+        onPress={submitOrClear}
+      />}
+      onFocus={onFocus}
+      onChange={onChange}
+    />
+    {!applied && error && errorMessage()}
+  </>);
 };
 
 export {PromoCodeField};

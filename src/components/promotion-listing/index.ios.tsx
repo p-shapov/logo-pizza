@@ -6,19 +6,12 @@ import PromotionListingProps from './interface';
 import styles from './styles';
 
 const PromotionListing = (props: PromotionListingProps) => {
-  const {
-    promotions,
-    openPromotion
-  } = props;
+  const {promotions, openPromotion} = props;
   
   const flatListRef = useRef<FlatList>(null);
   
   const renderItem = (data: ListRenderItemInfo<ArrayElement<PromotionListingProps['promotions']>>) => {
-    const {
-      id,
-      title,
-      image
-    } = data.item;
+    const {id, title, image} = data.item;
     
     const isLast = promotions.length - 1 === data.index;
     
@@ -30,27 +23,23 @@ const PromotionListing = (props: PromotionListingProps) => {
       openPromotion(id);
     };
     
-    return (
-      <Pressable style={isLast ? styles.promotionCardLast : styles.promotionCard} onPress={onPress}>
-        <View>
-          <Image style={styles.promotionCardImage} source={image}/>
-          <Text style={styles.promotionCardTitle}>{title}</Text>
-        </View>
-      </Pressable>
-    );
+    return (<Pressable style={isLast ? styles.promotionCardLast : styles.promotionCard} onPress={onPress}>
+      <View>
+        <Image style={styles.promotionCardImage} source={image}/>
+        <Text style={styles.promotionCardTitle}>{title}</Text>
+      </View>
+    </Pressable>);
   };
   
-  return (
-    <FlatList
-      ref={flatListRef}
-      contentContainerStyle={styles.promotionListing}
-      data={promotions}
-      renderItem={renderItem}
-      keyExtractor={((_, index) => index.toString())}
-      showsHorizontalScrollIndicator={false}
-      horizontal={true}
-    />
-  );
+  return (<FlatList
+    ref={flatListRef}
+    contentContainerStyle={styles.promotionListing}
+    data={promotions}
+    renderItem={renderItem}
+    keyExtractor={((_, index) => index.toString())}
+    showsHorizontalScrollIndicator={false}
+    horizontal={true}
+  />);
 };
 
 export {PromotionListing};

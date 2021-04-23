@@ -1,12 +1,14 @@
 /* libraries and plugins */
 import {StyleSheet} from 'react-native';
 /* globals */
-import {padding} from 'globals/helpers';
+import {margin, padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
   basket: {
-    flex: 1
+    position: 'relative',
+    flex: 1,
+    backgroundColor: COLORS.BACKGROUND_PRIMARY
   },
   basketHeader: {
     ...padding(30, 16)
@@ -22,11 +24,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.DELIMITER
   },
   basketPromoField: {
-    marginTop: 24,
-    ...padding(0, 16)
+    ...padding(24, 16, 0)
   },
   basketProducts: {
-    ...padding(24, 16)
+    ...padding(24, 16, 76)
   },
   basketProductCard: {
     flexDirection: 'row',
@@ -80,8 +81,10 @@ const styles = StyleSheet.create({
   },
   basketProductCardFooter: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: 22
+    alignSelf: 'flex-end'
+  },
+  basketProductCardFooterGap: {
+    width: 24
   },
   basketProductCardDelete: {
     width: 44
@@ -103,9 +106,21 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     color: COLORS.FOREGROUND_PRIMARY
   },
-  basketFooter: {
-    justifyContent: 'flex-end',
-    ...padding(0, 16, 16)
+  basketCheckout: {
+    position: 'absolute',
+    bottom: 16,
+    left: 0,
+    right: 0,
+    ...margin(0, 16),
+    borderStyle: 'solid',
+    borderRadius: 8,
+    shadowColor: COLORS.SHADOW_ACTIVE,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowRadius: 16,
+    elevation: 3
   }
 });
 

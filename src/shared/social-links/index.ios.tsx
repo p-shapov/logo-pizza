@@ -15,37 +15,33 @@ import IcoSocialYt from 'images/ico_social_yt.svg';
 
 const SocialIcon = ({type, color}: { type: ArrayElement<SocialLinksProps['links']> ['type'], color: string }) => {
   switch (type) {
-    case 'fb':
+    case 'FB':
       return (<IcoSocialFb color={color}/>);
-    case 'vk':
+    case 'VK':
       return (<IcoSocialVk color={color}/>);
-    case 'ok':
+    case 'OK':
       return (<IcoSocialOk color={color}/>);
-    case 'inst':
+    case 'INST':
       return (<IcoSocialInst color={color}/>);
-    case 'yt':
+    case 'YT':
       return (<IcoSocialYt color={color}/>);
   }
 };
 
 const SocialLinks = ({links}: SocialLinksProps) => {
-  const onPress = (href: string) => {
-    Linking.openURL(href);
-  }
+  const onPress = (href: string) => Linking.openURL(href);
   
-  return (
-    <View style={styles.socialLinks}>
-      {links.map((item, index) => (
-        <Pressable
-          key={index}
-          style={index === links.length - 1 ? styles.socialLinksItemLast : styles.socialLinksItem}
-          onPress={() => onPress(`https://${item.href}`)}
-        >
-          <SocialIcon type={item.type} color={COLORS.FOREGROUND_PRIMARY_SUBTLE}/>
-        </Pressable>
-      ))}
-    </View>
-  );
+  return (<View style={styles.socialLinks}>
+    {links.map((item, index) => (
+      <Pressable
+        key={index}
+        style={index === links.length - 1 ? styles.socialLinksItemLast : styles.socialLinksItem}
+        onPress={() => onPress(`https://${item.href}`)}
+      >
+        <SocialIcon type={item.type} color={COLORS.FOREGROUND_PRIMARY_SUBTLE}/>
+      </Pressable>
+    ))}
+  </View>);
 };
 
 export {SocialLinks};

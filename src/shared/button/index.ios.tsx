@@ -8,29 +8,23 @@ import styles from './styles';
 import {COLORS} from 'globals/constants';
 
 const Button = (props: IButton) => {
-  const {
-    children,
-    type,
-    view,
-    Icon,
-    onPress
-  } = props;
+  const {children, type, view, Icon, onPress} = props;
   
   const getContainerStyles = () => {
     switch (type) {
-      case 'primary':
+      case 'PRIMARY':
         switch (view) {
-          case 'filled':
+          case 'FILLED':
             return styles.buttonPrimaryFilled;
-          case 'shaped':
+          case 'SHAPED':
             return styles.buttonPrimaryShaped;
         }
         break;
-      case 'secondary':
+      case 'SECONDARY':
         switch (view) {
-          case 'filled':
+          case 'FILLED':
             return styles.buttonSecondaryFilled;
-          case 'shaped':
+          case 'SHAPED':
             return styles.buttonSecondaryShaped;
         }
         break;
@@ -39,19 +33,19 @@ const Button = (props: IButton) => {
   
   const getTextStyles = () => {
     switch (type) {
-      case 'primary':
+      case 'PRIMARY':
         switch (view) {
-          case 'filled':
+          case 'FILLED':
             return styles.buttonPrimaryFilledText;
-          case 'shaped':
+          case 'SHAPED':
             return styles.buttonPrimaryShapedText;
         }
         break;
-      case 'secondary':
+      case 'SECONDARY':
         switch (view) {
-          case 'filled':
+          case 'FILLED':
             return styles.buttonSecondaryFilledText;
-          case 'shaped':
+          case 'SHAPED':
             return styles.buttonSecondaryShapedText;
         }
         break;
@@ -60,31 +54,29 @@ const Button = (props: IButton) => {
   
   const getIconColor = () => {
     switch (type) {
-      case 'primary':
+      case 'PRIMARY':
         switch (view) {
-          case 'filled':
+          case 'FILLED':
             return COLORS.FOREGROUND_SECONDARY;
-          case 'shaped':
+          case 'SHAPED':
             return COLORS.FOREGROUND_PRIMARY_ACTIVE;
         }
         break;
-      case 'secondary':
+      case 'SECONDARY':
         switch (view) {
-          case 'filled':
+          case 'FILLED':
             return COLORS.FOREGROUND_SECONDARY;
-          case 'shaped':
+          case 'SHAPED':
             return COLORS.FOREGROUND_PRIMARY;
         }
         break;
     }
   };
   
-  return (
-    <Pressable style={getContainerStyles()} onPress={onPress}>
-      {Icon !== undefined && (<Icon color={getIconColor()}/>)}
-      {children !== undefined && (<Text style={getTextStyles()}>{children}</Text>)}
-    </Pressable>
-  );
+  return (<Pressable style={getContainerStyles()} onPress={onPress}>
+    {Icon !== undefined && (<Icon color={getIconColor()}/>)}
+    {children !== undefined && (<Text style={getTextStyles()}>{children}</Text>)}
+  </Pressable>);
 };
 
 export {Button};

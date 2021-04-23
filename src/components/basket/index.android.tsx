@@ -1,6 +1,6 @@
 /* libraries and plugins */
-import React from 'react';
-import {FlatList, Image, ListRenderItemInfo, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, Image, Keyboard, ListRenderItemInfo, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 /* locals */
 import BasketProps from './interface';
@@ -16,13 +16,12 @@ import IcoBasketTrash from 'images/ico_basket_trash.svg';
 import ImgBasketIsEmpty from 'images/img_basket_is_empty.png';
 
 const Basket = (props: BasketProps) => {
-  const {
-    products,
-    discount,
-    addPromoCode,
-    setProductCount,
-    deleteProduct
-  } = props;
+  const {products, discount, addPromoCode, setProductCount, deleteProduct} = props;
+  
+  const [keyboardShown, setKeyboardShown] = useState<boolean>(false);
+  
+  Keyboard.addListener('keyboardDidShow', () => setKeyboardShown(true));
+  Keyboard.addListener('keyboardDidHide', () => setKeyboardShown(false));
   
   const navigation = useNavigation();
   
@@ -31,43 +30,37 @@ const Basket = (props: BasketProps) => {
   const discountApplied = discount !== undefined;
   
   const applyDiscount = (price: number) => discount !== undefined ? Math.floor(price * (1 - 0.01 * discount)) : price;
+  const goToMenu = () => navigation.navigate('CATALOG', {screen: 'MAIN'});
+  const goToCheckout = () => navigation.navigate('BASKET', {screen: 'DELIVERY'});
   
   const renderItem = ({item}: ListRenderItemInfo<ArrayElement<BasketProps['products']>>) => {
-    const {
-      id,
-      title,
-      price,
-      count,
-      image,
-      size
-    } = item;
+    const {id, title, price, count, image, size} = item;
     
-    return (
-      <View style={styles.basketProductCard}>
-        <Image style={styles.basketProductCardImage} source={image}/>
-        <View style={styles.basketProductCardInfo}>
-          <View style={styles.basketProductCardHeader}>
-            <View>
-              <Text style={styles.basketProductCardTitle}>{title}</Text>
-              {size && (<Text style={styles.basketProductCardSize}>{size}</Text>)}
-            </View>
-            <View>
-              <Text style={discount
-                ? styles.basketProductCardPriceActive
-                : styles.basketProductCardPrice}
-              >{applyDiscount(price)} ₽</Text>
-              {discountApplied && (
-                <Text style={styles.basketProductCardOldPrice}>{price} ₽</Text>
-              )}
-            </View>
+    return (<View style={styles.basketProductCard}>
+      <Image style={styles.basketProductCardImage} source={image}/>
+      <View style={styles.basketProductCardInfo}>
+        <View style={styles.basketProductCardHeader}>
+          <View>
+            <Text style={styles.basketProductCardTitle}>{title}</Text>
+            {size && (<Text style={styles.basketProductCardSize}>{size}</Text>)}
           </View>
-          <View style={styles.basketProductCardFooter}>
-            <Button type={'secondary'} view={'shaped'} onPress={() => deleteProduct(id, size)} Icon={IcoBasketTrash}/>
-            <Counter count={count} maxCount={10} onChange={(count) => setProductCount(id, count, size)}/>
+          <View>
+            <Text style={discount
+              ? styles.basketProductCardPriceActive
+              : styles.basketProductCardPrice}
+            >{applyDiscount(price)} ₽</Text>
+            {discountApplied && (
+              <Text style={styles.basketProductCardOldPrice}>{price} ₽</Text>
+            )}
           </View>
         </View>
+        <View style={styles.basketProductCardFooter}>
+          <Button type={'SECONDARY'} view={'SHAPED'} onPress={() => deleteProduct(id, size)} Icon={IcoBasketTrash}/>
+          <View style={styles.basketProductCardFooterGap}/>
+          <Counter count={count} maxCount={10} onChange={(count) => setProductCount(id, count, size)}/>
+        </View>
       </View>
-    );
+    </View>);
   };
   
   const basketContent = () => (<>
@@ -85,7 +78,7 @@ const Basket = (props: BasketProps) => {
   const basketEmpty = () => (<View style={styles.basketEmpty}>
     <Image style={styles.basketEmptyBackground} source={ImgBasketIsEmpty}/>
     <Text style={styles.basketEmptyText}>Корзина пуста</Text>
-  </View>)
+  </View>);
   
   return (
     <View style={styles.basket}>
@@ -96,17 +89,15 @@ const Basket = (props: BasketProps) => {
       
       {!isEmpty ? basketContent() : basketEmpty()}
       
-      <View style={styles.basketFooter}>
+      {!keyboardShown && <View style={styles.basketCheckout}>
         <Button
-          type={'primary'}
-          view={'filled'}
-          onPress={() => isEmpty
-            ? navigation.navigate('CATALOG', {screen: 'MAIN'})
-            : console.log('submit')}
+          type={'PRIMARY'}
+          view={'FILLED'}
+          onPress={isEmpty ? goToMenu : goToCheckout}
         >
           {!isEmpty ? `Оформить заказ на ${applyDiscount(totalPrice)} ₽` : 'Вернуться в меню'}
         </Button>
-      </View>
+      </View>}
     </View>
   );
 };

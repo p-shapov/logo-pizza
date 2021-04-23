@@ -14,6 +14,7 @@ import {ProductInfoContainer} from 'containers/product-info';
 import {ContactsContainer} from 'containers/contacts';
 import {BasketContainer} from 'containers/basket';
 import {TabMediatorContainer} from 'containers/tab-mediator';
+import {DeliveryContainer} from 'containers/delivery';
 /* components */
 import {StatusBarBackground} from 'components/status-bar-background/index';
 import {WindowMediator} from 'components/window-mediator/index';
@@ -26,51 +27,58 @@ import IcoFooterBasket from 'images/ico_footer_basket.svg';
 const store = createStore(rootReducers);
 
 export default function App() {
-  return (
-    <Provider store={store}>
-      <StatusBar style={'inverted'}/>
-      <StatusBarBackground/>
-      <NavigationContainer>
-        <TabMediatorContainer screens={[
-          {
-            name: 'CATALOG',
-            Container: () => (
-              <WindowMediator
-                windows={[
-                  {
-                    name: 'MAIN',
-                    Container: CatalogMediatorContainer
-                  },
-                  {
-                    name: 'PRODUCT_INFO',
-                    Container: ProductInfoContainer
-                  }
-                ]}
-              />
-            ),
-            Icon: IcoFooterCatalog
-          },
-          {
-            name: 'CONTACTS',
-            Container: ContactsContainer,
-            Icon: IcoFooterContacts
-          },
-          {
-            name: 'PERSONAL_OFFICE',
-            Container: () => (
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>Personal office</Text>
-              </View>
-            ),
-            Icon: IcoFooterPersonalOffice
-          },
-          {
-            name: 'BASKET',
-            Container: BasketContainer,
-            Icon: IcoFooterBasket
-          }
-        ]}/>
-      </NavigationContainer>
-    </Provider>
-  );
+  return (<Provider store={store}>
+    <StatusBar style={'inverted'}/>
+    <StatusBarBackground/>
+    <NavigationContainer>
+      <TabMediatorContainer screens={[
+        {
+          name: 'CATALOG',
+          Container: () => (<WindowMediator
+            windows={[
+              {
+                name: 'MAIN',
+                Container: CatalogMediatorContainer
+              },
+              {
+                name: 'PRODUCT_INFO',
+                Container: ProductInfoContainer
+              }
+            ]}
+          />),
+          Icon: IcoFooterCatalog
+        },
+        {
+          name: 'CONTACTS',
+          Container: ContactsContainer,
+          Icon: IcoFooterContacts
+        },
+        {
+          name: 'PERSONAL_OFFICE',
+          Container: () => (<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text>Personal office</Text>
+          </View>),
+          Icon: IcoFooterPersonalOffice
+        },
+        {
+          name: 'BASKET',
+          Container: () => (<WindowMediator windows={[
+            {
+              name: 'MAIN',
+              Container: BasketContainer
+            },
+            {
+              name: 'DELIVERY',
+              Container: DeliveryContainer
+            },
+            {
+              name: 'PAYMENT',
+              Container: () => (<Text>Payment</Text>)
+            }
+          ]}/>),
+          Icon: IcoFooterBasket
+        }
+      ]}/>
+    </NavigationContainer>
+  </Provider>);
 }

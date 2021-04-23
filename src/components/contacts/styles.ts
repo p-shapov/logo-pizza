@@ -51,6 +51,16 @@ const styles = StyleSheet.create({
   contactsPoints: {
     marginBottom: 24
   },
+  contactsPointPicker: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    ...padding(16, 16)
+  },
+  contactsPointPickerButton: {
+    alignSelf: 'center',
+    width: 104,
+    justifyContent: 'center'
+  },
   contactsPhone: {
     marginBottom: 14,
     ...padding(0, 16)

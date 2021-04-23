@@ -52,6 +52,17 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 22,
     color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+  },
+  productInfoBuy: {
+    borderStyle: 'solid',
+    borderRadius: 8,
+    shadowColor: COLORS.SHADOW_ACTIVE,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowRadius: 16,
+    elevation: 3
   }
 });
 

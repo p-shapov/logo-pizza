@@ -14,7 +14,14 @@ const mapStateToProps = (state: State): ContactsProps => ({
   title: state.contacts.title,
   city: state.contacts.city,
   mapGeo: state.contacts.mapGeo,
-  points: state.contacts.points,
+  points: state.contacts.points.map((point) => ({
+    geo: point.geo,
+    data: {
+      street: point.street,
+      workTime: point.workTime,
+      metroStation: point.metroStation
+    }
+  })),
   phone: state.contacts.phone,
   email: state.contacts.email,
   socialLinks: state.contacts.socialLinks,

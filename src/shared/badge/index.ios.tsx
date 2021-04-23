@@ -5,35 +5,28 @@ import {Text, View} from 'react-native';
 import IBadge from './interface';
 import styles from './styles';
 
-const Badge = (props: IBadge) => {
-  const {
-    children,
-    type
-  } = props;
-  
+const Badge = ({children, type}: IBadge) => {
   const getContainerStyles = () => {
     switch (type) {
-      case 'filled':
+      case 'FILLED':
         return styles.badgeFilled;
-      case 'shaped':
+      case 'SHAPED':
         return styles.badgeShaped;
     }
   };
   
   const getTextStyles = () => {
     switch (type) {
-      case 'filled':
+      case 'FILLED':
         return styles.badgeFilledText;
-      case 'shaped':
+      case 'SHAPED':
         return styles.badgeShapedText;
     }
   };
   
-  return (
-    <View style={getContainerStyles()}>
-      <Text style={getTextStyles()}>{children}</Text>
-    </View>
-  );
+  return (<View style={getContainerStyles()}>
+    <Text style={getTextStyles()}>{children}</Text>
+  </View>);
 };
 
 export {Badge};
