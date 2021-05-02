@@ -7,7 +7,7 @@ import styles from './styles';
 
 const PointInfo = (props: PointInfoProps) => {
   const {street, workTime, metroStation} = props;
-  
+
   return (<View>
     {metroStation !== undefined && (<View style={styles.pointInfoMetroStation}>
       <View style={styles.pointInfoMetroStationIcon}>

@@ -1,4 +1,4 @@
-interface Point {
+type Point = {
   id: number,
   checked: boolean,
   data: {
@@ -11,7 +11,7 @@ interface Point {
   }
 }
 
-interface Address {
+type Address = {
   street: string,
   floor: string,
   flat: string

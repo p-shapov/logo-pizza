@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
     borderRadius: 8
   },
+  buttonDisabledPrimaryFilled: {
+    alignItems: 'center',
+    ...padding(15, 16),
+    backgroundColor: COLORS.FOREGROUND_SECONDARY_ACTIVE,
+    borderRadius: 8
+  },
   buttonPrimaryShaped: {
     alignItems: 'center',
     ...padding(14, 15),
@@ -18,6 +24,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: COLORS.FOREGROUND_PRIMARY_ACTIVE,
+    borderRadius: 8
+  },
+  buttonDisabledPrimaryShaped: {
+    alignItems: 'center',
+    ...padding(14, 15),
+    backgroundColor: COLORS.FOREGROUND_SECONDARY,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: COLORS.FOREGROUND_SECONDARY_ACTIVE,
     borderRadius: 8
   },
   buttonSecondaryFilled: {

@@ -1,5 +1,5 @@
 /* libraries and plugins */
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 /* globals */
 import {padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
@@ -28,14 +28,17 @@ const styles = StyleSheet.create({
     ...padding(4, 13, 4, 4),
     backgroundColor: COLORS.BACKGROUND_PRIMARY,
     borderRadius: 8,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.16,
-    shadowRadius: 6,
-    shadowColor: COLORS.SHADOW,
-    elevation: 3
+    ...(Platform.OS === 'ios' ? {
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+      shadowOpacity: 0.16,
+      shadowRadius: 6,
+      shadowColor: COLORS.SHADOW
+    } : {
+      elevation: 3
+    })
   },
   selectButton: {
     flexDirection: 'row',
@@ -51,6 +54,7 @@ const styles = StyleSheet.create({
   selectItemText: {
     ...padding(9, 16),
     textAlign: 'center',
+    fontFamily: 'Rubik',
     fontSize: 13,
     lineHeight: 14,
     letterSpacing: 0.56,

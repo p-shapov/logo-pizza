@@ -3,7 +3,7 @@ import React from 'react';
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 /* globals */
-import {State} from 'globals/interface';
+import State from 'globals/interface';
 /* components */
 import ContactsProps from 'components/contacts/interface';
 import {Contacts} from 'components/contacts/index';
@@ -28,7 +28,7 @@ const mapStateToProps = (state: State): ContactsProps => ({
   openPoint: state.contacts.setMapGeo
 });
 
-const dispatchStateToProps = (dispatch: Dispatch): {
+const mapDispatchToProps = (dispatch: Dispatch): {
   openPoint: ContactsProps['openPoint']
 } => ({
   openPoint(geo) {
@@ -38,9 +38,7 @@ const dispatchStateToProps = (dispatch: Dispatch): {
 
 const ContactsContainer = connect(
   mapStateToProps,
-  dispatchStateToProps
-)((props: ContactsProps) => (
-  <Contacts {...props}/>
-));
+  mapDispatchToProps
+)((props: ContactsProps) => (<Contacts {...props}/>));
 
 export {ContactsContainer};

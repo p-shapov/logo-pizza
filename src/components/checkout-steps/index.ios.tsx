@@ -13,12 +13,25 @@ import IcoArrowBack from 'images/ico_arrow_back.svg';
 
 const CheckoutSteps = ({active, children}: CheckoutStepsProps) => {
   const navigation = useNavigation();
-  
-  const goBack = () => navigation.goBack();
-  
+
+  const goToBasket = () => navigation.navigate('ROOT', {screen: 'BASKET', params: {screen: 'MAIN'}});
+
+  const goToDelivery = () => navigation.navigate('ROOT', {screen: 'BASKET', params: {screen: 'MAIN'}});
+
+  const handleGoBack = () => {
+    switch (active) {
+      case 'DELIVERY': {
+        return goToBasket();
+      }
+      case 'PAYMENT': {
+        return goToDelivery();
+      }
+    }
+  };
+
   return (<View style={styles.checkoutSteps}>
     <View style={styles.checkoutStepsHeading}>
-      <Pressable style={styles.checkoutStepsGoBack} onPress={goBack}>
+      <Pressable style={styles.checkoutStepsGoBack} onPress={handleGoBack}>
         <IcoArrowBack color={COLORS.FOREGROUND_PRIMARY}/>
       </Pressable>
       <View style={styles.checkoutStepsIndicators}>

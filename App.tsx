@@ -15,6 +15,9 @@ import {ContactsContainer} from 'containers/contacts';
 import {BasketContainer} from 'containers/basket';
 import {TabMediatorContainer} from 'containers/tab-mediator';
 import {DeliveryContainer} from 'containers/delivery';
+import {PaymentContainer} from 'containers/payment';
+import {ConfirmationContainer} from 'containers/confirmation';
+import {CatalogNotificationContainer} from 'containers/catalog-notification';
 /* components */
 import {StatusBarBackground} from 'components/status-bar-background/index';
 import {WindowMediator} from 'components/window-mediator/index';
@@ -27,58 +30,93 @@ import IcoFooterBasket from 'images/ico_footer_basket.svg';
 const store = createStore(rootReducers);
 
 export default function App() {
+  const PersonalOfficePlaceholder = () => (<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <Text>Personal office</Text>
+  </View>);
+
+  const CatalogMediator = () => (<>
+    <CatalogNotificationContainer/>
+    <WindowMediator windows={[
+      {
+        name: 'MAIN',
+        type: 'CARD',
+        Container: CatalogMediatorContainer
+      },
+      {
+        name: 'PRODUCT_INFO',
+        type: 'CARD',
+        Container: ProductInfoContainer
+      }
+    ]}
+    />
+  </>);
+
+  const BasketMediator = () => (<WindowMediator windows={[
+    {
+      name: 'MAIN',
+      type: 'CARD',
+      Container: BasketContainer
+    },
+    {
+      name: 'DELIVERY',
+      type: 'CARD',
+      Container: DeliveryContainer
+    },
+    {
+      name: 'PAYMENT',
+      type: 'CARD',
+      Container: PaymentContainer
+    }
+  ]}/>);
+
+  const ModalMediator = () => (<WindowMediator windows={[
+    {
+      name: 'CONFIRMATION',
+      type: 'MODAL',
+      Container: ConfirmationContainer
+    }
+  ]}/>);
+
+  const RootMediator = () => (<TabMediatorContainer screens={[
+    {
+      name: 'CATALOG',
+      Container: CatalogMediator,
+      Icon: IcoFooterCatalog
+    },
+    {
+      name: 'CONTACTS',
+      Container: ContactsContainer,
+      Icon: IcoFooterContacts
+    },
+    {
+      name: 'PERSONAL_OFFICE',
+      Container: PersonalOfficePlaceholder,
+      Icon: IcoFooterPersonalOffice
+    },
+    {
+      name: 'BASKET',
+      Container: BasketMediator,
+      Icon: IcoFooterBasket
+    }
+  ]}/>);
+
   return (<Provider store={store}>
     <StatusBar style={'inverted'}/>
     <StatusBarBackground/>
     <NavigationContainer>
-      <TabMediatorContainer screens={[
+      <WindowMediator windows={[
         {
-          name: 'CATALOG',
-          Container: () => (<WindowMediator
-            windows={[
-              {
-                name: 'MAIN',
-                Container: CatalogMediatorContainer
-              },
-              {
-                name: 'PRODUCT_INFO',
-                Container: ProductInfoContainer
-              }
-            ]}
-          />),
-          Icon: IcoFooterCatalog
+          name: 'ROOT',
+          type: 'CARD',
+          Container: RootMediator
         },
         {
-          name: 'CONTACTS',
-          Container: ContactsContainer,
-          Icon: IcoFooterContacts
-        },
-        {
-          name: 'PERSONAL_OFFICE',
-          Container: () => (<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Personal office</Text>
-          </View>),
-          Icon: IcoFooterPersonalOffice
-        },
-        {
-          name: 'BASKET',
-          Container: () => (<WindowMediator windows={[
-            {
-              name: 'MAIN',
-              Container: BasketContainer
-            },
-            {
-              name: 'DELIVERY',
-              Container: DeliveryContainer
-            },
-            {
-              name: 'PAYMENT',
-              Container: () => (<Text>Payment</Text>)
-            }
-          ]}/>),
-          Icon: IcoFooterBasket
+          name: 'MODALS',
+          type: 'MODAL',
+          Container: ModalMediator
         }
       ]}/>
+
     </NavigationContainer>
   </Provider>);
 }

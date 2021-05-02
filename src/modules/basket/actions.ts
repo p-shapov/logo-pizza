@@ -1,5 +1,5 @@
 /* locals */
-import {BasketModule} from './namespace';
+import BasketModule from './namespace';
 /* variables */
 import promoCodes from 'variables/promocodes.variable';
 
@@ -7,7 +7,7 @@ export const addPromoCode = (code: string): BasketModule.AddPromoCode => {
   //TODO: make request
   const discount = promoCodes.reduce((acc, promo) => promo.code === code
     ? promo.discount : acc, undefined as BasketModule.State['discount']);
-  
+
   return ({
     type: 'ADD_PROMO_CODE',
     discount
@@ -45,4 +45,27 @@ export const setDeliveryAddress = (address: BasketModule.State['deliveryAddress'
 export const setPickupPoint = (id: number): BasketModule.SetPickupPoint => ({
   type: 'SET_PICKUP_POINT',
   id
+});
+
+export const setPaymentMethod = (method: BasketModule.State['paymentMethod']): BasketModule.SetPaymentMethod => ({
+  type: 'SET_PAYMENT_METHOD',
+  method
+});
+
+export const setWishesForOrder = (wishes: string): BasketModule.SetWishesForOrder => ({
+  type: 'SET_WISHES_FOR_ORDER',
+  wishes
+});
+
+export const setContactInfo = (info: BasketModule.ContactInfo): BasketModule.SetContactInfo => ({
+  type: 'SET_CONTACT_INFO',
+  info
+});
+
+export const checkout = (): BasketModule.Checkout => ({
+  type: 'CHECKOUT'
+});
+
+export const confirm = (): BasketModule.Confirm => ({
+  type: 'CONFIRM'
 });

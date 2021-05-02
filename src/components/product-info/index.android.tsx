@@ -15,13 +15,13 @@ import IcoArrowBack from 'images/ico_arrow_back.svg';
 
 const ProductInfo = (props: ProductInfoProps) => {
   const {id, title, description, price, image, addToCart} = props;
-  
+
   const navigation = useNavigation();
-  
+
   const [variant, setVariant] = useState<number>(0);
-  
+
   const goBack = () => navigation.goBack();
-  
+
   return (<ScrollView contentContainerStyle={styles.productInfo}>
     <Pressable style={styles.productInfoClose} onPress={goBack}>
       <IcoArrowBack color={COLORS.FOREGROUND_PRIMARY}/>
@@ -59,7 +59,10 @@ const ProductInfo = (props: ProductInfoProps) => {
           image,
           count: 1,
           price: Array.isArray(price) ? price[variant].value : price,
-          size: Array.isArray(price) ? `${price[variant].size.title} ${price[variant].size.value}` : undefined
+          size: Array.isArray(price) ? {
+            title: price[variant].size.title,
+            value: price[variant].size.value
+          } : undefined
         })}
       >
         Добавить в корзину за {Array.isArray(price) ? price[variant].value : price} ₽

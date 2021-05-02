@@ -1,8 +1,8 @@
 /* libraries and plugins */
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {padding, margin} from 'globals/helpers';
+import {margin, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   contacts: {
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.DELIMITER
   },
   contactsTitle: {
+    fontFamily: 'Rubik',
     fontSize: 16,
     lineHeight: 19,
     letterSpacing: .5,
@@ -39,10 +40,13 @@ const styles = StyleSheet.create({
   contactsMapWrapper: {
     ...margin(0, 16, 20),
     borderRadius: 8,
-    shadowOpacity: 0.16,
-    shadowRadius: 6,
-    shadowColor: COLORS.SHADOW,
-    elevation: 1,
+    ...(Platform.OS === 'ios' ? {
+      shadowOpacity: 0.16,
+      shadowRadius: 6,
+      shadowColor: COLORS.SHADOW
+    } : {
+      elevation: 1
+    }),
     overflow: 'hidden'
   },
   contactsMap: {

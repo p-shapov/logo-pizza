@@ -1,5 +1,5 @@
 /* locals */
-import {ContactsModule} from './namespace';
+import ContactsModule from './namespace';
 /* variables */
 import contactsVariable from 'variables/contacts.variable';
 import pointsVariable from 'variables/points.variable';

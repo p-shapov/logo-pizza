@@ -2,22 +2,22 @@
 import React from 'react';
 import {Pressable, Text} from 'react-native';
 /* locals */
-import IButton from './interface';
+import ButtonProps from './interface';
 import styles from './styles';
 /* globals */
 import {COLORS} from 'globals/constants';
 
-const Button = (props: IButton) => {
-  const {children, type, view, Icon, onPress} = props;
-  
+const Button = (props: ButtonProps) => {
+  const {children, type, view, Icon, disabled, onPress} = props;
+
   const getContainerStyles = () => {
     switch (type) {
       case 'PRIMARY':
         switch (view) {
           case 'FILLED':
-            return styles.buttonPrimaryFilled;
+            return disabled ? styles.buttonDisabledPrimaryFilled : styles.buttonPrimaryFilled;
           case 'SHAPED':
-            return styles.buttonPrimaryShaped;
+            return disabled ? styles.buttonDisabledPrimaryShaped : styles.buttonPrimaryShaped;
         }
         break;
       case 'SECONDARY':
@@ -30,7 +30,7 @@ const Button = (props: IButton) => {
         break;
     }
   };
-  
+
   const getTextStyles = () => {
     switch (type) {
       case 'PRIMARY':
@@ -51,7 +51,7 @@ const Button = (props: IButton) => {
         break;
     }
   };
-  
+
   const getIconColor = () => {
     switch (type) {
       case 'PRIMARY':
@@ -72,7 +72,7 @@ const Button = (props: IButton) => {
         break;
     }
   };
-  
+
   return (<Pressable style={getContainerStyles()} onPress={onPress}>
     {Icon !== undefined && (<Icon color={getIconColor()}/>)}
     {children !== undefined && (<Text style={getTextStyles()}>{children}</Text>)}

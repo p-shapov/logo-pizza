@@ -20,7 +20,7 @@ import IcoContactsArrowNavigation from 'images/ico_contacts_arrow_navigation.svg
 
 const Contacts = (props: ContactsProps) => {
   const {title, city, mapGeo, points, phone, email, socialLinks, openPoint} = props;
-  
+
   return (<ScrollView contentContainerStyle={styles.contacts}>
     <View style={styles.contactsHeader}>
       <Text style={styles.contactsTitle}>{title}</Text>

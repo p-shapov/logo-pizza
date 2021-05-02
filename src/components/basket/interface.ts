@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {ImageSourcePropType} from 'react-native';
 
-interface Product {
+type Product = {
   id: number,
   title: string,
   price: number,

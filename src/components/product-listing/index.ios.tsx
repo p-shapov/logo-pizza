@@ -10,20 +10,24 @@ import {Badge} from 'shared/badge/index';
 
 const ProductListing = (props: ProductListingProps) => {
   const {title, products, openProduct} = props;
-  
+
   const flatListRef = useRef<FlatList>(null);
-  
+
   const navigation = useNavigation();
-  
+
   useScrollToTop(flatListRef);
-  
+
+  const goToProductInfo = () => navigation.navigate('ROOT', {screen: 'CATALOG', params: {screen: 'PRODUCT_INFO'}});
+
   const renderItem = (data: ListRenderItemInfo<ArrayElement<ProductListingProps['products']>>) => {
     const {id, title, description, price, multiplePrice, image} = data.item;
-    
-    return (<Pressable style={styles.productCard} onPress={() => {
+
+    const openProductAndGoToProductInfo = () => {
       openProduct(id);
-      navigation.navigate('CATALOG', {screen: 'PRODUCT_INFO'});
-    }}>
+      goToProductInfo();
+    };
+
+    return (<Pressable style={styles.productCard} onPress={openProductAndGoToProductInfo}>
       <Image style={styles.productCardImage} source={image}/>
       <View style={styles.productCardInfo}>
         <Text style={styles.productCardTitle}>{title}</Text>
@@ -34,7 +38,7 @@ const ProductListing = (props: ProductListingProps) => {
       </View>
     </Pressable>);
   };
-  
+
   return (<FlatList
     ref={flatListRef}
     contentContainerStyle={styles.productListing}

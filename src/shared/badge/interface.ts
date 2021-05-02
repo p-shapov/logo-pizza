@@ -1,6 +1,6 @@
-interface IBadge {
+interface BadgeProps {
   children: string,
   type: 'FILLED' | 'SHAPED'
 }
 
-export default IBadge;
+export default BadgeProps;

@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {FunctionComponent} from 'react';
 
-export interface TabMediatorProps {
+interface TabMediatorProps {
   screens: Array<{
     name: TabNames,
     Icon: SvgrComponent,

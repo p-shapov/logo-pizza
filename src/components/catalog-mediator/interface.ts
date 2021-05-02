@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {ImageSourcePropType} from 'react-native';
 
-interface Product {
+type Product = {
   id: number,
   title: string,
   description: string,
@@ -10,14 +10,14 @@ interface Product {
   multiplePrice: boolean
 }
 
-interface Category {
+type Category = {
   name: string,
   title: string,
   Icon: SvgrComponent,
   products: Array<Product>
 }
 
-interface Promotion {
+type Promotion = {
   id: number,
   title: string,
   image: ImageSourcePropType

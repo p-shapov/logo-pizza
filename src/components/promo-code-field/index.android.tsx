@@ -16,16 +16,16 @@ import IcoArrowForward from 'images/ico_arrow_forward.svg';
 const PromoCodeField = ({applied, submitPromoCode}: PromoCodeFieldProps) => {
   const [code, setCode] = useState<string>('');
   const [error, setError] = useState<boolean>(false);
-  
+
   const onChange = (val: string) => {
     setError(false);
     setCode(val);
   };
-  
+
   const onFocus = () => {
     setError(false);
   };
-  
+
   const submitOrClear = () => {
     if (applied) {
       submitPromoCode('');
@@ -36,7 +36,7 @@ const PromoCodeField = ({applied, submitPromoCode}: PromoCodeFieldProps) => {
       setError(!applied);
     }
   };
-  
+
   const errorMessage = () => (<View style={styles.promoCodeFieldErrorWrapper}>
     <View style={styles.promoCodeFieldError}>
       <Text style={styles.promoCodeFieldErrorText}>Не верный промокод</Text>
@@ -45,7 +45,7 @@ const PromoCodeField = ({applied, submitPromoCode}: PromoCodeFieldProps) => {
       </Pressable>
     </View>
   </View>);
-  
+
   return (<>
     <TextField
       type={'TEXT'}

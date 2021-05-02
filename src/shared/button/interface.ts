@@ -1,12 +1,13 @@
 /* libraries and plugins */
 import {ReactNode} from 'react';
 
-interface IButton {
+interface ButtonProps {
   children?: ReactNode,
   Icon?: SvgrComponent,
   view: 'SHAPED' | 'FILLED',
   type: 'PRIMARY' | 'SECONDARY',
+  disabled?: boolean,
   onPress: () => void
 }
 
-export default IButton;
+export default ButtonProps;

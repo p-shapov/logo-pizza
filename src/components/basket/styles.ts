@@ -1,5 +1,5 @@
 /* libraries and plugins */
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 /* globals */
 import {margin, padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
@@ -114,13 +114,16 @@ const styles = StyleSheet.create({
     ...margin(0, 16),
     borderStyle: 'solid',
     borderRadius: 8,
-    shadowColor: COLORS.SHADOW_ACTIVE,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowRadius: 16,
-    elevation: 3
+    ...(Platform.OS === 'ios' ? {
+      shadowColor: COLORS.SHADOW_ACTIVE,
+      shadowOffset: {
+        width: 0,
+        height: 6,
+      },
+      shadowRadius: 16
+    } : {
+      elevation: 3
+    })
   }
 });
 

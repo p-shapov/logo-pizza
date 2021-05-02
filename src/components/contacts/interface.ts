@@ -1,4 +1,4 @@
-interface Point {
+type Point = {
   geo: GeoCoordinates,
   data: {
     street: string,

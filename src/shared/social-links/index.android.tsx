@@ -30,7 +30,7 @@ const SocialIcon = ({type, color}: { type: ArrayElement<SocialLinksProps['links'
 
 const SocialLinks = ({links}: SocialLinksProps) => {
   const onPress = (href: string) => Linking.openURL(href);
-  
+
   return (<View style={styles.socialLinks}>
     {links.map((item, index) => (
       <Pressable

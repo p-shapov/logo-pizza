@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {ImageSourcePropType} from 'react-native';
 
-interface Promotion {
+type Promotion = {
   id: number,
   title: string,
   image: ImageSourcePropType

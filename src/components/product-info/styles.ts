@@ -1,5 +1,5 @@
 /* libraries and plugins */
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, Platform, StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
 import {padding} from 'globals/helpers';
@@ -56,13 +56,16 @@ const styles = StyleSheet.create({
   productInfoBuy: {
     borderStyle: 'solid',
     borderRadius: 8,
-    shadowColor: COLORS.SHADOW_ACTIVE,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowRadius: 16,
-    elevation: 3
+    ...(Platform.OS === 'ios' ? {
+      shadowColor: COLORS.SHADOW_ACTIVE,
+      shadowOffset: {
+        width: 0,
+        height: 6,
+      },
+      shadowRadius: 16
+    } : {
+      elevation: 3
+    })
   }
 });
 

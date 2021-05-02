@@ -1,13 +1,13 @@
 /* libraries and plugins */
 import React from 'react';
-import {View, Pressable} from 'react-native';
+import {Pressable, View} from 'react-native';
 /* locals */
 import RadioProps from './interface';
 import styles from './styles';
 
 const Radio = (props: RadioProps) => {
   const {checked, children, onPress} = props;
-  
+
   return (<Pressable
     style={styles.radio}
     onPress={onPress}

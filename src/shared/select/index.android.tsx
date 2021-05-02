@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 /* locals */
-import ISelect from './interface';
+import SelectProps from './interface';
 import styles from './styles';
 /* globals */
 import {COLORS} from 'globals/constants';
@@ -11,14 +11,14 @@ import {Badge} from 'shared/badge/index';
 /* icons */
 import IcoArrowExpand from 'images/ico_arrow_expand.svg';
 
-const Select = ({items, setActive}: ISelect) => {
+const Select = ({items, setActive}: SelectProps) => {
   const [expanded, setExpanded] = useState(false);
-  
+
   const activeItem = items.reduce((acc, item) => item.isActive ? item.title : acc, '');
   const otherItems = items.reduce((acc, item, index) => !item.isActive
     ? [...acc, {title: item.title, id: index}]
     : acc, [] as Array<{ title: string, id: number }>);
-  
+
   return (<View style={styles.selectWrapper}>
     <View style={expanded ? styles.selectExpanded : styles.select}>
       {expanded && (<>

@@ -5,7 +5,7 @@ import {TextInput} from 'react-native-gesture-handler';
 interface InputProps {
   placeholder?: string,
   label?: string,
-  type: 'TEXT' | 'PHONE',
+  type: 'TEXT' | 'PHONE' | 'MULTILINE',
   value: string,
   onChange: (value: string) => void,
   disabled?: boolean,

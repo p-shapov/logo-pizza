@@ -1,5 +1,5 @@
 /* locals */
-import {CatalogModule} from './namespace';
+import CatalogModule from './namespace';
 /* variables */
 import categoriesVariable from 'variables/categories.variable';
 import promotionsVariable from 'variables/promotions.variable';
@@ -32,10 +32,16 @@ const initialState: CatalogModule.State = {
     description: 'Promotion\'s description.',
     image: imageProductPlaceholder
   },
+  notification: {
+    shown: false,
+    title: 'Добавлено',
+    description: ''
+  },
   categories: getCategories(),
   promotions: getPromotions(),
   openPromotion: (id) => console.log(id),
-  openProduct: (id) => console.log(id)
+  openProduct: (id) => console.log(id),
+  setNotification: (notification) => console.log(notification)
 };
 
 export default (state: CatalogModule.State = initialState, action: CatalogModule.Actions): CatalogModule.State => {
@@ -44,6 +50,8 @@ export default (state: CatalogModule.State = initialState, action: CatalogModule
       return ({...state, activeProduct: action.product});
     case 'OPEN_PROMOTION':
       return ({...state, activePromotion: action.promotion});
+    case 'SET_NOTIFICATION':
+      return ({...state, notification: {title: 'Добавлено', ...action.notification}});
     default:
       return state;
   }

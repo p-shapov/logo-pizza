@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     ...padding(6, 16),
     borderTopWidth: 1,
     borderStyle: 'solid',
-    borderColor: COLORS.DELIMITER
+    borderColor: COLORS.DELIMITER,
+    backgroundColor: COLORS.BACKGROUND_PRIMARY
   },
   tabButton: {
     position: 'relative',

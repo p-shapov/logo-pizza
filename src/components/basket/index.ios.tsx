@@ -1,6 +1,6 @@
 /* libraries and plugins */
-import React from 'react';
-import {FlatList, Image, ListRenderItemInfo, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {FlatList, Image, Keyboard, ListRenderItemInfo, NativeEventSubscription, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 /* locals */
 import BasketProps from './interface';
@@ -17,20 +17,34 @@ import ImgBasketIsEmpty from 'images/img_basket_is_empty.png';
 
 const Basket = (props: BasketProps) => {
   const {products, discount, addPromoCode, setProductCount, deleteProduct} = props;
-  
+
+  const [keyboardShown, setKeyboardShown] = useState<boolean>(false);
+
+  const listeners: Array<NativeEventSubscription> = [
+    Keyboard.addListener('keyboardDidShow', () => setKeyboardShown(true)),
+    Keyboard.addListener('keyboardDidHide', () => setKeyboardShown(false))
+  ];
+
+  const unsubscribe = () => listeners.forEach((listener) => listener.remove());
+
+  useEffect(() => unsubscribe);
+
   const navigation = useNavigation();
-  
+
   const totalPrice = products.reduce((acc, {price, count}) => (acc + (price * count)), 0);
+
   const isEmpty = products.length === 0;
   const discountApplied = discount !== undefined;
-  
+
   const applyDiscount = (price: number) => discount !== undefined ? Math.floor(price * (1 - 0.01 * discount)) : price;
-  const goToMenu = () => navigation.navigate('CATALOG', {screen: 'MAIN'});
-  const goToCheckout = () => navigation.navigate('BASKET', {screen: 'DELIVERY'});
-  
+
+  const goToCatalog = () => navigation.navigate('ROOT', {screen: 'CATALOG', params: {screen: 'MAIN'}});
+
+  const goToCheckout = () => navigation.navigate('ROOT', {screen: 'BASKET', params: {screen: 'DELIVERY'}});
+
   const renderItem = ({item}: ListRenderItemInfo<ArrayElement<BasketProps['products']>>) => {
     const {id, title, price, count, image, size} = item;
-    
+
     return (<View style={styles.basketProductCard}>
       <Image style={styles.basketProductCardImage} source={image}/>
       <View style={styles.basketProductCardInfo}>
@@ -44,7 +58,9 @@ const Basket = (props: BasketProps) => {
               ? styles.basketProductCardPriceActive
               : styles.basketProductCardPrice}
             >{applyDiscount(price)} ₽</Text>
-            {discountApplied && (<Text style={styles.basketProductCardOldPrice}>{price} ₽</Text>)}
+            {discountApplied && (
+              <Text style={styles.basketProductCardOldPrice}>{price} ₽</Text>
+            )}
           </View>
         </View>
         <View style={styles.basketProductCardFooter}>
@@ -55,7 +71,7 @@ const Basket = (props: BasketProps) => {
       </View>
     </View>);
   };
-  
+
   const basketContent = () => (<>
     <View style={styles.basketPromoField}>
       <PromoCodeField applied={discountApplied} submitPromoCode={addPromoCode}/>
@@ -67,32 +83,30 @@ const Basket = (props: BasketProps) => {
       keyExtractor={(_, index) => index.toString()}
     />
   </>);
-  
+
   const basketEmpty = () => (<View style={styles.basketEmpty}>
     <Image style={styles.basketEmptyBackground} source={ImgBasketIsEmpty}/>
     <Text style={styles.basketEmptyText}>Корзина пуста</Text>
   </View>);
-  
-  return (
-    <View style={styles.basket}>
-      <View style={styles.basketHeader}>
-        <Text style={styles.basketHeaderText}>Корзина</Text>
-      </View>
-      <View style={styles.basketDelimiter}/>
-      
-      {!isEmpty ? basketContent() : basketEmpty()}
-      
-      <View style={styles.basketCheckout}>
-        <Button
-          type={'PRIMARY'}
-          view={'FILLED'}
-          onPress={isEmpty ? goToMenu : goToCheckout}
-        >
-          {!isEmpty ? `Оформить заказ на ${applyDiscount(totalPrice)} ₽` : 'Вернуться в меню'}
-        </Button>
-      </View>
+
+  return (<View style={styles.basket}>
+    <View style={styles.basketHeader}>
+      <Text style={styles.basketHeaderText}>Корзина</Text>
     </View>
-  );
+    <View style={styles.basketDelimiter}/>
+
+    {!isEmpty ? basketContent() : basketEmpty()}
+
+    {!keyboardShown && <View style={styles.basketCheckout}>
+      <Button
+        type={'PRIMARY'}
+        view={'FILLED'}
+        onPress={isEmpty ? goToCatalog : goToCheckout}
+      >
+        {!isEmpty ? `Оформить заказ на ${applyDiscount(totalPrice)} ₽` : 'Вернуться в меню'}
+      </Button>
+    </View>}
+  </View>);
 };
 
 export {Basket};

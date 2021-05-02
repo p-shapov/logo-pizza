@@ -12,7 +12,7 @@ import IcoCounterInc from 'images/ico_counter_inc.svg';
 
 const Counter = (props: CounterProps) => {
   const {count, maxCount, onChange} = props;
-  
+
   const handleChange = (type: 'INC' | 'DEC') => {
     switch (type) {
       case 'DEC':
@@ -21,7 +21,7 @@ const Counter = (props: CounterProps) => {
         return count < maxCount && onChange(count + 1);
     }
   };
-  
+
   return (<View style={styles.counter}>
     <Pressable style={styles.counterButton} onPress={() => handleChange('DEC')}>
       <IcoCounterDec color={COLORS.FOREGROUND_PRIMARY_ACTIVE}/>

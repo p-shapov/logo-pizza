@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   promotionCardTitle: {
     marginTop: 14,
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: 'Rubik',
     fontSize: 16,
     lineHeight: 19,
     color: COLORS.FOREGROUND_SECONDARY

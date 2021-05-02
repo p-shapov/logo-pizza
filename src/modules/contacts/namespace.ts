@@ -1,5 +1,12 @@
 namespace ContactsModule {
-  export interface Point {
+  export type SetMapGeo = {
+    type: 'SET_MAP_GEO',
+    geo: GeoCoordinates
+  }
+
+  export type Actions = SetMapGeo;
+
+  export type Point = {
     street: string,
     workTime: string,
     geo: GeoCoordinates,
@@ -8,19 +15,12 @@ namespace ContactsModule {
       Icon: SvgrComponent
     }
   }
-  
-  export interface Social {
+
+  export type Social = {
     type: SocialMediaType,
     href: string
   }
-  
-  export interface SetMapGeo {
-    type: 'SET_MAP_GEO',
-    geo: GeoCoordinates
-  }
-  
-  export type Actions = SetMapGeo;
-  
+
   export interface State {
     city: string,
     title: string,
@@ -43,4 +43,4 @@ namespace ContactsModule {
   }
 }
 
-export {ContactsModule};
+export default ContactsModule;

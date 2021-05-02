@@ -13,36 +13,36 @@ import {PromotionListing} from 'components/promotion-listing/index';
 
 const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) => {
   const flatListRef = useRef<FlatList>(null);
-  
+
   if (flatListRef && flatListRef.current) {
     flatListRef.current.scrollToIndex({index: state.index, animated: true, viewPosition: .5});
   }
-  
+
   const renderItem = ({item, index}: ListRenderItemInfo<any>) => {
     const {options} = descriptors[item.key];
-    
+
     const isActive = state.index === index;
     const isLast = state.routes.length - 1 === index;
-    
+
     const onPress = () => {
       const event = navigation.emit({
         type: 'tabPress',
         target: item.key,
         canPreventDefault: true,
       });
-      
+
       if (!isActive && !event.defaultPrevented) {
         navigation.navigate(item.name);
       }
     };
-    
+
     const onLongPress = () => {
       navigation.emit({
         type: 'tabLongPress',
         target: item.key,
       });
     };
-    
+
     return (
       <Pressable
         key={index}
@@ -56,7 +56,7 @@ const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) 
       </Pressable>
     );
   };
-  
+
   return (
     <View>
       <FlatList
@@ -74,9 +74,9 @@ const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) 
 
 const CatalogMediator = (props: CatalogMediatorProps) => {
   const {categories, promotions, openProduct, openPromotion} = props;
-  
+
   const Tab = createMaterialTopTabNavigator();
-  
+
   return (<Tab.Navigator
     tabBar={props => (
       <View>

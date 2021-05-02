@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   productListingTitle: {
     marginBottom: 32,
-    fontFamily: 'Rubik-SemiBold, sans-serif',
+    fontFamily: 'Rubik-SemiBold',
     fontSize: 24,
     lineHeight: 32,
     color: COLORS.FOREGROUND_PRIMARY
@@ -33,14 +33,14 @@ const styles = StyleSheet.create({
   },
   productCardTitle: {
     marginBottom: 8,
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: 'Rubik',
     fontSize: 16,
     lineHeight: 19,
     color: COLORS.FOREGROUND_PRIMARY
   },
   productCardDescription: {
     marginBottom: 16,
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: 'Rubik',
     fontSize: 12,
     lineHeight: 18,
     color: COLORS.FOREGROUND_PRIMARY_SUBTLE

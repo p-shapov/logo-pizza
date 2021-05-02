@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   },
   badgeFilledText: {
     textAlign: 'center',
+    fontFamily: 'Rubik-SemiBold',
     fontSize: 13,
     lineHeight: 14,
     letterSpacing: .5,
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
   },
   badgeShapedText: {
     textAlign: 'center',
+    fontFamily: 'Rubik-SemiBold',
     fontSize: 13,
     lineHeight: 14,
     letterSpacing: .5,

@@ -3,7 +3,8 @@ import {FunctionComponent} from 'react';
 
 interface WindowMediatorProps {
   windows: Array<{
-    name: 'MAIN' | 'PRODUCT_INFO' | 'DELIVERY' | 'PAYMENT',
+    name: WindowNames,
+    type: 'MODAL' | 'CARD',
     Container: FunctionComponent
   }>
 }

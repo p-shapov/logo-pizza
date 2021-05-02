@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 /* globals */
-import {State} from 'globals/interface';
+import State from 'globals/interface';
 /* components */
 import {CatalogMediator} from 'components/catalog-mediator/index';
 import CatalogMediatorProps from 'components/catalog-mediator/interface';
@@ -24,7 +24,7 @@ const mapStateToProps = ({catalog}: State): CatalogMediatorProps => ({
   }))
 });
 
-const dispatchStateToProps = (dispatch: Dispatch): {
+const mapDispatchToProps = (dispatch: Dispatch): {
   openProduct: CatalogMediatorProps['openProduct'],
   openPromotion: CatalogMediatorProps['openPromotion']
 } => ({
@@ -38,9 +38,7 @@ const dispatchStateToProps = (dispatch: Dispatch): {
 
 const CatalogMediatorContainer = connect(
   mapStateToProps,
-  dispatchStateToProps
-)((props: CatalogMediatorProps) => (
-  <CatalogMediator {...props}/>
-));
+  mapDispatchToProps
+)((props: CatalogMediatorProps) => (<CatalogMediator {...props}/>));
 
 export {CatalogMediatorContainer};

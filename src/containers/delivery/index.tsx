@@ -6,7 +6,8 @@ import {Dispatch} from 'redux';
 import DeliveryProps from 'components/delivery/interface';
 import {Delivery} from 'components/delivery/index.android';
 /* globals */
-import {State} from 'globals/interface';
+import State from 'globals/interface';
+/* modules */
 import {setDeliveryAddress, setDeliveryMethod, setPickupPoint} from 'modules/basket/actions';
 
 const mapStateToProps = (state: State): DeliveryProps => ({
@@ -21,12 +22,12 @@ const mapStateToProps = (state: State): DeliveryProps => ({
       metroStation: point.metroStation
     }
   })),
-  setPoint: state.basket.setPoint,
-  setMethod: state.basket.setMethod,
-  setAddress: state.basket.setAddress
+  setPoint: state.basket.setPickupPoint,
+  setMethod: state.basket.setDeliveryMethod,
+  setAddress: state.basket.setDeliveryAddress
 });
 
-const dispatchStateToProps = (dispatch: Dispatch): {
+const mapDispatchToProps = (dispatch: Dispatch): {
   setMethod: DeliveryProps['setMethod'],
   setAddress: DeliveryProps['setAddress'],
   setPoint: DeliveryProps['setPoint']
@@ -44,9 +45,7 @@ const dispatchStateToProps = (dispatch: Dispatch): {
 
 const DeliveryContainer = connect(
   mapStateToProps,
-  dispatchStateToProps
-)((props: DeliveryProps) => (
-  <Delivery {...props}/>
-));
+  mapDispatchToProps
+)((props: DeliveryProps) => (<Delivery {...props}/>));
 
 export {DeliveryContainer};
