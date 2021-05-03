@@ -1,8 +1,7 @@
 /* libraries and plugins */
 import React, {useEffect, useState} from 'react';
-import {BackHandler, Keyboard, NativeEventSubscription, Text, View} from 'react-native';
+import {BackHandler, Keyboard, NativeEventSubscription, Text, View, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {ScrollView} from 'react-native-gesture-handler';
 /* locals */
 import PaymentProps from './interface';
 import styles from './styles';
