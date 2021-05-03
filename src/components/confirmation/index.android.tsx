@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {Image, Text, View} from 'react-native';
+import {Image, Text, View, Pressable} from 'react-native';
 /* locals */
 import styles from './styles';
 import ConfirmationProps from './interface';
@@ -39,6 +39,7 @@ const Confirmation = ({orderInfo, confirm}: ConfirmationProps) => {
       <View style={styles.confirmationWindow}>
         {orderConfirmed()}
       </View>
+      <Pressable style={styles.confirmationOuterClickArea} onPress={confirmAndGoToCatalog}/>
     </View>)}
   </>);
 };

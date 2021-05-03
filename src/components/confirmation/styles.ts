@@ -1,23 +1,25 @@
 /* libraries and plugins */
 import {Platform, StyleSheet} from 'react-native';
 /* globals */
-import {padding} from 'globals/helpers';
+import {margin, padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
   confirmation: {
     position: 'absolute',
-    zIndex: 5,
+    zIndex: 1,
     left: 0,
     right: 0,
     bottom: 0,
     top: 0,
-    ...padding(0, 16),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(56, 56, 56, 0.6)'
   },
   confirmationWindow: {
+    position: 'absolute',
+    zIndex: 2,
+    ...margin(0, 16),
     ...padding(30, 24),
     alignItems: 'center',
     backgroundColor: COLORS.BACKGROUND_PRIMARY,
@@ -62,6 +64,14 @@ const styles = StyleSheet.create({
   },
   confirmationGoToMenu: {
     alignSelf: 'stretch'
+  },
+  confirmationOuterClickArea: {
+    position: 'absolute',
+    zIndex: 1,
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
   }
 });
 
