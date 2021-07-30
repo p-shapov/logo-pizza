@@ -2,7 +2,7 @@
 import {Dimensions, Platform, StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {padding} from 'globals/helpers';
+import {font, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   productInfo: {
@@ -34,24 +34,15 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   productInfoTitle: {
-    fontFamily: 'Rubik',
-    fontSize: 24,
-    lineHeight: 28,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 24, 28, COLORS.FOREGROUND_PRIMARY)
   },
   productInfoSizeValue: {
     marginLeft: 16,
-    fontFamily: 'Rubik',
-    fontSize: 11,
-    lineHeight: 20,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('regular', 11, 20, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   },
   productInfoDescription: {
     marginBottom: 16,
-    fontFamily: 'Rubik',
-    fontSize: 13,
-    lineHeight: 22,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('regular', 13, 22, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   },
   productInfoBuy: {
     borderStyle: 'solid',

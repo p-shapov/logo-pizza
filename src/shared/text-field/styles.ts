@@ -2,7 +2,7 @@
 import {StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {padding} from 'globals/helpers';
+import {font, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   textField: {
@@ -98,48 +98,33 @@ const styles = StyleSheet.create({
     bottom: 108
   },
   textFieldLabel: {
-    fontFamily: 'Rubik',
-    fontSize: 12,
-    lineHeight: 22,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('regular', 12, 22, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   },
   textFieldInput: {
     flexGrow: 1,
     ...padding(0, 13),
-    fontFamily: 'Rubik',
-    fontSize: 14,
-    lineHeight: 17,
-    textDecorationLine: 'none',
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 14, 17, COLORS.FOREGROUND_PRIMARY),
+    textDecorationLine: 'none'
   },
   textFieldInputActive: {
     flexGrow: 1,
     ...padding(0, 13),
-    fontFamily: 'Rubik',
-    fontSize: 14,
-    lineHeight: 17,
-    textDecorationLine: 'none',
-    color: COLORS.FOREGROUND_PRIMARY_ACTIVE
+    ...font('regular', 14, 17, COLORS.FOREGROUND_PRIMARY_ACTIVE),
+    textDecorationLine: 'none'
   },
   textFieldMultilineInput: {
     flexGrow: 1,
     ...padding(13, 13),
-    fontFamily: 'Rubik',
-    fontSize: 14,
-    lineHeight: 17,
+    ...font('regular', 14, 17, COLORS.FOREGROUND_PRIMARY),
     textAlignVertical: 'top',
-    textDecorationLine: 'none',
-    color: COLORS.FOREGROUND_PRIMARY
+    textDecorationLine: 'none'
   },
   textFieldMultilineInputActive: {
     flexGrow: 1,
     ...padding(13, 13),
-    fontFamily: 'Rubik',
-    fontSize: 14,
-    lineHeight: 17,
+    ...font('regular', 14, 17, COLORS.FOREGROUND_PRIMARY_ACTIVE),
     textAlignVertical: 'top',
-    textDecorationLine: 'none',
-    color: COLORS.FOREGROUND_PRIMARY_ACTIVE
+    textDecorationLine: 'none'
   },
   textFieldButton: {
     width: 42

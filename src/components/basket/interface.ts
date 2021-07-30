@@ -2,20 +2,21 @@
 import {ImageSourcePropType} from 'react-native';
 
 type Product = {
-  id: number,
+  id: string,
   title: string,
   price: number,
-  size?: string,
   count: number,
-  image: ImageSourcePropType
+  image: ImageSourcePropType,
+  variant?: string,
+  size?: string
 }
 
 interface BasketProps {
   products: Array<Product>,
-  discount?: number,
   addPromoCode: (code: string) => void,
-  setProductCount: (id: number, count: number, size?: string) => void,
-  deleteProduct: (id: number, size?: string) => void
+  setProductCount: (count: number, id: string, variant?: string) => void,
+  deleteProduct: (id: string, variant?: string) => void,
+  discount?: number
 }
 
 export default BasketProps;

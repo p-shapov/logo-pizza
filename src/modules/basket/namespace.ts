@@ -9,20 +9,22 @@ namespace BasketModule {
 
   export type AddToCart = {
     type: 'ADD_TO_CART',
-    product: Product
+    count: number,
+    id: string,
+    variant?: string
   }
 
   export type SetProductCount = {
     type: 'SET_PRODUCT_COUNT',
-    id: number,
     count: number,
-    size?: string
+    id: string,
+    variant?: string
   }
 
   export type DeleteProduct = {
     type: 'DELETE_PRODUCT',
-    id: number,
-    size?: string
+    id: string,
+    variant?: string
   }
 
   export type SetDeliveryMethod = {
@@ -37,7 +39,7 @@ namespace BasketModule {
 
   export type SetPickupPoint = {
     type: 'SET_PICKUP_POINT',
-    id: number
+    id: string
   }
 
   export type SetPaymentMethod = {
@@ -78,16 +80,17 @@ namespace BasketModule {
     | Confirm;
 
   export type Product = {
-    id: number,
+    id: string,
     title: string,
     price: number,
-    size?: { title: string, value: string },
     count: number,
-    image: ImageSourcePropType
+    image: ImageSourcePropType,
+    variant?: string,
+    size?: string
   }
 
   export type Point = {
-    id: number,
+    id: string,
     checked: boolean,
     street: string,
     workTime: string,
@@ -125,14 +128,14 @@ namespace BasketModule {
     discount?: number,
     setDeliveryMethod: (method: 'CURRIER' | 'PICKUP') => void,
     setDeliveryAddress: (address: Address) => void,
-    setPickupPoint: (id: number) => void,
+    setPickupPoint: (id: string) => void,
     setPaymentMethod: (method: 'CASH' | 'CARD') => void,
     setWishesForOrder: (wishes: string) => void,
     setContactInfo: (info: ContactInfo) => void,
     addPromoCode: (code: string) => void,
-    addToCart: (product: Product) => void,
-    deleteProduct: (id: number, size?: string) => void,
-    setProductCount: (id: number, count: number, size?: string) => void,
+    addToCart: (count: number, id: string, variant?: string) => void,
+    deleteProduct: (id: string, variant?: string) => void,
+    setProductCount: (count: number, id: string, variant?: string) => void,
     checkout: () => void,
     confirm: () => void
   }

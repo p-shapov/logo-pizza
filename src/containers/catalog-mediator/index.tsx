@@ -9,19 +9,25 @@ import {CatalogMediator} from 'components/catalog-mediator/index';
 import CatalogMediatorProps from 'components/catalog-mediator/interface';
 /* modules */
 import {openProduct, openPromotion} from 'modules/catalog/actions';
+import {setCurrentModal} from 'modules/ui/actions';
 
 const mapStateToProps = ({catalog}: State): CatalogMediatorProps => ({
-  ...catalog,
+  promotions: catalog.promotions,
   categories: catalog.categories.map(category => ({
     name: category.name,
     title: category.title,
     Icon: category.Icon,
     products: category.products.map((product) => ({
-      ...product,
-      price: Array.isArray(product.price) ? product.price[0].value : product.price,
-      multiplePrice: Array.isArray(product.price)
+      id: product.id,
+      title: product.title,
+      description: product.description,
+      image: product.image,
+      price: 'variants' in product ? product.variants[0].price : product.price,
+      hasVariants: 'variants' in product
     }))
-  }))
+  })),
+  openProduct: catalog.openProduct,
+  openPromotion: catalog.openPromotion
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): {
@@ -33,6 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch): {
   },
   openPromotion(id) {
     dispatch(openPromotion(id));
+    dispatch(setCurrentModal('PROMOTION'));
   }
 });
 

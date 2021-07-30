@@ -4,31 +4,48 @@ import {ImageSourcePropType} from 'react-native';
 namespace CatalogModule {
   export type SetProduct = {
     type: 'OPEN_PRODUCT',
-    product: Product
+    id: string
   }
 
   export type SetPromotion = {
     type: 'OPEN_PROMOTION',
-    promotion: Promotion
+    id: string
   }
 
-  export type SetNotification = {
-    type: 'SET_NOTIFICATION',
-    notification: { shown: boolean, description: string }
+  export type SetProductAddedNotification = {
+    type: 'SET_PRODUCT_ADDED_NOTIFICATION',
+    id: string,
+    variant?: string
   }
 
-  export type Actions = SetProduct | SetPromotion | SetNotification;
+  export type Actions = SetProduct | SetPromotion | SetProductAddedNotification;
 
-  export type Product = {
-    id: number,
+  export type Variant = {
+    id: string,
+    size: { title: string, value: string },
+    price: number
+  }
+
+  type ProductSingle = {
+    id: string,
     title: string,
     description: string,
-    price: number | Array<{ size: { title: string, value: string }, value: number }>,
     image: ImageSourcePropType
+    price: number
   }
 
+  type ProductWithVariants = {
+    id: string,
+    title: string,
+    description: string,
+    image: ImageSourcePropType
+    variants: Array<Variant>
+  }
+
+  export type Product = ProductSingle | ProductWithVariants;
+
   export type Promotion = {
-    id: number,
+    id: string,
     title: string,
     description: string,
     image: ImageSourcePropType
@@ -41,10 +58,9 @@ namespace CatalogModule {
     products: Array<Product>
   }
 
-  export type Notification = {
+  export type ProductAddedNotification = {
     title: string,
-    description: string,
-    shown: boolean
+    description: string
   }
 
   export interface State {
@@ -52,10 +68,10 @@ namespace CatalogModule {
     activePromotion: Promotion,
     categories: Array<Category>,
     promotions: Array<Promotion>,
-    notification: Notification,
-    openPromotion: (id: number) => void,
-    openProduct: (id: number) => void,
-    setNotification: (notification: Notification) => void
+    productAddedNotification: string,
+    openPromotion: (id: string) => void,
+    openProduct: (id: string) => void,
+    setProductAddedNotification: (notification: ProductAddedNotification) => void
   }
 }
 

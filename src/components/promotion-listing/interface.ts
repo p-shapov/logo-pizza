@@ -2,14 +2,14 @@
 import {ImageSourcePropType} from 'react-native';
 
 type Promotion = {
-  id: number,
+  id: string,
   title: string,
   image: ImageSourcePropType
 }
 
 interface PromotionListingProps {
   promotions: Array<Promotion>,
-  openPromotion: (id: number) => void
+  openPromotion: (id: string) => void
 }
 
 export default PromotionListingProps;

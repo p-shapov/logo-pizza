@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {StyleSheet} from 'react-native';
 /* globals */
-import {padding} from 'globals/helpers';
+import {font, padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
@@ -19,11 +19,8 @@ const styles = StyleSheet.create({
     ...padding(11, 12, 10)
   },
   counterValue: {
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 14,
-    lineHeight: 17,
-    letterSpacing: .5,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('semi-bold', 14, 17, COLORS.FOREGROUND_PRIMARY),
+    letterSpacing: .5
   }
 });
 

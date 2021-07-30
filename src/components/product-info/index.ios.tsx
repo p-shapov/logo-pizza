@@ -14,16 +14,18 @@ import {Button} from 'shared/button/index';
 import IcoArrowBack from 'images/ico_arrow_back.svg';
 
 const ProductInfo = (props: ProductInfoProps) => {
-  const {id, title, description, price, image, addToCart} = props;
+  const {id, title, description, price, variants, image, addToCart} = props;
 
   const navigation = useNavigation();
 
-  const [variant, setVariant] = useState<number>(0);
+  const [variantIndex, setVariantIndex] = useState<number>(0);
 
-  const goBack = () => navigation.goBack();
+  const goToCatalog = () => navigation.navigate('CATALOG', {screen: 'ROOT'});
+
+  const _addToCart = () => addToCart(1, id, variants !== undefined ? variants[variantIndex]?.id : undefined);
 
   return (<ScrollView contentContainerStyle={styles.productInfo}>
-    <Pressable style={styles.productInfoClose} onPress={goBack}>
+    <Pressable style={styles.productInfoClose} onPress={goToCatalog}>
       <IcoArrowBack color={COLORS.FOREGROUND_PRIMARY}/>
     </Pressable>
     <View>
@@ -34,18 +36,18 @@ const ProductInfo = (props: ProductInfoProps) => {
         <Text style={styles.productInfoTitle}>
           {title}
         </Text>
-        {Array.isArray(price) && (
-          <Text style={styles.productInfoSizeValue}>{price[variant].size.value}</Text>
+        {variants !== undefined && (
+          <Text style={styles.productInfoSizeValue}>{variants[variantIndex].size.value}</Text>
         )}
       </View>
       <Text style={styles.productInfoDescription}>{description}</Text>
-      {Array.isArray(price) && (
+      {variants !== undefined && (
         <Select
-          items={price.map((item, index) => ({
+          items={variants.map((item, index) => ({
             title: item.size.title,
-            isActive: variant === index
+            isActive: variantIndex === index
           }))}
-          setActive={setVariant}
+          setActive={setVariantIndex}
         />
       )}
     </View>
@@ -53,19 +55,9 @@ const ProductInfo = (props: ProductInfoProps) => {
       <Button
         type={'PRIMARY'}
         view={'FILLED'}
-        onPress={() => addToCart({
-          id,
-          title,
-          image,
-          count: 1,
-          price: Array.isArray(price) ? price[variant].value : price,
-          size: Array.isArray(price) ? {
-            title: price[variant].size.title,
-            value: price[variant].size.value
-          } : undefined
-        })}
+        onPress={_addToCart}
       >
-        Добавить в корзину за {Array.isArray(price) ? price[variant].value : price} ₽
+        Добавить в корзину за {variants !== undefined ? variants[variantIndex].price : price} ₽
       </Button>
     </View>
   </ScrollView>);

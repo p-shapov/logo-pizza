@@ -4,7 +4,6 @@ import {FunctionComponent} from 'react';
 interface WindowMediatorProps {
   windows: Array<{
     name: WindowNames,
-    type: 'MODAL' | 'CARD',
     Container: FunctionComponent
   }>
 }

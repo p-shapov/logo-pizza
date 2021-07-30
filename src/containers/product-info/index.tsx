@@ -10,22 +10,25 @@ import {ProductInfo} from 'components/product-info/index';
 /* modules */
 import {addToCart} from 'modules/basket/actions';
 import {setProductAddedNotification} from 'modules/catalog/actions';
+import {setCurrentNotification} from 'modules/ui/actions';
 
 const mapStateToProps = ({catalog, basket}: State): ProductInfoProps => {
   return ({
-    ...catalog.activeProduct,
-    addToCart: basket.addToCart
+    id: catalog.activeProduct.id,
+    title: catalog.activeProduct.title,
+    description: catalog.activeProduct.description,
+    image: catalog.activeProduct.image,
+    addToCart: basket.addToCart,
+    price: 'price' in catalog.activeProduct ? catalog.activeProduct.price : undefined,
+    variants: 'variants' in catalog.activeProduct ? catalog.activeProduct.variants : undefined
   });
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): { addToCart: ProductInfoProps['addToCart'] } => ({
-  addToCart(product) {
-    dispatch(addToCart(product));
-    dispatch(setProductAddedNotification({
-      description: product.size !== undefined ? product.title + ' ' + product.size.value : product.title,
-      shown: true
-    }));
-    setTimeout(() => dispatch(setProductAddedNotification({description: '', shown: false})), 2500);
+  addToCart(count, id, variant) {
+    dispatch(addToCart(count, id, variant));
+    dispatch(setProductAddedNotification(id, variant));
+    dispatch(setCurrentNotification('PRODUCT_ADDED'));
   }
 });
 

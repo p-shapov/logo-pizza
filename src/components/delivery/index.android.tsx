@@ -28,9 +28,9 @@ const Delivery = (props: DeliveryProps) => {
 
   const setFloor = (floor: string) => setAddress({...address, floor});
 
-  const goToBasket = () => navigation.navigate('BASKET', {screen: 'MAIN'});
+  const goToBasket = () => navigation.navigate('BASKET', {screen: 'ROOT'});
 
-  const goToPaymentMethods = () => navigation.navigate('ROOT', {screen: 'BASKET', params: {screen: 'PAYMENT'}});
+  const goToPaymentMethods = () => navigation.navigate('BASKET', {screen: 'PAYMENT'});
 
   const handleBackPress = () => {
     goToBasket();

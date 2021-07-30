@@ -2,18 +2,18 @@
 import {ImageSourcePropType} from 'react-native';
 
 type Product = {
-  id: number,
+  id: string,
   title: string,
   description: string,
   image: ImageSourcePropType,
   price: number,
-  multiplePrice?: boolean
+  hasVariants: boolean
 }
 
 interface ProductListingProps {
   title: string,
   products: Array<Product>,
-  openProduct: (id: number) => void
+  openProduct: (id: string) => void
 }
 
 

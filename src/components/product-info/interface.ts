@@ -1,20 +1,20 @@
 /* libraries and plugins */
 import {ImageSourcePropType} from 'react-native';
 
+type Variant = {
+  id: string,
+  size: { title: string, value: string },
+  price: number
+}
+
 interface ProductInfoProps {
-  id: number,
+  id: string,
   title: string,
   description: string,
-  price: number | Array<{ size: { title: string, value: string }, value: number }>,
   image: ImageSourcePropType,
-  addToCart: (product: {
-    id: number,
-    title: string,
-    price: number,
-    count: number,
-    image: ImageSourcePropType,
-    size?: { title: string, value: string }
-  }) => void
+  addToCart: (count: number, id: string, variant?: string) => void,
+  variants?: Array<Variant>,
+  price?: number
 }
 
 export default ProductInfoProps;

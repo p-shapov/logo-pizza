@@ -31,15 +31,23 @@ export function objectIncludes(obj1: Object, obj2: Object) {
 }
 
 export function arrayIncludes(array: Array<Object>, obj: Object) {
-  return (
-    array.some((item) => {
-      const valuesEntries = [];
+  return (array.some((item) => objectIncludes(item, obj)));
+}
 
-      for (let key in obj) {
-        valuesEntries.push(obj[key as keyof Object] === item[key as keyof Object]);
-      }
+export function font(weight: 'regular' | 'semi-bold', size: number, lineHeight: number, color: string) {
+  const getFontFamily = () => {
+    switch (weight) {
+      case 'regular':
+        return 'Rubik_400Regular';
+      case 'semi-bold':
+        return 'Rubik_500Medium';
+    }
+  };
 
-      return (!valuesEntries.includes(false));
-    })
-  );
+  return ({
+    fontFamily: getFontFamily(),
+    fontSize: size,
+    lineHeight,
+    color
+  });
 }

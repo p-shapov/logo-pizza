@@ -2,25 +2,20 @@
 import {StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
+import {font} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   linkLabel: {
     marginBottom: 8,
-    fontFamily: 'Rubik',
-    fontSize: 14,
-    lineHeight: 20,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('regular', 14, 20, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   },
   linkButton: {
     flexDirection: 'row',
     alignItems: 'center'
   },
   linkText: {
-    fontFamily: 'Rubik',
     marginLeft: 12,
-    fontSize: 18,
-    lineHeight: 21,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 18, 21, COLORS.FOREGROUND_PRIMARY)
   }
 });
 

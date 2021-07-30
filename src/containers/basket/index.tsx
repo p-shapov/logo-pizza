@@ -11,10 +11,7 @@ import {Basket} from 'components/basket/index';
 import {addPromoCode, deleteProduct, setProductCount} from 'modules/basket/actions';
 
 const mapStateToProps = ({basket}: State): BasketProps => ({
-  products: basket.products.map((product) => ({
-    ...product,
-    size: product.size !== undefined ? `${product.size.title} ${product.size.value}` : undefined
-  })),
+  products: basket.products,
   discount: basket.discount,
   addPromoCode: basket.addPromoCode,
   deleteProduct: basket.deleteProduct,
@@ -29,11 +26,11 @@ const mapDispatchToProps = (dispatch: Dispatch): {
   addPromoCode(code) {
     dispatch(addPromoCode(code));
   },
-  deleteProduct(id, size) {
-    dispatch(deleteProduct(id, size));
+  deleteProduct(id, variant) {
+    dispatch(deleteProduct(id, variant));
   },
-  setProductCount(id, count, size) {
-    dispatch(setProductCount(id, count, size));
+  setProductCount(count, id, variant) {
+    dispatch(setProductCount(count, id, variant));
   }
 });
 

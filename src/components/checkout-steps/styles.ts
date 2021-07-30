@@ -2,7 +2,7 @@
 import {StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {margin, padding} from 'globals/helpers';
+import {font, margin, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   checkoutSteps: {
@@ -54,10 +54,7 @@ const styles = StyleSheet.create({
     opacity: 1
   },
   checkoutStepsIndicatorNumber: {
-    fontFamily: 'Rubik',
-    fontSize: 14,
-    lineHeight: 22,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 14, 22, COLORS.FOREGROUND_PRIMARY)
   },
   checkoutStepsIndicatorTitleWrapper: {
     bottom: -22,
@@ -66,10 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   checkoutStepsIndicatorTitle: {
-    fontFamily: 'Rubik',
-    fontSize: 12,
-    lineHeight: 22,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 12, 22, COLORS.FOREGROUND_PRIMARY)
   },
   checkoutStepsIndicatorGap: {
     flexDirection: 'row',

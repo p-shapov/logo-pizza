@@ -14,11 +14,9 @@ import {PromotionListing} from 'components/promotion-listing/index';
 const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) => {
   const flatListRef = useRef<FlatList>(null);
 
-  setTimeout(() => {
-    if (flatListRef && flatListRef.current) {
-      flatListRef.current.scrollToIndex({index: state.index, animated: true, viewPosition: .5});
-    }
-  }, 250);
+  if (flatListRef && flatListRef.current) {
+    flatListRef.current.scrollToIndex({index: state.index, animated: true, viewPosition: .5});
+  }
 
   const renderItem = ({item, index}: ListRenderItemInfo<any>) => {
     const {options} = descriptors[item.key];
@@ -59,22 +57,22 @@ const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) 
     );
   };
 
-  return (<View>
-    <FlatList
-      ref={flatListRef}
-      contentContainerStyle={styles.categoryList}
-      data={state.routes}
-      renderItem={renderItem}
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-      keyExtractor={(_, index) => index.toString()}
-    />
-  </View>);
+  return (
+    <View>
+      <FlatList
+        ref={flatListRef}
+        contentContainerStyle={styles.categoryList}
+        data={state.routes}
+        renderItem={renderItem}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(_, index) => index.toString()}
+      />
+    </View>
+  );
 };
 
-const CatalogMediator = (props: CatalogMediatorProps) => {
-  const {categories, promotions, openProduct, openPromotion} = props;
-
+const CatalogMediator = ({categories, promotions, openProduct, openPromotion}: CatalogMediatorProps) => {
   const Tab = createMaterialTopTabNavigator();
 
   return (<Tab.Navigator
@@ -99,7 +97,11 @@ const CatalogMediator = (props: CatalogMediatorProps) => {
           )
         }}
       >
-        {() => (<ProductListing openProduct={openProduct} title={category.title} products={category.products}/>)}
+        {() => (<ProductListing
+          openProduct={openProduct}
+          title={category.title}
+          products={category.products}
+        />)}
       </Tab.Screen>
     ))}
   </Tab.Navigator>);

@@ -4,6 +4,8 @@ import BasketModule from './namespace';
 import {arrayIncludes, objectIncludes} from 'globals/helpers';
 /* variables */
 import pointsVariable from 'variables/points.variable';
+import productsVariable from 'variables/products.variable';
+import {ImageSourcePropType} from 'react-native';
 
 const initialState: BasketModule.State = {
   products: [],
@@ -21,15 +23,15 @@ const initialState: BasketModule.State = {
   contactInfo: {name: 'Pavel', phone: '+7 999 999 99 99'},
   orderInfo: {confirmed: false, number: ''},
   addPromoCode: (code) => console.log(code),
-  setProductCount: (id, count) => console.log(id, count),
+  setProductCount: (count, id, variant) => console.log(count, id, variant),
   setDeliveryMethod: (method) => console.log(method),
   setDeliveryAddress: (address) => console.log(address),
   setPickupPoint: (id) => console.log(id),
   setPaymentMethod: (method) => console.log(method),
   setContactInfo: (info) => console.log(info),
   setWishesForOrder: (wishes) => console.log(wishes),
-  deleteProduct: (id) => console.log(id),
-  addToCart: (product) => console.log(product),
+  deleteProduct: (id, variant) => console.log(id, variant),
+  addToCart: (count, id, variant) => console.log(count, id, variant),
   checkout: () => console.log('checkout'),
   confirm: () => console.log('confirm')
 };
@@ -39,37 +41,63 @@ export default (state: BasketModule.State = initialState, action: BasketModule.A
     case 'ADD_PROMO_CODE':
       return ({...state, discount: action.discount});
     case 'ADD_TO_CART': {
-      const identProps = action.product.size
-        ? {id: action.product.id, size: action.product.size}
-        : {id: action.product.id};
+      const identProps = action.variant !== undefined
+        ? {id: action.id, variant: action.variant}
+        : {id: action.id};
 
-      return ({
-        ...state,
-        products: (state.products.length > 0)
-          ? arrayIncludes(state.products, identProps)
-            ? state.products.reduce((acc, product) =>
-              (objectIncludes(product, identProps))
-                ? [...acc, {...product, count: product.count + 1}]
-                : [...acc, product], [] as Array<BasketModule.Product>)
-            : [...state.products, action.product]
-          : [action.product]
-      });
+      //TODO: make request
+      const foundProduct = productsVariable.find((product) => product.id === action.id) as {
+        id: string,
+        title: string,
+        image: ImageSourcePropType,
+        variants: Array<{ id: string, size: { title: string, value: string }, price: number }>
+      } | {
+        id: string,
+        title: string,
+        image: ImageSourcePropType,
+        price: number
+      };
+
+      const variant = 'variants' in foundProduct
+        ? foundProduct.variants.find((variant) => variant.id === action.variant)
+        : undefined;
+
+      const product = {
+        id: foundProduct.id,
+        count: action.count,
+        title: foundProduct.title,
+        image: foundProduct.image,
+        price: 'price' in foundProduct ? foundProduct.price : variant !== undefined ? variant.price : 0,
+        variant: variant !== undefined ? variant.id : undefined,
+        size: variant !== undefined ? variant.size.title + ' ' + variant.size.value : undefined
+      } as BasketModule.Product;
+
+      const products = state.products.length > 0
+        ? arrayIncludes(state.products, identProps)
+          ? state.products.reduce((acc, product) =>
+            (objectIncludes(product, identProps))
+              ? [...acc, {...product, count: product.count + 1}]
+              : [...acc, product], [] as BasketModule.State['products'])
+          : [...state.products, product]
+        : [product];
+
+      return ({...state, products});
     }
     case 'SET_PRODUCT_COUNT': {
-      const identProps = action.size
-        ? {id: action.id, size: action.size}
+      const identProps = action.variant
+        ? {id: action.id, variant: action.variant}
         : {id: action.id};
 
       return ({
         ...state,
         products: state.products.reduce((acc, product) => objectIncludes(product, identProps)
           ? [...acc, {...product, count: action.count}]
-          : [...acc, product], [] as Array<BasketModule.Product>)
+          : [...acc, product], [] as BasketModule.State['products'])
       });
     }
     case 'DELETE_PRODUCT': {
-      const identProps = action.size
-        ? {id: action.id, size: action.size}
+      const identProps = action.variant
+        ? {id: action.id, variant: action.variant}
         : {id: action.id};
 
       return ({...state, products: state.products.filter((product) => !objectIncludes(product, identProps))});
@@ -81,10 +109,7 @@ export default (state: BasketModule.State = initialState, action: BasketModule.A
       return ({...state, deliveryMethod: action.method});
     }
     case 'SET_PICKUP_POINT': {
-      return ({
-        ...state,
-        pickupPoints: state.pickupPoints.map((point) => ({...point, checked: point.id === action.id}))
-      });
+      return ({...state, pickupPoints: state.pickupPoints.map((point) => ({...point, checked: point.id === action.id}))});
     }
     case 'SET_CONTACT_INFO': {
       return ({...state, contactInfo: action.info});

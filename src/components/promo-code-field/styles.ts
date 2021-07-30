@@ -2,7 +2,7 @@
 import {StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {padding} from 'globals/helpers';
+import {font, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   promoCodeFieldErrorWrapper: {
@@ -24,11 +24,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   promoCodeFieldErrorText: {
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 14,
-    lineHeight: 17,
-    letterSpacing: 1,
-    color: COLORS.FOREGROUND_SECONDARY
+    ...font('semi-bold', 14, 17, COLORS.FOREGROUND_SECONDARY),
+    letterSpacing: 1
   },
   promoCodeFieldErrorClose: {
     alignSelf: 'stretch',

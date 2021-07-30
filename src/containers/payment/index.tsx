@@ -9,6 +9,7 @@ import PaymentProps from 'components/payment/interface';
 import {Payment} from 'components/payment/index';
 /* modules */
 import {checkout, setContactInfo, setPaymentMethod, setWishesForOrder} from 'modules/basket/actions';
+import {setCurrentModal} from 'modules/ui/actions';
 
 const mapStateToProps = ({basket}: State): PaymentProps => ({
   deliveryMethod: basket.deliveryMethod,
@@ -38,6 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch): {
   },
   checkout() {
     dispatch(checkout());
+    dispatch(setCurrentModal('CONFIRMATION'));
   }
 });
 

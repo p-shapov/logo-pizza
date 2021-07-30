@@ -2,19 +2,14 @@
 import {Platform, StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {margin, padding} from 'globals/helpers';
+import {font, margin, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   notification: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 9,
-    zIndex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    ...margin(0, 16),
-    ...padding(16, 8, 16, 24),
+    ...margin(9, 16, 0),
+    ...padding(0, 8, 0, 24),
     backgroundColor: COLORS.BACKGROUND_SECONDARY,
     borderRadius: 8,
     ...(Platform.OS === 'ios' ? {
@@ -29,22 +24,17 @@ const styles = StyleSheet.create({
     })
   },
   notificationOpenBasket: {
-    flexGrow: 1
+    flexGrow: 1,
+    ...padding(16, 0)
   },
   notificationTitle: {
     marginBottom: 8,
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 13,
-    lineHeight: 15,
-    letterSpacing: .5,
-    color: COLORS.FOREGROUND_SECONDARY
+    ...font('semi-bold', 13, 15, COLORS.FOREGROUND_SECONDARY),
+    letterSpacing: .5
   },
   notificationDescription: {
-    fontFamily: 'Rubik',
-    fontSize: 13,
-    lineHeight: 15,
-    letterSpacing: .5,
-    color: COLORS.FOREGROUND_SECONDARY
+    ...font('regular', 13, 15, COLORS.FOREGROUND_SECONDARY),
+    letterSpacing: .5
   }
 });
 

@@ -1,6 +1,6 @@
 /* libraries and plugins */
 import React, {useEffect, useState} from 'react';
-import {BackHandler, Keyboard, NativeEventSubscription, Text, View, ScrollView} from 'react-native';
+import {BackHandler, Keyboard, NativeEventSubscription, ScrollView, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 /* locals */
 import PaymentProps from './interface';
@@ -31,14 +31,7 @@ const Payment = (props: PaymentProps) => {
 
   const togglePrivacy = () => setPrivacyRulesAgreement(!privacyRulesAgreement);
 
-  const openConfirm = () => navigation.navigate('MODALS', {screen: 'CONFIRMATION'});
-
-  const goToDelivery = () => navigation.navigate('ROOT', {screen: 'BASKET', params: {screen: 'DELIVERY'}});
-
-  const checkoutAndOpenConfirm = () => {
-    checkout();
-    openConfirm();
-  };
+  const goToDelivery = () => navigation.navigate('BASKET', {screen: 'DELIVERY'});
 
   const handleBackPress = () => {
     goToDelivery();
@@ -104,7 +97,7 @@ const Payment = (props: PaymentProps) => {
         </Checkbox>
       </ScrollView>
       <View style={styles.paymentConfirm}>
-        <Button view={'FILLED'} type={'PRIMARY'} disabled={!privacyRulesAgreement} onPress={checkoutAndOpenConfirm}>
+        <Button view={'FILLED'} type={'PRIMARY'} disabled={!privacyRulesAgreement} onPress={checkout}>
           Заказать
         </Button>
       </View>

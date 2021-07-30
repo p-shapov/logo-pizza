@@ -19,6 +19,10 @@ type GeoCoordinates = { longitude: number, latitude: number };
 
 type TabNames = 'CATALOG' | 'CONTACTS' | 'PERSONAL_OFFICE' | 'BASKET';
 
-type WindowNames = 'ROOT' | 'MAIN' | 'PRODUCT_INFO' | 'DELIVERY' | 'PAYMENT' | 'MODALS' | 'CONFIRMATION';
+type WindowNames = 'ROOT' | 'PRODUCT_INFO' | 'DELIVERY' | 'PAYMENT';
+
+type ModalNames = 'CONFIRMATION' | 'PROMOTION' | null;
+
+type NotificationNames = 'PRODUCT_ADDED' | null;
 
 type SocialMediaType = 'VK' | 'INST' | 'OK' | 'FB' | 'YT';

@@ -72,9 +72,7 @@ const CategoryMenu = ({state, descriptors, navigation}: MaterialTopTabBarProps) 
   );
 };
 
-const CatalogMediator = (props: CatalogMediatorProps) => {
-  const {categories, promotions, openProduct, openPromotion} = props;
-
+const CatalogMediator = ({categories, promotions, openProduct, openPromotion}: CatalogMediatorProps) => {
   const Tab = createMaterialTopTabNavigator();
 
   return (<Tab.Navigator

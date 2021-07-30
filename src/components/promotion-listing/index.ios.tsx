@@ -5,9 +5,7 @@ import {FlatList, Image, ListRenderItemInfo, Pressable, Text, View} from 'react-
 import PromotionListingProps from './interface';
 import styles from './styles';
 
-const PromotionListing = (props: PromotionListingProps) => {
-  const {promotions, openPromotion} = props;
-
+const PromotionListing = ({promotions, openPromotion}: PromotionListingProps) => {
   const flatListRef = useRef<FlatList>(null);
 
   const renderItem = (data: ListRenderItemInfo<ArrayElement<PromotionListingProps['promotions']>>) => {

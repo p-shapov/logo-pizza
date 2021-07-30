@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {Platform, StyleSheet} from 'react-native';
 /* globals */
-import {margin, padding} from 'globals/helpers';
+import {font, margin, padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
@@ -14,10 +14,7 @@ const styles = StyleSheet.create({
     ...padding(30, 16)
   },
   basketHeaderText: {
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 24,
-    lineHeight: 32,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('semi-bold', 24, 32, COLORS.FOREGROUND_PRIMARY)
   },
   basketDelimiter: {
     height: 1,
@@ -48,35 +45,21 @@ const styles = StyleSheet.create({
   },
   basketProductCardTitle: {
     marginBottom: 8,
-    fontFamily: 'Rubik',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 16, 19, COLORS.FOREGROUND_PRIMARY)
   },
   basketProductCardSize: {
-    fontFamily: 'Rubik',
-    fontSize: 12,
-    lineHeight: 18,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('regular', 12, 18, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   },
   basketProductCardPrice: {
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('semi-bold', 16, 19, COLORS.FOREGROUND_PRIMARY)
   },
   basketProductCardPriceActive: {
     marginBottom: 4,
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.FOREGROUND_PRIMARY_ACTIVE
+    ...font('semi-bold', 16, 19, COLORS.FOREGROUND_PRIMARY_ACTIVE)
   },
   basketProductCardOldPrice: {
     alignSelf: 'flex-end',
-    fontFamily: 'Rubik',
-    fontSize: 14,
-    lineHeight: 17,
+    ...font('regular', 14, 17, COLORS.FOREGROUND_PRIMARY),
     textDecorationLine: 'line-through'
   },
   basketProductCardFooter: {
@@ -101,10 +84,7 @@ const styles = StyleSheet.create({
   },
   basketEmptyText: {
     alignSelf: 'center',
-    fontFamily: 'Rubik',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 16, 19, COLORS.FOREGROUND_PRIMARY)
   },
   basketCheckout: {
     position: 'absolute',

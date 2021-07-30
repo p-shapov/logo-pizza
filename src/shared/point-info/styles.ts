@@ -2,6 +2,7 @@
 import {StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
+import {font} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   pointInfoMetroStation: {
@@ -13,23 +14,14 @@ const styles = StyleSheet.create({
     marginRight: 8
   },
   pointInfoMetroStationText: {
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 12,
-    lineHeight: 18,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('semi-bold', 12, 18, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   },
   pointInfoStreet: {
     marginBottom: 8,
-    fontFamily: 'Rubik',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 16, 19, COLORS.FOREGROUND_PRIMARY)
   },
   pointInfoWorkTime: {
-    fontFamily: 'Rubik',
-    fontSize: 11,
-    lineHeight: 18,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('regular', 11, 18, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   }
 });
 

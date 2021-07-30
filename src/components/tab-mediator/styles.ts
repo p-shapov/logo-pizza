@@ -2,7 +2,7 @@
 import {StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {padding} from 'globals/helpers';
+import {font, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   screen: {
@@ -74,10 +74,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.BACKGROUND_PRIMARY_ACTIVE
   },
   tabBadgeText: {
-    fontFamily: 'Rubik',
-    fontSize: 8,
-    lineHeight: 10,
-    color: COLORS.FOREGROUND_SECONDARY
+    ...font('regular', 8, 10, COLORS.FOREGROUND_SECONDARY)
   }
 });
 

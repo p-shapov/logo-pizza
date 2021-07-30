@@ -2,7 +2,7 @@
 import {Platform, StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {margin, padding} from 'globals/helpers';
+import {font, margin, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   contacts: {
@@ -18,11 +18,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.DELIMITER
   },
   contactsTitle: {
-    fontFamily: 'Rubik',
-    fontSize: 16,
-    lineHeight: 19,
-    letterSpacing: .5,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 16, 19, COLORS.FOREGROUND_PRIMARY),
+    letterSpacing: .5
   },
   contactsCityPicker: {
     flexDirection: 'row',
@@ -31,11 +28,8 @@ const styles = StyleSheet.create({
   },
   contactsCityPickerText: {
     marginLeft: 8,
-    fontFamily: 'Rubik',
-    fontSize: 16,
-    lineHeight: 19,
-    letterSpacing: .5,
-    color: COLORS.FOREGROUND_PRIMARY_ACTIVE
+    ...font('regular', 16, 19, COLORS.FOREGROUND_PRIMARY_ACTIVE),
+    letterSpacing: .5
   },
   contactsMapWrapper: {
     ...margin(0, 16, 20),
@@ -79,19 +73,13 @@ const styles = StyleSheet.create({
   },
   contactsSocialsLabel: {
     marginBottom: 16,
-    fontFamily: 'Rubik',
-    fontSize: 18,
-    lineHeight: 21,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 18, 21, COLORS.FOREGROUND_PRIMARY)
   },
   contactsAbout: {
     ...padding(18, 16, 0)
   },
   contactsAboutText: {
-    fontFamily: 'Rubik',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 16, 19, COLORS.FOREGROUND_PRIMARY)
   }
 });
 

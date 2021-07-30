@@ -34,16 +34,17 @@ const Basket = (props: BasketProps) => {
   const totalPrice = products.reduce((acc, {price, count}) => (acc + (price * count)), 0);
 
   const isEmpty = products.length === 0;
+
   const discountApplied = discount !== undefined;
 
   const applyDiscount = (price: number) => discount !== undefined ? Math.floor(price * (1 - 0.01 * discount)) : price;
 
-  const goToCatalog = () => navigation.navigate('ROOT', {screen: 'CATALOG', params: {screen: 'MAIN'}});
+  const goToCatalog = () => navigation.navigate('CATALOG', {screen: 'ROOT'});
 
-  const goToCheckout = () => navigation.navigate('ROOT', {screen: 'BASKET', params: {screen: 'DELIVERY'}});
+  const goToCheckout = () => navigation.navigate('BASKET', {screen: 'DELIVERY'});
 
   const renderItem = ({item}: ListRenderItemInfo<ArrayElement<BasketProps['products']>>) => {
-    const {id, title, price, count, image, size} = item;
+    const {id, title, price, count, image, size, variant} = item;
 
     return (<View style={styles.basketProductCard}>
       <Image style={styles.basketProductCardImage} source={image}/>
@@ -51,7 +52,7 @@ const Basket = (props: BasketProps) => {
         <View style={styles.basketProductCardHeader}>
           <View>
             <Text style={styles.basketProductCardTitle}>{title}</Text>
-            {size && (<Text style={styles.basketProductCardSize}>{size}</Text>)}
+            {size !== undefined && (<Text style={styles.basketProductCardSize}>{size}</Text>)}
           </View>
           <View>
             <Text style={discount
@@ -64,9 +65,9 @@ const Basket = (props: BasketProps) => {
           </View>
         </View>
         <View style={styles.basketProductCardFooter}>
-          <Button type={'SECONDARY'} view={'SHAPED'} onPress={() => deleteProduct(id, size)} Icon={IcoBasketTrash}/>
+          <Button type={'SECONDARY'} view={'SHAPED'} onPress={() => deleteProduct(id, variant)} Icon={IcoBasketTrash}/>
           <View style={styles.basketProductCardFooterGap}/>
-          <Counter count={count} maxCount={10} onChange={(count) => setProductCount(id, count, size)}/>
+          <Counter count={count} maxCount={10} onChange={(count) => setProductCount(count, id, variant)}/>
         </View>
       </View>
     </View>);

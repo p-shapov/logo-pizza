@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {Platform, StyleSheet} from 'react-native';
 /* globals */
-import {padding} from 'globals/helpers';
+import {font, padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
@@ -54,11 +54,8 @@ const styles = StyleSheet.create({
   selectItemText: {
     ...padding(9, 16),
     textAlign: 'center',
-    fontFamily: 'Rubik',
-    fontSize: 13,
-    lineHeight: 14,
-    letterSpacing: 0.56,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 13, 14, COLORS.FOREGROUND_PRIMARY),
+    letterSpacing: 0.5
   }
 });
 

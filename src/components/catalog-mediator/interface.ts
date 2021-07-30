@@ -2,12 +2,12 @@
 import {ImageSourcePropType} from 'react-native';
 
 type Product = {
-  id: number,
+  id: string,
   title: string,
   description: string,
   image: ImageSourcePropType,
   price: number,
-  multiplePrice: boolean
+  hasVariants: boolean
 }
 
 type Category = {
@@ -18,7 +18,7 @@ type Category = {
 }
 
 type Promotion = {
-  id: number,
+  id: string,
   title: string,
   image: ImageSourcePropType
 }
@@ -26,8 +26,8 @@ type Promotion = {
 interface CatalogMediatorProps {
   categories: Array<Category>,
   promotions: Array<Promotion>,
-  openProduct: (id: number) => void,
-  openPromotion: (id: number) => void
+  openProduct: (id: string) => void,
+  openPromotion: (id: string) => void
 }
 
 export default CatalogMediatorProps;

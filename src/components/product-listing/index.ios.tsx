@@ -17,10 +17,10 @@ const ProductListing = (props: ProductListingProps) => {
 
   useScrollToTop(flatListRef);
 
-  const goToProductInfo = () => navigation.navigate('ROOT', {screen: 'CATALOG', params: {screen: 'PRODUCT_INFO'}});
+  const goToProductInfo = () => navigation.navigate('CATALOG', {screen: 'PRODUCT_INFO'});
 
   const renderItem = (data: ListRenderItemInfo<ArrayElement<ProductListingProps['products']>>) => {
-    const {id, title, description, price, multiplePrice, image} = data.item;
+    const {id, title, description, price, hasVariants, image} = data.item;
 
     const openProductAndGoToProductInfo = () => {
       openProduct(id);
@@ -33,7 +33,7 @@ const ProductListing = (props: ProductListingProps) => {
         <Text style={styles.productCardTitle}>{title}</Text>
         <Text style={styles.productCardDescription}>{description}</Text>
         <Badge type={'SHAPED'}>
-          {multiplePrice ? 'от ' + price + ' ₽' : price + ' ₽'}
+          {hasVariants ? 'от ' + price + ' ₽' : price + ' ₽'}
         </Badge>
       </View>
     </Pressable>);

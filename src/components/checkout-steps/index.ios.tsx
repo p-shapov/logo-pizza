@@ -14,9 +14,9 @@ import IcoArrowBack from 'images/ico_arrow_back.svg';
 const CheckoutSteps = ({active, children}: CheckoutStepsProps) => {
   const navigation = useNavigation();
 
-  const goToBasket = () => navigation.navigate('ROOT', {screen: 'BASKET', params: {screen: 'MAIN'}});
+  const goToBasket = () => navigation.navigate('BASKET', {screen: 'ROOT'});
 
-  const goToDelivery = () => navigation.navigate('ROOT', {screen: 'BASKET', params: {screen: 'MAIN'}});
+  const goToDelivery = () => navigation.navigate('BASKET', {screen: 'DELIVERY'});
 
   const handleGoBack = () => {
     switch (active) {

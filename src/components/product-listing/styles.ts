@@ -2,7 +2,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 /* globals */
 import {COLORS} from 'globals/constants';
-import {padding} from 'globals/helpers';
+import {font, padding} from 'globals/helpers';
 
 const styles = StyleSheet.create({
   productListing: {
@@ -12,10 +12,7 @@ const styles = StyleSheet.create({
   },
   productListingTitle: {
     marginBottom: 32,
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 24,
-    lineHeight: 32,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('semi-bold', 24, 32, COLORS.FOREGROUND_PRIMARY)
   },
   productCard: {
     flexDirection: 'row',
@@ -33,17 +30,11 @@ const styles = StyleSheet.create({
   },
   productCardTitle: {
     marginBottom: 8,
-    fontFamily: 'Rubik',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 16, 19, COLORS.FOREGROUND_PRIMARY)
   },
   productCardDescription: {
     marginBottom: 16,
-    fontFamily: 'Rubik',
-    fontSize: 12,
-    lineHeight: 18,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('regular', 12, 18, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   }
 });
 

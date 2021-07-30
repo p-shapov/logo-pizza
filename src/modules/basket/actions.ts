@@ -14,22 +14,24 @@ export const addPromoCode = (code: string): BasketModule.AddPromoCode => {
   });
 };
 
-export const addToCart = (product: BasketModule.Product): BasketModule.AddToCart => ({
+export const addToCart = (count: number, id: string, variant?: string): BasketModule.AddToCart => ({
   type: 'ADD_TO_CART',
-  product
-});
-
-export const setProductCount = (id: number, count: number, size?: string): BasketModule.SetProductCount => ({
-  type: 'SET_PRODUCT_COUNT',
-  id,
   count,
-  size
+  id,
+  variant
 });
 
-export const deleteProduct = (id: number, size?: string): BasketModule.DeleteProduct => ({
+export const setProductCount = (count: number, id: string, variant?: string): BasketModule.SetProductCount => ({
+  type: 'SET_PRODUCT_COUNT',
+  count,
+  id,
+  variant
+});
+
+export const deleteProduct = (id: string, variant?: string): BasketModule.DeleteProduct => ({
   type: 'DELETE_PRODUCT',
   id,
-  size
+  variant
 });
 
 export const setDeliveryMethod = (method: BasketModule.State['deliveryMethod']): BasketModule.SetDeliveryMethod => ({
@@ -42,7 +44,7 @@ export const setDeliveryAddress = (address: BasketModule.State['deliveryAddress'
   address
 });
 
-export const setPickupPoint = (id: number): BasketModule.SetPickupPoint => ({
+export const setPickupPoint = (id: string): BasketModule.SetPickupPoint => ({
   type: 'SET_PICKUP_POINT',
   id
 });

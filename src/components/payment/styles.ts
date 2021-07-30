@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {Platform, StyleSheet} from 'react-native';
 /* globals */
-import {margin, padding} from 'globals/helpers';
+import {font, margin, padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
@@ -22,10 +22,7 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   paymentMethodLabel: {
-    fontFamily: 'Rubik',
-    fontSize: 16,
-    lineHeight: 19,
-    color: COLORS.FOREGROUND_PRIMARY
+    ...font('regular', 16, 19, COLORS.FOREGROUND_PRIMARY)
   },
   paymentWishesForOrder: {
     ...margin(16, 0)
@@ -38,13 +35,10 @@ const styles = StyleSheet.create({
   },
   paymentPrivacyRules: {
     width: 292,
-    fontFamily: 'Rubik',
-    fontSize: 12,
-    lineHeight: 18,
-    color: COLORS.FOREGROUND_PRIMARY_SUBTLE
+    ...font('regular', 12, 18, COLORS.FOREGROUND_PRIMARY_SUBTLE)
   },
   paymentPrivacyRulesLink: {
-    color: COLORS.FOREGROUND_PRIMARY_ACTIVE
+    ...font('regular', 12, 18, COLORS.FOREGROUND_PRIMARY_ACTIVE)
   },
   paymentConfirm: {
     position: 'absolute',

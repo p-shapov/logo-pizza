@@ -1,5 +1,5 @@
 type Point = {
-  id: number,
+  id: string,
   checked: boolean,
   data: {
     street: string,
@@ -23,7 +23,7 @@ interface DeliveryProps {
   pickupPoints: Array<Point>,
   setMethod: (method: 'CURRIER' | 'PICKUP') => void,
   setAddress: (address: Address) => void,
-  setPoint: (id: number) => void
+  setPoint: (id: string) => void
 }
 
 export default DeliveryProps;

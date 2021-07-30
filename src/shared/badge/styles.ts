@@ -1,7 +1,7 @@
 /* libraries and plugins */
 import {StyleSheet} from 'react-native';
 /* globals */
-import {padding} from 'globals/helpers';
+import {font, padding} from 'globals/helpers';
 import {COLORS} from 'globals/constants';
 
 const styles = StyleSheet.create({
@@ -20,19 +20,13 @@ const styles = StyleSheet.create({
   },
   badgeFilledText: {
     textAlign: 'center',
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 13,
-    lineHeight: 14,
-    letterSpacing: .5,
-    color: COLORS.FOREGROUND_SECONDARY
+    ...font('semi-bold', 13, 14, COLORS.FOREGROUND_SECONDARY),
+    letterSpacing: .5
   },
   badgeShapedText: {
     textAlign: 'center',
-    fontFamily: 'Rubik-SemiBold',
-    fontSize: 13,
-    lineHeight: 14,
-    letterSpacing: .5,
-    color: COLORS.FOREGROUND_PRIMARY_ACTIVE
+    ...font('semi-bold', 13, 14, COLORS.FOREGROUND_PRIMARY_ACTIVE),
+    letterSpacing: .5
   }
 });
 

@@ -1,7 +1,7 @@
 /* libraries and plugins */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {Image, Text, View, Pressable} from 'react-native';
+import {BackHandler, Image, NativeEventSubscription, Pressable, Text, View} from 'react-native';
 /* locals */
 import styles from './styles';
 import ConfirmationProps from './interface';
@@ -13,14 +13,17 @@ import ImgProductPlaceholder from 'images/img_product_placeholder.png';
 const Confirmation = ({orderInfo, confirm}: ConfirmationProps) => {
   const navigation = useNavigation();
 
-  const resetStack = () => navigation.reset({index: 0, routes: [{name: 'CATALOG'}]});
-
-  const goToCatalog = () => navigation.navigate('ROOT', {screen: 'CATALOG', params: {screen: 'MAIN'}});
+  const resetStack = () => navigation.reset({index: 0, routes: [{name: 'ROOT'}]});
 
   const confirmAndGoToCatalog = () => {
     resetStack();
-    goToCatalog();
     confirm();
+  };
+
+  const handleBackPress = () => {
+    confirmAndGoToCatalog();
+
+    return true;
   };
 
   const orderConfirmed = () => (<>
@@ -33,6 +36,14 @@ const Confirmation = ({orderInfo, confirm}: ConfirmationProps) => {
       <Button view={'FILLED'} type={'PRIMARY'} onPress={confirmAndGoToCatalog}>Вернуться в меню</Button>
     </View>
   </>);
+
+  const listeners: Array<NativeEventSubscription> = [
+    BackHandler.addEventListener('hardwareBackPress', handleBackPress)
+  ];
+
+  const unsubscribe = () => listeners.forEach((listener) => listener.remove());
+
+  useEffect(() => unsubscribe);
 
   return (<>
     {orderInfo.confirmed && (<View style={styles.confirmation}>
